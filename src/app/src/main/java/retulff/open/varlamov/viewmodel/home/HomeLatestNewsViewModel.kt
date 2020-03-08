@@ -13,7 +13,7 @@ import retulff.open.varlamov.App
 import retulff.open.varlamov.R
 import retulff.open.varlamov.varlamov.Blog
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
+import retulff.open.varlamov.varlamov.platform.livejournal.model.PublicationsFactory
 
 class HomeLatestNewsViewModel : ViewModel() {
 

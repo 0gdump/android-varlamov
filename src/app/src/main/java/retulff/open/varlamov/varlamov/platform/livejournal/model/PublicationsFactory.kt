@@ -1,9 +1,8 @@
-package retulff.open.varlamov.varlamov.platform.livejournal.model.factory
+package retulff.open.varlamov.varlamov.platform.livejournal.model
 
 import android.util.Base64
 import org.joda.time.DateTimeZone
 import retulff.open.varlamov.util.TimeUtils
-import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
 
 // TODO: Доработать с использованием корутин
 class PublicationsFactory {

@@ -11,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retulff.open.varlamov.varlamov.Blog
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
+import retulff.open.varlamov.varlamov.platform.livejournal.model.PublicationsFactory
 
 class HomeRecentPublicationViewModel : ViewModel() {
 
