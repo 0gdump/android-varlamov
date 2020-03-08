@@ -20,16 +20,4 @@
 	          android:label="fragment_news"
 	          tools:layout="@layout/fragment_by_tag"/>
 
-	<!--
-	<fragment android:id="@+id/nav_collections"
-	          android:name="retulff.open.varlamov.ui.fragments.CollectionsFragment"
-	          android:label="fragment_collections"
-	          tools:layout="@layout/fragment_collections"/>
-	-->
-
-	<fragment android:id="@+id/nav_varlamov"
-	          android:name="retulff.open.varlamov.ui.fragment.VarlamovFragment"
-	          android:label="fragment_info"
-	          tools:layout="@layout/fragment_varlamov"/>
-
 </navigation>

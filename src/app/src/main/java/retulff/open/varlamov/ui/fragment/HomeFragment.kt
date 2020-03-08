@@ -20,7 +20,11 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         layout = inflater.inflate(
             R.layout.fragment_home,
@@ -51,7 +55,9 @@ class HomeFragment : Fragment() {
 
     private fun loadData(forcibly: Boolean = false) {
         for (i in 0 until layout.cards_container.childCount) {
-            (layout.cards_container.getChildAt(i) as HomeCardView).loadData(forcibly)
+            val view = layout.cards_container.getChildAt(i)
+            if (view is HomeCardView)
+                view.loadData(forcibly)
         }
     }
 }
