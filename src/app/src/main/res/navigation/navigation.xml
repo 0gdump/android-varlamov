@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:startDestination="@+id/nav_home">
+
+	<fragment android:id="@+id/nav_home"
+	          android:name="retulff.open.varlamov.ui.fragment.HomeFragment"
+	          android:label="fragment_home"
+	          tools:layout="@layout/fragment_home"/>
+
+	<fragment android:id="@+id/nav_publications"
+	          android:name="retulff.open.varlamov.ui.fragment.PublicationsFragment"
+	          android:label="fragment_publications"
+	          tools:layout="@layout/fragment_publications"/>
+
+	<fragment android:id="@+id/nav_news"
+	          android:name="retulff.open.varlamov.ui.fragment.NewsFragment"
+	          android:label="fragment_news"
+	          tools:layout="@layout/fragment_by_tag"/>
+
+	<!--
+	<fragment android:id="@+id/nav_collections"
+	          android:name="retulff.open.varlamov.ui.fragments.CollectionsFragment"
+	          android:label="fragment_collections"
+	          tools:layout="@layout/fragment_collections"/>
+	-->
+
+	<fragment android:id="@+id/nav_varlamov"
+	          android:name="retulff.open.varlamov.ui.fragment.VarlamovFragment"
+	          android:label="fragment_info"
+	          tools:layout="@layout/fragment_varlamov"/>
+
+</navigation>

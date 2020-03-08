@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/home_refresh"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#EEE">
+
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/cards_scroll_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:id="@+id/cards_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:clipToPadding="false"
+			android:padding="10dp"
+			android:orientation="vertical">
+
+			<retulff.open.varlamov.ui.view.home.HomeRecentPublicationView
+				android:id="@+id/recent_publication"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+
+			<retulff.open.varlamov.ui.view.home.HomeCurrentVideosView
+				android:id="@+id/current_videos"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"/>
+
+			<retulff.open.varlamov.ui.view.home.HomeLatestNewsView
+				android:id="@+id/latest_news"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"/>
+
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
