@@ -11,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retulff.open.varlamov.varlamov.Blog
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsResponseFactoryManager
+import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
 
 class HomeRecentPublicationViewModel : ViewModel() {
 
@@ -29,7 +29,7 @@ class HomeRecentPublicationViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
 
-                    val publications = PublicationsResponseFactoryManager.convert(response.body()!!.string())
+                    val publications = PublicationsFactory.convert(response.body()!!.string())
 
                    recentPublication.value = publications[0]
 

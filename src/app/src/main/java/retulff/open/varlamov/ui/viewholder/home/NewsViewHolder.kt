@@ -40,7 +40,7 @@ class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private fun bindContent() {
 
-        val time = TimeUtils.dateTimeToString(publication.utcLogTime, TimeZone.getDefault())
+        val time = TimeUtils.dateTimeToString(publication.time, TimeZone.getDefault())
         val title = publication.title
 
         itemView.publication_datetime?.text = time

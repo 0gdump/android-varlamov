@@ -88,7 +88,7 @@ class HomeRecentPublicationView(
                 }
 
             // Content
-            layout.date.text = TimeUtils.dateTimeToString(publication.utcLogTime, TimeZone.getDefault())
+            layout.date.text = TimeUtils.dateTimeToString(publication.time, TimeZone.getDefault())
             layout.title.text = publication.title
 
             showContent()

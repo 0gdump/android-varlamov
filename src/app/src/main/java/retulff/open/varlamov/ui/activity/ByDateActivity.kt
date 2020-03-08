@@ -19,7 +19,7 @@ import retulff.open.varlamov.ui.adapter.PublicationsSimpleAdapter
 import retulff.open.varlamov.ui.view.extension.showBeautifulError
 import retulff.open.varlamov.util.TimeUtils
 import retulff.open.varlamov.varlamov.Blog
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsResponseFactoryManager
+import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
 import retulff.open.varlamov.viewmodel.ByDateViewModel
 
 class ByDateActivity : AppCompatActivity(), Callback<ResponseBody> {
@@ -119,7 +119,7 @@ class ByDateActivity : AppCompatActivity(), Callback<ResponseBody> {
         if (response.isSuccessful) {
 
             //val rawResponse = Jsoup.parse(response.body()?.string(), "", Parser.xmlParser())
-            val publications = PublicationsResponseFactoryManager.convert(response.body()!!.string())
+            val publications = PublicationsFactory.convert(response.body()!!.string())
 
             if (publications.isNotEmpty()) {
                 model.postPublicationsByDate(publications)

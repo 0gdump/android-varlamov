@@ -5,7 +5,7 @@ import org.joda.time.DateTime
 data class Publication(
     val title: String,
     val content: String,
-    val tagList: ArrayList<String>,
-    val utcLogTime: DateTime,
+    val tags: List<String>,
+    val time: DateTime,
     val url: String
 )

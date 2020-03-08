@@ -13,7 +13,7 @@ import retulff.open.varlamov.App
 import retulff.open.varlamov.R
 import retulff.open.varlamov.varlamov.Blog
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsResponseFactoryManager
+import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
 
 class HomeLatestNewsViewModel : ViewModel() {
 
@@ -39,7 +39,7 @@ class HomeLatestNewsViewModel : ViewModel() {
                     if (response.isSuccessful) {
 
                         //val rawResponse = Jsoup.parse(response.body()?.string(), "", Parser.xmlParser())
-                        val publications = PublicationsResponseFactoryManager.convert(response.body()!!.string())
+                        val publications = PublicationsFactory.convert(response.body()!!.string())
 
                         latestNews.value = publications
 

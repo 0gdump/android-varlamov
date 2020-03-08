@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retulff.open.varlamov.varlamov.Blog
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
-import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsResponseFactoryManager
+import retulff.open.varlamov.varlamov.platform.livejournal.model.factory.PublicationsFactory
 import retulff.open.varlamov.varlamov.repository.NetworkState
 import java.util.concurrent.Executor
 
@@ -70,7 +70,7 @@ class ItemKeyedPublicationsByTagDataSource(
 
                     if (response.isSuccessful) {
 
-                        val publications = PublicationsResponseFactoryManager.convert(response.body()!!.string())
+                        val publications = PublicationsFactory.convert(response.body()!!.string())
 
                         retry = null
 
@@ -123,7 +123,7 @@ class ItemKeyedPublicationsByTagDataSource(
 
                     if (response.isSuccessful) {
 
-                        val publications = PublicationsResponseFactoryManager.convert(response.body()!!.string())
+                        val publications = PublicationsFactory.convert(response.body()!!.string())
 
                         retry = null
 
@@ -148,5 +148,5 @@ class ItemKeyedPublicationsByTagDataSource(
             })
     }
 
-    override fun getKey(item: Publication): DateTime = item.utcLogTime
+    override fun getKey(item: Publication): DateTime = item.time
 }

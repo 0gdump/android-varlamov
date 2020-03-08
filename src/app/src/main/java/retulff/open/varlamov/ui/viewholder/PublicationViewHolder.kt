@@ -63,7 +63,7 @@ class PublicationViewHolder(
 
     private fun bindContent() {
 
-        val time = TimeUtils.dateTimeToString(item.utcLogTime, TimeZone.getDefault())
+        val time = TimeUtils.dateTimeToString(item.time, TimeZone.getDefault())
         val title = item.title
         val text = "${getNWordsFrom(itemParsedContent.text(), 20)}..."
 
@@ -97,7 +97,7 @@ class PublicationViewHolder(
 
     private fun bindTags() {
 
-        if (item.tagList.contains(App.res.getString(R.string.news_tag))) {
+        if (item.tags.contains(App.res.getString(R.string.news_tag))) {
 
             itemView.publication_tags_container.visibility = View.GONE
             return
@@ -106,7 +106,7 @@ class PublicationViewHolder(
         itemView.publication_tags_container.visibility = View.VISIBLE
         itemView.publication_tags.removeAllViews()
 
-        item.tagList.forEach {
+        item.tags.forEach {
 
             val chip = Chip(context)
             chip.text = it
