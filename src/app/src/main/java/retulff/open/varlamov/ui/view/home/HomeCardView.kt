@@ -1,71 +1,76 @@
 package retulff.open.varlamov.ui.view.home
 
-import android.app.Activity
 import android.content.Context
-import android.content.ContextWrapper
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.LinearLayout
-import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.view_home_card.view.*
 import retulff.open.varlamov.App
 import retulff.open.varlamov.R
 import retulff.open.varlamov.ui.view.extension.showBeautifulError
 
+@Suppress("MemberVisibilityCanBePrivate")
 abstract class HomeCardView(
     context: Context,
     attrs: AttributeSet
 ) : LinearLayout(context, attrs) {
 
-    private lateinit var layout: View
+    private lateinit var cardLayout: View
+    protected lateinit var contentLayout: View
 
-    protected fun getActivity(): FragmentActivity? {
-        var context = context
+    private var moreClickListener: (() -> Unit)? = null
+    private var retryClickListener: (() -> Unit)? = null
 
-        while (context is ContextWrapper) {
-            if (context is Activity) {
-                return context as FragmentActivity
-            }
-            context = context.baseContext
-        }
+    fun setup(
+        title: String,
+        parentRes: Int,
+        moreClickListener: (() -> Unit)? = null,
+        retryClickListener: (() -> Unit)? = null,
+        setLoading: Boolean = true
+    ) {
 
-        return null
-    }
-
-    protected fun setupCard(title: String, r: Int): View {
-
-        layout = LayoutInflater
+        cardLayout = LayoutInflater
             .from(context)
             .inflate(R.layout.view_home_card, this, true)
 
-        layout.title.text = title
-
-        return LayoutInflater
+        contentLayout = LayoutInflater
             .from(context)
-            .inflate(r, layout.container, true)
+            .inflate(parentRes, cardLayout.container, true)
+
+        this.moreClickListener = moreClickListener
+        this.retryClickListener = retryClickListener
+
+        cardLayout.title.text = title
+
+        if (moreClickListener == null) {
+            cardLayout.more.visibility = GONE
+        } else {
+            cardLayout.more.setOnClickListener {
+                this.moreClickListener!!.invoke()
+            }
+        }
+
+        if (setLoading) {
+            showLoading()
+        }
     }
 
-    protected fun setMoreClickListener(listener: OnClickListener) {
-        layout.more.setOnClickListener(listener)
+    fun showLoading() {
+        cardLayout.stateful_container.showLoading(App.res.getString(R.string.state_loading))
     }
 
-    abstract fun loadData(forcibly: Boolean = false)
-
-    protected fun showLoading() {
-        layout.stateful_container.showLoading(App.res.getString(R.string.state_loading))
-    }
-
-    protected fun showError(message: String, retryCallback: () -> Unit) {
-        layout.stateful_container.showBeautifulError(
+    fun showError(message: String) {
+        cardLayout.stateful_container.showBeautifulError(
             message,
             App.res.getString(R.string.retry),
-            OnClickListener { retryCallback.invoke() }
+            retryClickListener
         )
     }
 
-    protected fun showContent() {
-        layout.stateful_container.showContent()
+    protected fun hideOverlay() {
+        cardLayout.stateful_container.showContent()
     }
+
+    abstract fun showContent(content: Any)
 }

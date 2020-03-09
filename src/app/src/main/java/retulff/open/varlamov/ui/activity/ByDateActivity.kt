@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_of_day.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import org.joda.time.DateTime
 import retrofit2.Call
@@ -108,7 +110,9 @@ class ByDateActivity : AppCompatActivity(), Callback<ResponseBody> {
         stateful_container.showLoading(getString(R.string.state_loading))
 
         // TODO: Заменить загрузку в конкретный день на загрузку в промежуток 3 дней
-        Blog.getPublicationsOfDay(200, date, this)
+        GlobalScope.launch {
+            Blog.getPublicationsOfDay(200, date, this@ByDateActivity)
+        }
     }
 
     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -135,11 +139,8 @@ class ByDateActivity : AppCompatActivity(), Callback<ResponseBody> {
     private fun showError() {
         stateful_container.showBeautifulError(
             getString(R.string.state_error),
-            getString(R.string.retry),
-            View.OnClickListener {
-                loadPublications()
-            }
-        )
+            getString(R.string.retry)
+        ) { loadPublications() }
     }
 
     private fun showEmpty() {

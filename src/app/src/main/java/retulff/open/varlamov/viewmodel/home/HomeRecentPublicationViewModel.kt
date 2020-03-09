@@ -3,6 +3,8 @@ package retulff.open.varlamov.viewmodel.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
@@ -20,24 +22,33 @@ class HomeRecentPublicationViewModel : ViewModel() {
     fun getRecentPublication(): LiveData<Publication?> = recentPublication
 
     fun loadData() {
-        Blog.getPublications(1, DateTime.now().withZone(DateTimeZone.UTC), object : Callback<ResponseBody> {
+        GlobalScope.launch {
+            Blog.getPublications(
+                1,
+                DateTime.now().withZone(DateTimeZone.UTC),
+                object : Callback<ResponseBody> {
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                recentPublication.value = null
-            }
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        recentPublication.value = null
+                    }
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if (response.isSuccessful) {
 
-                    val publications = PublicationsFactory.convert(response.body()!!.string())
+                            val publications =
+                                PublicationsFactory.convert(response.body()!!.string())
 
-                   recentPublication.value = publications[0]
+                            recentPublication.value = publications[0]
 
-                } else {
-                    recentPublication.value = null
-                }
-            }
+                        } else {
+                            recentPublication.value = null
+                        }
+                    }
 
-        })
+                })
+        }
     }
 }

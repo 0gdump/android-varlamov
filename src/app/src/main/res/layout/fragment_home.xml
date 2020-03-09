@@ -19,22 +19,10 @@
 			android:orientation="vertical"
 			android:padding="10dp">
 
-			<retulff.open.varlamov.ui.view.home.HomeRecentPublicationView
-				android:id="@+id/recent_publication"
+			<retulff.open.varlamov.ui.view.home.HomeLatestPublicationCardView
+				android:id="@+id/latest_publication"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" />
-
-			<retulff.open.varlamov.ui.view.home.HomeCurrentVideosView
-				android:id="@+id/current_videos"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp" />
-
-			<retulff.open.varlamov.ui.view.home.HomeLatestNewsView
-				android:id="@+id/latest_news"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp" />
 
 			<androidx.cardview.widget.CardView
 				android:layout_width="match_parent"
@@ -47,76 +35,59 @@
 				<androidx.appcompat.widget.LinearLayoutCompat
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="16dp"
-					android:orientation="vertical">
+					android:orientation="horizontal"
+					android:layout_gravity="center">
 
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="12dp"
-						android:text="Социальные сети"
-						android:textAppearance="@style/TextAppearance.AppCompat.Title"
-						android:textSize="16sp" />
+					<androidx.appcompat.widget.AppCompatImageButton
+						android:id="@+id/social_vk_button"
+						android:layout_width="42dp"
+						android:layout_height="42dp"
+						android:layout_margin="4dp"
+						android:adjustViewBounds="true"
+						android:background="?android:selectableItemBackground"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_vk" />
 
-					<androidx.appcompat.widget.LinearLayoutCompat
-						android:id="@+id/social_container"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_gravity="center"
-						android:layout_marginStart="12dp"
-						android:orientation="horizontal">
+					<androidx.appcompat.widget.AppCompatImageButton
+						android:id="@+id/social_twitter_button"
+						android:layout_width="42dp"
+						android:layout_height="42dp"
+						android:layout_margin="4dp"
+						android:adjustViewBounds="true"
+						android:background="?android:selectableItemBackground"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_twitter" />
 
-						<androidx.appcompat.widget.AppCompatImageButton
-							android:id="@+id/social_vk_button"
-							android:layout_width="42dp"
-							android:layout_height="42dp"
-							android:layout_margin="4dp"
-							android:adjustViewBounds="true"
-							android:background="?android:selectableItemBackground"
-							android:scaleType="fitCenter"
-							android:src="@drawable/ic_vk" />
+					<androidx.appcompat.widget.AppCompatImageButton
+						android:id="@+id/social_youtube_button"
+						android:layout_width="42dp"
+						android:layout_height="42dp"
+						android:layout_margin="4dp"
+						android:adjustViewBounds="true"
+						android:background="?android:selectableItemBackground"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_youtube" />
 
-						<androidx.appcompat.widget.AppCompatImageButton
-							android:id="@+id/social_facebook_button"
-							android:layout_width="42dp"
-							android:layout_height="42dp"
-							android:layout_margin="4dp"
-							android:adjustViewBounds="true"
-							android:background="?android:selectableItemBackground"
-							android:scaleType="fitCenter"
-							android:src="@drawable/ic_facebook" />
+					<androidx.appcompat.widget.AppCompatImageButton
+						android:id="@+id/social_instagram_button"
+						android:layout_width="42dp"
+						android:layout_height="42dp"
+						android:layout_margin="4dp"
+						android:adjustViewBounds="true"
+						android:background="?android:selectableItemBackground"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_instagram" />
 
-						<androidx.appcompat.widget.AppCompatImageButton
-							android:id="@+id/social_twitter_button"
-							android:layout_width="42dp"
-							android:layout_height="42dp"
-							android:layout_margin="4dp"
-							android:adjustViewBounds="true"
-							android:background="?android:selectableItemBackground"
-							android:scaleType="fitCenter"
-							android:src="@drawable/ic_twitter" />
+					<androidx.appcompat.widget.AppCompatImageButton
+						android:id="@+id/social_facebook_button"
+						android:layout_width="42dp"
+						android:layout_height="42dp"
+						android:layout_margin="4dp"
+						android:adjustViewBounds="true"
+						android:background="?android:selectableItemBackground"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_facebook" />
 
-						<androidx.appcompat.widget.AppCompatImageButton
-							android:id="@+id/social_instagram_button"
-							android:layout_width="42dp"
-							android:layout_height="42dp"
-							android:layout_margin="4dp"
-							android:adjustViewBounds="true"
-							android:background="?android:selectableItemBackground"
-							android:scaleType="fitCenter"
-							android:src="@drawable/ic_instagram" />
-
-						<androidx.appcompat.widget.AppCompatImageButton
-							android:id="@+id/social_youtube_button"
-							android:layout_width="42dp"
-							android:layout_height="42dp"
-							android:layout_margin="4dp"
-							android:adjustViewBounds="true"
-							android:background="?android:selectableItemBackground"
-							android:scaleType="fitCenter"
-							android:src="@drawable/ic_youtube" />
-
-					</androidx.appcompat.widget.LinearLayoutCompat>
 				</androidx.appcompat.widget.LinearLayoutCompat>
 
 			</androidx.cardview.widget.CardView>

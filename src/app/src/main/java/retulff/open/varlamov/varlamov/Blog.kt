@@ -31,7 +31,10 @@ class Blog {
             execute(requestXml, callback)
         }
 
-        private fun buildPublicationsRequestXml(itemShow: Int, beforeDate: DateTime): String {
+        private fun buildPublicationsRequestXml(
+            itemShow: Int,
+            beforeDate: DateTime
+        ): String {
 
             val beforeDateFormatted = beforeDate.toString("yyyy-MM-dd HH:mm:ss")
 

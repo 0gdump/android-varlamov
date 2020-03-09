@@ -1,63 +1,59 @@
 package retulff.open.varlamov.ui.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import android.util.Log
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import moxy.ktx.moxyPresenter
 import retulff.open.varlamov.R
-import retulff.open.varlamov.ui.activity.MainActivity
-import retulff.open.varlamov.ui.view.home.HomeCardView
+import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
+import retulff.open.varlamov.varlamov.platform.youtube.model.Video
 
-class HomeFragment : Fragment() {
+class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
 
-    private lateinit var layout: View
+    private val presenter by moxyPresenter { HomePresenterImpl() }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity).supportActionBar!!.show()
-    }
+    override fun setupLayout() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        // TODO Создать toolbar и настроить
 
-        layout = inflater.inflate(
-            R.layout.fragment_home,
-            container,
-            false
-        )
-
-        setupToolbar()
         setupSwipeRefresh()
+        setupCards()
 
-        loadData()
-
-        return layout
-    }
-
-    private fun setupToolbar() {
-
-        (activity as MainActivity).setToolbarTitle(R.string.nav_home)
+        fetchData()
     }
 
     private fun setupSwipeRefresh() {
         layout.home_refresh.setOnRefreshListener {
-
             layout.home_refresh.isRefreshing = false
-            loadData(true)
+            fetchData()
         }
     }
 
-    private fun loadData(forcibly: Boolean = false) {
-        for (i in 0 until layout.cards_container.childCount) {
-            val view = layout.cards_container.getChildAt(i)
-            if (view is HomeCardView)
-                view.loadData(forcibly)
-        }
+    private fun setupCards() {
+        layout.latest_publication.setup(
+            "Свежая публикация",
+            R.layout.view_home_latest_publication,
+            { unimplemented() },
+            { unimplemented() }
+        )
     }
+
+    private fun fetchData() {
+        presenter.loadLatestPost()
+        presenter.loadLatestVideos()
+    }
+
+    override fun showLatestPost(publication: Publication) {
+        layout.latest_publication.showContent(publication)
+    }
+
+    override fun showErrorWhileLoadingLatestPost() {
+        Log.d("varlamov", "showErrorWhileLoadingLatestPost")
+        unimplemented()
+    }
+
+    override fun showLatestVideos(videos: List<Video>) {}
+    override fun showErrorWhileLoadingLatestVideos() {}
+
+    override fun showLatestNews(news: List<Publication>) {}
+    override fun showErrorWhileLoadingLatestNews() {}
 }
