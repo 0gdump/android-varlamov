@@ -29,12 +29,10 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     private fun setupCards() {
-        layout.latest_publication.setup(
-            "Свежая публикация",
-            R.layout.view_home_latest_publication,
-            { unimplemented() },
-            { unimplemented() }
-        )
+        layout.latest_publication.setup({
+            Log.d("varlamov", "Go to publication")
+            unimplemented()
+        })
     }
 
     private fun fetchData() {
@@ -42,13 +40,12 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
         presenter.loadLatestVideos()
     }
 
-    override fun showLatestPost(publication: Publication) {
+    override fun showLatestPublication(publication: Publication) {
         layout.latest_publication.showContent(publication)
     }
 
-    override fun showErrorWhileLoadingLatestPost() {
-        Log.d("varlamov", "showErrorWhileLoadingLatestPost")
-        unimplemented()
+    override fun showErrorWhileLoadingLatestPublication() {
+        layout.latest_publication.showError()
     }
 
     override fun showLatestVideos(videos: List<Video>) {}

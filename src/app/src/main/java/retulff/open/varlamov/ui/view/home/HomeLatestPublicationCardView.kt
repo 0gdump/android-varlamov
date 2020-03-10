@@ -4,10 +4,10 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
-import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.view_home_latest_publication.view.*
+import retulff.open.varlamov.R
 import retulff.open.varlamov.util.TimeUtils
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
 import java.util.*
@@ -16,6 +16,17 @@ class HomeLatestPublicationCardView(
     context: Context,
     attrs: AttributeSet
 ) : HomeCardView(context, attrs) {
+
+    fun setup(contentClickListener: (() -> Unit)? = null, setLoading: Boolean = true) {
+        super.setup(
+            null,
+            R.layout.view_home_latest_publication,
+            null,
+            contentClickListener,
+            null,
+            setLoading
+        )
+    }
 
     override fun showContent(content: Any) {
 

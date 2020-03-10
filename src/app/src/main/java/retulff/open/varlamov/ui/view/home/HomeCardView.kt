@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.view_home_card.view.*
 import retulff.open.varlamov.App
 import retulff.open.varlamov.R
 import retulff.open.varlamov.ui.view.extension.showBeautifulError
+import retulff.open.varlamov.util.initOnce
 
 @Suppress("MemberVisibilityCanBePrivate")
 abstract class HomeCardView(
@@ -16,19 +17,42 @@ abstract class HomeCardView(
     attrs: AttributeSet
 ) : LinearLayout(context, attrs) {
 
-    private lateinit var cardLayout: View
-    protected lateinit var contentLayout: View
+    protected var title: String? by initOnce()
+
+    private var cardLayout: View by initOnce()
+    protected var contentLayout: View by initOnce()
+
+    protected var contentRes: Int by initOnce()
 
     private var moreClickListener: (() -> Unit)? = null
+    private var contentClickListener: (() -> Unit)? = null
     private var retryClickListener: (() -> Unit)? = null
 
-    fun setup(
-        title: String,
-        parentRes: Int,
+    protected fun setup(
+        title: String?,
+        contentRes: Int,
         moreClickListener: (() -> Unit)? = null,
+        contentClickListener: (() -> Unit)? = null,
         retryClickListener: (() -> Unit)? = null,
         setLoading: Boolean = true
     ) {
+        this.title = title
+        this.contentRes = contentRes
+
+        this.moreClickListener = moreClickListener
+        this.retryClickListener = retryClickListener
+        this.contentClickListener = contentClickListener
+
+        inflateLayouts()
+        setupCardLayout()
+        bindListeners()
+
+        if (setLoading) {
+            showLoading()
+        }
+    }
+
+    private fun inflateLayouts() {
 
         cardLayout = LayoutInflater
             .from(context)
@@ -36,23 +60,30 @@ abstract class HomeCardView(
 
         contentLayout = LayoutInflater
             .from(context)
-            .inflate(parentRes, cardLayout.container, true)
+            .inflate(contentRes, cardLayout.container, true)
+    }
 
-        this.moreClickListener = moreClickListener
-        this.retryClickListener = retryClickListener
+    private fun setupCardLayout() {
 
-        cardLayout.title.text = title
+        if (title == null) {
+            cardLayout.header_container.visibility = GONE
+        } else {
+            cardLayout.title.text = title
+        }
 
         if (moreClickListener == null) {
             cardLayout.more.visibility = GONE
-        } else {
-            cardLayout.more.setOnClickListener {
-                this.moreClickListener!!.invoke()
-            }
+        }
+    }
+
+    private fun bindListeners() {
+
+        cardLayout.more.setOnClickListener {
+            this.moreClickListener?.invoke()
         }
 
-        if (setLoading) {
-            showLoading()
+        contentLayout.setOnClickListener {
+            this.contentClickListener?.invoke()
         }
     }
 
@@ -60,17 +91,17 @@ abstract class HomeCardView(
         cardLayout.stateful_container.showLoading(App.res.getString(R.string.state_loading))
     }
 
-    fun showError(message: String) {
+    fun showError() {
         cardLayout.stateful_container.showBeautifulError(
-            message,
+            App.res.getString(R.string.cant_loading_data),
             App.res.getString(R.string.retry),
             retryClickListener
         )
     }
 
+    abstract fun showContent(content: Any)
+
     protected fun hideOverlay() {
         cardLayout.stateful_container.showContent()
     }
-
-    abstract fun showContent(content: Any)
 }

@@ -31,5 +31,6 @@
 	<string name="home_latest_news">Can\'t load latest news</string>
 	<string name="home_current_videos">Can\'t load current videos</string>
 	<string name="show_all_tags">Show all tags</string>
+	<string name="cant_loading_data">Can\'t loading data</string>
 
 </resources>

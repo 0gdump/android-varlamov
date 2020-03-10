@@ -17,22 +17,22 @@ class HomePresenterImpl : HomePresenter() {
         val callback = object : Callback<ResponseBody> {
 
             override fun onFailure(call: Call<ResponseBody>, e: Throwable) {
-                viewState.showErrorWhileLoadingLatestPost()
+                viewState.showErrorWhileLoadingLatestPublication()
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (!response.isSuccessful) {
-                    viewState.showErrorWhileLoadingLatestPost()
+                    viewState.showErrorWhileLoadingLatestPublication()
                 }
 
                 val responseBody = response.body()!!.string()
                 val posts = PublicationsFactory.convert(responseBody)
 
                 if (posts.isEmpty()) {
-                    viewState.showErrorWhileLoadingLatestPost()
+                    viewState.showErrorWhileLoadingLatestPublication()
                 }
 
-                viewState.showLatestPost(posts.first())
+                viewState.showLatestPublication(posts.first())
             }
         }
 
