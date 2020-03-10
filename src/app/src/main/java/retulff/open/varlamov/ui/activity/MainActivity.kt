@@ -15,13 +15,13 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+/*
         menuInflater.inflate(R.menu.toolbar, menu)
-        return true
-    }
+        return true*/
+    }*/
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         val itemId = item!!.itemId
 
@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
             true
 
         } else super.onOptionsItemSelected(item)
-    }
+    }*/
 
     private fun startByDateActivity() {
-
+/*
         val calendar = Calendar.getInstance()  // Today
 
         val year = calendar.get(Calendar.YEAR)
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         // Нельзя выбирать дату позднее сегодня
         datePickerDialog.datePicker.maxDate = calendar.timeInMillis
 
-        datePickerDialog.show()
+        datePickerDialog.show()*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         enableNavigation()
-        setupToolbar()
+        //setupToolbar()
     }
 
     private fun enableNavigation() {
@@ -77,13 +77,13 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(main_bottom_navigation, navHostFragment!!.navController)
     }
 
-    private fun setupToolbar() {
+    /*private fun setupToolbar() {
 
         setSupportActionBar(toolbar)
         toolbar_title.text = toolbar.title
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
-    }
+    }*/
 
     fun navigateTo(fragment: Int) {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment?
@@ -91,6 +91,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setToolbarTitle(message: Int) {
-        toolbar_title.text = getString(message)
+        //toolbar_title.text = getString(message)
     }
 }
