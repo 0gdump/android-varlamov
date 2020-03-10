@@ -29,4 +29,8 @@
 
 	</style>
 
+	<style name="CollapsingToolbarTextStyle" parent="TextAppearance.AppCompat.Title">
+		<item name="android:textSize">28sp</item>
+	</style>
+
 </resources>

@@ -13,12 +13,17 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
 
     override fun setupLayout() {
 
-        // TODO Создать toolbar и настроить
+        setupToolbar()
 
         setupSwipeRefresh()
         setupCards()
 
         fetchData()
+    }
+
+    private fun setupToolbar() {
+
+        layout.toolbar.title = "Главная"
     }
 
     private fun setupSwipeRefresh() {

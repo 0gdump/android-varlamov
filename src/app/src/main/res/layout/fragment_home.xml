@@ -1,97 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/home_refresh"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="#EEE">
+	android:fitsSystemWindows="true">
 
-	<androidx.core.widget.NestedScrollView
-		android:id="@+id/cards_scroll_container"
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/app_bar"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="180dp"
+		android:fitsSystemWindows="true">
 
-		<LinearLayout
-			android:id="@+id/cards_container"
+		<com.google.android.material.appbar.CollapsingToolbarLayout
+			android:id="@+id/toolbar_layout"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:clipToPadding="false"
-			android:orientation="vertical"
-			android:padding="10dp">
+			android:layout_height="match_parent"
+			android:background="@android:color/white"
+			app:expandedTitleGravity="bottom"
+			app:expandedTitleMarginStart="10dp"
+			app:expandedTitleMarginBottom="18dp"
+			app:expandedTitleTextAppearance="@style/CollapsingToolbarTextStyle"
+			app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-			<retulff.open.varlamov.ui.view.home.HomeLatestPublicationCardView
-				android:id="@+id/latest_publication"
+			<androidx.appcompat.widget.Toolbar
+				android:id="@+id/toolbar"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+				android:layout_height="?attr/actionBarSize"
+				app:layout_collapseMode="pin" />
 
-			<androidx.cardview.widget.CardView
+		</com.google.android.material.appbar.CollapsingToolbarLayout>
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/home_refresh"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#EEE"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		app:layout_scrollFlags="scroll|enterAlways">
+
+		<androidx.core.widget.NestedScrollView
+			android:id="@+id/cards_scroll_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:id="@+id/cards_container"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
+				android:clipToPadding="false"
 				android:orientation="vertical"
-				app:cardCornerRadius="2dp"
-				app:cardElevation="0dp">
+				android:padding="10dp">
 
-				<androidx.appcompat.widget.LinearLayoutCompat
-					android:layout_width="wrap_content"
+				<retulff.open.varlamov.ui.view.home.HomeLatestPublicationCardView
+					android:id="@+id/latest_publication"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+
+				<androidx.cardview.widget.CardView
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="horizontal"
-					android:layout_gravity="center">
+					android:layout_marginTop="8dp"
+					android:orientation="vertical"
+					app:cardCornerRadius="2dp"
+					app:cardElevation="0dp">
 
-					<androidx.appcompat.widget.AppCompatImageButton
-						android:id="@+id/social_vk_button"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:layout_margin="4dp"
-						android:adjustViewBounds="true"
-						android:background="?android:selectableItemBackground"
-						android:scaleType="fitCenter"
-						android:src="@drawable/ic_vk" />
+					<androidx.appcompat.widget.LinearLayoutCompat
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:orientation="horizontal">
 
-					<androidx.appcompat.widget.AppCompatImageButton
-						android:id="@+id/social_twitter_button"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:layout_margin="4dp"
-						android:adjustViewBounds="true"
-						android:background="?android:selectableItemBackground"
-						android:scaleType="fitCenter"
-						android:src="@drawable/ic_twitter" />
+						<androidx.appcompat.widget.AppCompatImageButton
+							android:id="@+id/social_vk_button"
+							android:layout_width="42dp"
+							android:layout_height="42dp"
+							android:layout_margin="4dp"
+							android:adjustViewBounds="true"
+							android:background="?android:selectableItemBackground"
+							android:scaleType="fitCenter"
+							android:src="@drawable/ic_vk" />
 
-					<androidx.appcompat.widget.AppCompatImageButton
-						android:id="@+id/social_youtube_button"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:layout_margin="4dp"
-						android:adjustViewBounds="true"
-						android:background="?android:selectableItemBackground"
-						android:scaleType="fitCenter"
-						android:src="@drawable/ic_youtube" />
+						<androidx.appcompat.widget.AppCompatImageButton
+							android:id="@+id/social_twitter_button"
+							android:layout_width="42dp"
+							android:layout_height="42dp"
+							android:layout_margin="4dp"
+							android:adjustViewBounds="true"
+							android:background="?android:selectableItemBackground"
+							android:scaleType="fitCenter"
+							android:src="@drawable/ic_twitter" />
 
-					<androidx.appcompat.widget.AppCompatImageButton
-						android:id="@+id/social_instagram_button"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:layout_margin="4dp"
-						android:adjustViewBounds="true"
-						android:background="?android:selectableItemBackground"
-						android:scaleType="fitCenter"
-						android:src="@drawable/ic_instagram" />
+						<androidx.appcompat.widget.AppCompatImageButton
+							android:id="@+id/social_youtube_button"
+							android:layout_width="42dp"
+							android:layout_height="42dp"
+							android:layout_margin="4dp"
+							android:adjustViewBounds="true"
+							android:background="?android:selectableItemBackground"
+							android:scaleType="fitCenter"
+							android:src="@drawable/ic_youtube" />
 
-					<androidx.appcompat.widget.AppCompatImageButton
-						android:id="@+id/social_facebook_button"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:layout_margin="4dp"
-						android:adjustViewBounds="true"
-						android:background="?android:selectableItemBackground"
-						android:scaleType="fitCenter"
-						android:src="@drawable/ic_facebook" />
+						<androidx.appcompat.widget.AppCompatImageButton
+							android:id="@+id/social_instagram_button"
+							android:layout_width="42dp"
+							android:layout_height="42dp"
+							android:layout_margin="4dp"
+							android:adjustViewBounds="true"
+							android:background="?android:selectableItemBackground"
+							android:scaleType="fitCenter"
+							android:src="@drawable/ic_instagram" />
 
-				</androidx.appcompat.widget.LinearLayoutCompat>
+						<androidx.appcompat.widget.AppCompatImageButton
+							android:id="@+id/social_facebook_button"
+							android:layout_width="42dp"
+							android:layout_height="42dp"
+							android:layout_margin="4dp"
+							android:adjustViewBounds="true"
+							android:background="?android:selectableItemBackground"
+							android:scaleType="fitCenter"
+							android:src="@drawable/ic_facebook" />
 
-			</androidx.cardview.widget.CardView>
+					</androidx.appcompat.widget.LinearLayoutCompat>
 
-		</LinearLayout>
-	</androidx.core.widget.NestedScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+				</androidx.cardview.widget.CardView>
+
+			</LinearLayout>
+		</androidx.core.widget.NestedScrollView>
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
