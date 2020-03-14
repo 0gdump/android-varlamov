@@ -10,12 +10,12 @@ import retulff.open.varlamov.varlamov.platform.youtube.model.Video
 @StateStrategyType(OneExecutionStateStrategy::class)
 interface HomeView : MvpView {
 
-    fun showLatestPublication(publication: Publication)
-    fun showErrorWhileLoadingLatestPublication()
+    fun showFreshPublication(publication: Publication)
+    fun showErrorWhileLoadingFreshPublication()
 
     fun showLatestVideos(videos: List<Video>)
     fun showErrorWhileLoadingLatestVideos()
 
-    fun showLatestNews(news: List<Publication>)
-    fun showErrorWhileLoadingLatestNews()
+    fun showNews(news: List<Publication>)
+    fun showErrorWhileLoadingNews()
 }

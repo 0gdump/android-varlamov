@@ -41,21 +41,36 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     private fun fetchData() {
-        presenter.loadLatestPost()
+        presenter.loadFreshPublication()
         presenter.loadLatestVideos()
+        presenter.loadNews()
     }
 
-    override fun showLatestPublication(publication: Publication) {
+    override fun showFreshPublication(publication: Publication) {
         layout.latest_publication.showContent(publication)
     }
 
-    override fun showErrorWhileLoadingLatestPublication() {
+    override fun showErrorWhileLoadingFreshPublication() {
         layout.latest_publication.showError()
     }
 
-    override fun showLatestVideos(videos: List<Video>) {}
-    override fun showErrorWhileLoadingLatestVideos() {}
+    override fun showLatestVideos(videos: List<Video>) {
+        Log.d("varlamov", "UNIMPLEMENTED: showLatestVideos")
+        unimplemented()
+    }
 
-    override fun showLatestNews(news: List<Publication>) {}
-    override fun showErrorWhileLoadingLatestNews() {}
+    override fun showErrorWhileLoadingLatestVideos() {
+        Log.d("varlamov", "UNIMPLEMENTED: showErrorWhileLoadingLatestVideos")
+        unimplemented()
+    }
+
+    override fun showNews(news: List<Publication>) {
+        Log.d("varlamov", "UNIMPLEMENTED: showNews")
+        unimplemented()
+    }
+
+    override fun showErrorWhileLoadingNews() {
+        Log.d("varlamov", "UNIMPLEMENTED: showErrorWhileLoadingNews")
+        unimplemented()
+    }
 }
