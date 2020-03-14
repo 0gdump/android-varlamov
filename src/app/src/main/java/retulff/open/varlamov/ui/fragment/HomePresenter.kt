@@ -4,6 +4,7 @@ import moxy.MvpPresenter
 
 abstract class HomePresenter : MvpPresenter<HomeView>() {
 
-    abstract fun loadLatestPost()
+    abstract fun loadFreshPublication()
     abstract fun loadLatestVideos()
+    abstract fun loadNews()
 }
