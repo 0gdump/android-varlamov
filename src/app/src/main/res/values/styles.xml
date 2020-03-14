@@ -30,7 +30,7 @@
 	</style>
 
 	<style name="CollapsingToolbarTextStyle" parent="TextAppearance.AppCompat.Title">
-		<item name="android:textSize">28sp</item>
+		<item name="android:textSize">32sp</item>
 	</style>
 
 </resources>
