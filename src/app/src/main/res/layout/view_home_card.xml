@@ -4,7 +4,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	app:cardCornerRadius="2dp">
+	app:cardCornerRadius="4dp"
+	app:cardElevation="2dp"
+	app:cardUseCompatPadding="true">
 
 	<com.gturedi.views.StatefulLayout
 		android:id="@+id/stateful_container"

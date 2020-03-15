@@ -9,4 +9,7 @@
 
 	<color name="colorNavigationInactive">#555</color>
 
+
+	<color name="colorFragmentBackground">#F2F2F2</color>
+
 </resources>

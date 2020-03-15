@@ -11,8 +11,6 @@
 		<item name="android:textColorSecondary">#FFF</item>
 	</style>
 
-	<style name="HomeCardContent"></style>
-
 	<!-- Перегрузка стандартных стилей StatefulContainer -->
 	<style name="stfContainer">
 
@@ -29,7 +27,7 @@
 	</style>
 
 	<style name="CollapsingToolbarTextStyle" parent="TextAppearance.AppCompat.Title">
-		<item name="android:textSize">32sp</item>
+		<item name="android:textSize">28sp</item>
 	</style>
 
 </resources>

@@ -3,14 +3,14 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/fragment_background"
+	android:background="@color/colorFragmentBackground"
 	android:fitsSystemWindows="true">
 
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 		android:id="@+id/home_refresh"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="@drawable/fragment_background"
+		android:background="@color/colorFragmentBackground"
 		app:layout_behavior="@string/appbar_scrolling_view_behavior"
 		app:layout_scrollFlags="scroll|enterAlways">
 
@@ -25,7 +25,7 @@
 				android:layout_height="wrap_content"
 				android:clipToPadding="false"
 				android:orientation="vertical"
-				android:padding="10dp">
+				android:padding="8dp">
 
 				<open.v0gdump.varlamov.ui.view.home.HomeFreshPublicationCardView
 					android:id="@+id/fresh_publication_card"
@@ -34,7 +34,7 @@
 
 				<Space
 					android:layout_width="match_parent"
-					android:layout_height="8dp" />
+					android:layout_height="4dp" />
 
 				<open.v0gdump.varlamov.ui.view.home.HomeNewsCardView
 					android:id="@+id/news_card"
@@ -43,7 +43,7 @@
 
 				<Space
 					android:layout_width="match_parent"
-					android:layout_height="8dp" />
+					android:layout_height="4dp" />
 
 				<androidx.cardview.widget.CardView
 					android:layout_width="match_parent"
@@ -119,7 +119,7 @@
 	<com.google.android.material.appbar.AppBarLayout
 		android:id="@+id/app_bar"
 		android:layout_width="match_parent"
-		android:layout_height="120dp"
+		android:layout_height="144dp"
 		android:background="@android:color/transparent"
 		android:fitsSystemWindows="true">
 
@@ -128,7 +128,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:background="@android:color/transparent"
-			app:contentScrim="#FFF"
 			app:expandedTitleGravity="bottom"
 			app:expandedTitleMarginBottom="18dp"
 			app:expandedTitleMarginStart="10dp"
