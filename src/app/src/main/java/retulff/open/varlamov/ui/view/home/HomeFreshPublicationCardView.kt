@@ -12,18 +12,22 @@ import retulff.open.varlamov.util.TimeUtils
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
 import java.util.*
 
-class HomeLatestPublicationCardView(
+class HomeFreshPublicationCardView(
     context: Context,
     attrs: AttributeSet
 ) : HomeCardView(context, attrs) {
 
-    fun setup(contentClickListener: (() -> Unit)? = null, setLoading: Boolean = true) {
+    fun setup(
+        contentClickListener: (() -> Unit)? = null,
+        retryClickListener: (() -> Unit)? = null,
+        setLoading: Boolean = true
+    ) {
         super.setup(
             null,
             R.layout.view_home_latest_publication,
             null,
             contentClickListener,
-            null,
+            retryClickListener,
             setLoading
         )
     }
