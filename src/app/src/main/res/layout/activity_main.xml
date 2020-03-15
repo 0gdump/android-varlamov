@@ -8,27 +8,6 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.activity.MainActivity">
 
-	<!--<androidx.appcompat.widget.Toolbar
-		android:id="@+id/toolbar"
-		android:layout_width="match_parent"
-		android:layout_height="?attr/actionBarSize"
-		android:background="?attr/colorPrimary"
-		android:elevation="4dp"
-		app:theme="@style/ToolbarTheme"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent">
-
-		<TextView
-			android:id="@+id/toolbar_title"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="start"
-			android:textColor="@android:color/white"
-			android:textSize="20sp"/>
-
-	</androidx.appcompat.widget.Toolbar>-->
-
 	<androidx.fragment.app.FragmentContainerView
 		android:id="@+id/main_host_fragment"
 		android:name="androidx.navigation.fragment.NavHostFragment"

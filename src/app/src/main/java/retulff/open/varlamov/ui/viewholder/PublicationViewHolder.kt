@@ -19,9 +19,8 @@ import org.jsoup.nodes.Document
 import retulff.open.varlamov.App
 import retulff.open.varlamov.R
 import retulff.open.varlamov.ui.activity.ByTagActivity
-import retulff.open.varlamov.ui.activity.ReaderActivity
-import retulff.open.varlamov.util.StringUtils.Companion.getNWordsFrom
 import retulff.open.varlamov.util.TimeUtils
+import retulff.open.varlamov.util.getWords
 import retulff.open.varlamov.util.openUrlInBrowser
 import retulff.open.varlamov.varlamov.platform.livejournal.model.Publication
 import java.util.*
@@ -30,8 +29,6 @@ class PublicationViewHolder(
     view: View,
     private val primaryTag: String?
 ) : RecyclerView.ViewHolder(view) {
-
-    private val READER_ACTIVATED = true
 
     companion object {
 
@@ -65,7 +62,7 @@ class PublicationViewHolder(
 
         val time = TimeUtils.dateTimeToString(item.time, TimeZone.getDefault())
         val title = item.title
-        val text = "${getNWordsFrom(itemParsedContent.text(), 20)}..."
+        val text = "${itemParsedContent.text().getWords(20)}..."
 
         itemView.publication_datetime.text = time
         itemView.publication_title.text = title
@@ -129,15 +126,7 @@ class PublicationViewHolder(
 
     private fun bindListeners() {
         itemView.setOnClickListener {
-            if (READER_ACTIVATED) {
-
-                val intent = Intent(context, ReaderActivity::class.java)
-                intent.putExtra("URL", item.url)
-                startActivity(context, intent, null)
-
-            } else {
-                openUrlInBrowser(context, item.url)
-            }
+            openUrlInBrowser(context, item.url)
         }
     }
 }

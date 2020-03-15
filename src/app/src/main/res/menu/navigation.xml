@@ -4,28 +4,16 @@
 	<item
 		android:id="@+id/nav_home"
 		android:icon="@drawable/ic_menu_home"
-		android:title="@string/nav_home"/>
+		android:title="@string/nav_home" />
 
 	<item
 		android:id="@+id/nav_publications"
 		android:icon="@drawable/ic_menu_posts"
-		android:title="@string/nav_publications"/>
+		android:title="@string/nav_publications" />
 
 	<item
 		android:id="@+id/nav_news"
 		android:icon="@drawable/ic_menu_news"
-		android:title="@string/nav_news"/>
-
-	<!--
-	<item
-		android:id="@+id/nav_collections"
-		android:icon="@drawable/ic_menu_collections"
-		android:title="@string/nav_collections"/>
-	-->
-
-	<item
-		android:id="@+id/nav_varlamov"
-		android:icon="@drawable/ic_varlamov"
-		android:title="@string/nav_varlamov"/>
+		android:title="@string/nav_news" />
 
 </menu>

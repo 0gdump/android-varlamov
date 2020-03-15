@@ -1,44 +1,29 @@
 package retulff.open.varlamov.varlamov
 
-import okhttp3.MediaType
-import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import org.joda.time.DateTime
 import retrofit2.Callback
+import retulff.open.varlamov.util.optimize
 import retulff.open.varlamov.varlamov.platform.livejournal.service.LiveJournalService
 
-class Blog {
-    companion object {
+object Blog {
 
-        private const val ljName = "varlamov.ru"
-        private var ljService: LiveJournalService = LiveJournalService.create()
+    private const val journalName = "varlamov.ru"
 
-        private fun execute(requestXml: String, callback: Callback<ResponseBody>) {
+    private val ljService = LiveJournalService.create()
 
-            val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
-            val ljMethod = ljService.executeMethod(requestBody)
+    private fun execute(requestXml: String, callback: Callback<ResponseBody>) =
+        ljService.executeMethod(requestXml).enqueue(callback)
 
-            ljMethod.enqueue(callback)
-        }
+    fun getPublications(
+        count: Int,
+        before: DateTime,
+        callback: Callback<ResponseBody>
+    ) {
+        val beforeDateFormatted = before.toString("yyyy-MM-dd HH:mm:ss")
 
-        fun getPublications(
-            items: Int,
-            beforeDate: DateTime,
-            callback: Callback<ResponseBody>
-        ) {
-
-            val requestXml = buildPublicationsRequestXml(items, beforeDate)
-            execute(requestXml, callback)
-        }
-
-        private fun buildPublicationsRequestXml(
-            itemShow: Int,
-            beforeDate: DateTime
-        ): String {
-
-            val beforeDateFormatted = beforeDate.toString("yyyy-MM-dd HH:mm:ss")
-
-            return """
+        execute(
+            requestXml = """
 <?xml version="1.0"?>
 <methodCall>
 	<methodName>LJ.XMLRPC.getevents</methodName>
@@ -67,7 +52,7 @@ class Blog {
 					<member>
 						<name>journal</name>
 						<value>
-							<string>$ljName</string>
+							<string>$journalName</string>
 						</value>
 					</member>
 					<member>
@@ -85,7 +70,7 @@ class Blog {
 					<member>
 						<name>itemshow</name>
 						<value>
-							<i4>$itemShow</i4>
+							<i4>$count</i4>
 						</value>
 					</member>
 					<member>
@@ -105,25 +90,21 @@ class Blog {
 		</param>
 	</params>
 </methodCall>
-        """.trim()
-        }
+        """.optimize(),
+            callback = callback
+        )
+    }
 
-        fun getPublicationsByTag(
-            tag: String,
-            items: Int,
-            beforeDate: DateTime,
-            callback: Callback<ResponseBody>
-        ) {
+    fun getPublicationsByTag(
+        tag: String,
+        items: Int,
+        beforeDate: DateTime,
+        callback: Callback<ResponseBody>
+    ) {
+        val beforeDateFormatted = beforeDate.toString("yyyy-MM-dd HH:mm:ss")
 
-            val requestXml = buildByTagRequestXml(tag, items, beforeDate)
-            execute(requestXml, callback)
-        }
-
-        private fun buildByTagRequestXml(tag: String, itemShow: Int, beforeDate: DateTime): String {
-
-            val beforeDateFormatted = beforeDate.toString("yyyy-MM-dd HH:mm:ss")
-
-            return """
+        execute(
+            requestXml = """
 <?xml version="1.0" encoding="UTF-8"?>
 <methodCall>
    <methodName>LJ.XMLRPC.getevents</methodName>
@@ -152,7 +133,7 @@ class Blog {
                <member>
                   <name>journal</name>
                   <value>
-                     <string>$ljName</string>
+                     <string>$journalName</string>
                   </value>
                </member>
                <member>
@@ -176,7 +157,7 @@ class Blog {
                <member>
                   <name>itemshow</name>
                   <value>
-                     <i4>$itemShow</i4>
+                     <i4>$items</i4>
                   </value>
                </member>
                <member>
@@ -190,22 +171,18 @@ class Blog {
       </param>
    </params>
 </methodCall>
-        """.trim()
-        }
+        """.optimize(),
+            callback = callback
+        )
+    }
 
-        fun getPublicationsOfDay(
-            items: Int,
-            day: DateTime,
-            callback: Callback<ResponseBody>
-        ) {
-
-            val requestXml = buildOfDayRequestXml(items, day)
-            execute(requestXml, callback)
-        }
-
-        private fun buildOfDayRequestXml(itemShow: Int, day: DateTime): String {
-            return """
-<?xml version="1.0"?>
+    fun getPublicationsOfDay(
+        items: Int,
+        day: DateTime,
+        callback: Callback<ResponseBody>
+    ) {
+        execute(
+            requestXml = """<?xml version="1.0"?>
 <methodCall>
     <methodName>LJ.XMLRPC.getevents</methodName>
     <params>
@@ -233,7 +210,7 @@ class Blog {
                     <member>
                         <name>journal</name>
                         <value>
-                            <string>$ljName</string>
+                            <string>$journalName</string>
                         </value>
                     </member>
                     <member>
@@ -251,7 +228,7 @@ class Blog {
                     <member>
                         <name>itemshow</name>
                         <value>
-                            <i4>$itemShow</i4>
+                            <i4>$items</i4>
                         </value>
                     </member>
                     <member>
@@ -282,8 +259,8 @@ class Blog {
             </value>
         </param>
     </params>
-</methodCall>
-        """.trim()
-        }
+</methodCall>""".optimize(),
+            callback = callback
+        )
     }
 }
