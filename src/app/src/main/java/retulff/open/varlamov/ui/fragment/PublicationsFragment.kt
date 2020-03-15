@@ -51,7 +51,6 @@ class PublicationsFragment : Fragment() {
             false
         )
 
-        setupToolbarTitle()
         setupRecycler()
         initAdapter()
         initSwipeToRefresh()
@@ -83,11 +82,6 @@ class PublicationsFragment : Fragment() {
         })
 
         layout.publications_swipe_to_refresh.setOnRefreshListener { model.refresh() }
-    }
-
-    private fun setupToolbarTitle() {
-
-        (activity as MainActivity).setToolbarTitle(R.string.title_posts)
     }
 
     private fun loadData() {

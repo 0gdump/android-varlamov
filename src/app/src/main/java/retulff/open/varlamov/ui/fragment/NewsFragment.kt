@@ -23,14 +23,9 @@ class NewsFragment : ByTagFragment() {
 
         super.onCreateView(inflater, container, savedInstanceState)
 
-        setupTitle()
         showPublications()
 
         return layout
-    }
-
-    private fun setupTitle() {
-        (activity as MainActivity).setToolbarTitle(R.string.title_news)
     }
 
     override fun showPublications() {
