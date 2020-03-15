@@ -2,11 +2,15 @@ package open.v0gdump.varlamov.ui.view.home
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import kotlinx.android.synthetic.main.view_home_latest_news.view.*
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.ui.adapter.home.NewsAdapter
+import open.v0gdump.varlamov.ui.fragment.DividerItemDecorator
 import open.v0gdump.varlamov.varlamov.platform.livejournal.model.Publication
+
 
 class HomeNewsCardView(
     context: Context,
@@ -28,6 +32,10 @@ class HomeNewsCardView(
         )
 
         contentLayout.news_recycler.layoutManager = LinearLayoutManager(context)
+
+        val dividerDrawable = ContextCompat.getDrawable(context, R.drawable.divider)!!
+        val dividerDecorator = DividerItemDecorator(dividerDrawable)
+        contentLayout.news_recycler.addItemDecoration(dividerDecorator)
     }
 
     override fun showContent(content: Any) = when {

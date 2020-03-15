@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun enableNavigation() {
-        
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
 
