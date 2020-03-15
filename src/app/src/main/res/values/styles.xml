@@ -11,8 +11,7 @@
 		<item name="android:textColorSecondary">#FFF</item>
 	</style>
 
-	<style name="HomeCardContent">
-	</style>
+	<style name="HomeCardContent"></style>
 
 	<!-- Перегрузка стандартных стилей StatefulContainer -->
 	<style name="stfContainer">

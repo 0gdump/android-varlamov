@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	android:orientation="vertical"
 	app:cardCornerRadius="2dp">
 
 	<com.gturedi.views.StatefulLayout
@@ -20,34 +19,34 @@
 				android:id="@+id/header_container"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintEnd_toEndOf="parent">
+				app:layout_constraintTop_toTopOf="parent">
 
 				<TextView
 					android:id="@+id/title"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					app:layout_constraintTop_toTopOf="@id/more"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintEnd_toStartOf="@id/more"
-					app:layout_constraintBottom_toBottomOf="@id/more"
 					android:layout_marginStart="12dp"
 					android:text="@string/blank"
 					android:textAppearance="@style/TextAppearance.AppCompat.Title"
-					android:textSize="16sp"/>
+					android:textSize="16sp"
+					app:layout_constraintBottom_toBottomOf="@id/more"
+					app:layout_constraintEnd_toStartOf="@id/more"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="@id/more" />
 
 				<com.google.android.material.button.MaterialButton
 					android:id="@+id/more"
+					style="@style/Widget.MaterialComponents.Button.TextButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:minWidth="32dp"
-					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
 					android:layout_marginEnd="12dp"
-					style="@style/Widget.MaterialComponents.Button.TextButton"
+					android:minWidth="32dp"
 					android:text="@string/more"
-					android:textSize="12sp"/>
+					android:textSize="12sp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<!-- layout_constraintHeight_default is deprecated -->
@@ -56,12 +55,12 @@
 				android:id="@+id/container"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				app:layout_constraintTop_toBottomOf="@id/header_container"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constrainedHeight="true"
-				app:layout_constraintHeight_default="wrap"/>
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHeight_default="wrap"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/header_container" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</com.gturedi.views.StatefulLayout>

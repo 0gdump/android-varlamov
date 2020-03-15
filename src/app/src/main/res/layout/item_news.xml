@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	app:cardElevation="0dp"
-	app:cardCornerRadius="0dp">
+	app:cardCornerRadius="0dp"
+	app:cardElevation="0dp">
 
 	<androidx.appcompat.widget.LinearLayoutCompat
 		android:layout_width="match_parent"
@@ -14,16 +13,16 @@
 		android:orientation="vertical">
 
 		<androidx.appcompat.widget.LinearLayoutCompat
+			style="@style/HomeCardContent"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:paddingTop="4dp"
-			android:paddingBottom="4dp"
-			android:orientation="vertical"
-			style="@style/HomeCardContent"
 			android:background="?selectableItemBackground"
-			android:foreground="?android:attr/selectableItemBackground"
 			android:clickable="true"
-			android:focusable="true">
+			android:focusable="true"
+			android:foreground="?android:attr/selectableItemBackground"
+			android:orientation="vertical"
+			android:paddingTop="4dp"
+			android:paddingBottom="4dp">
 
 			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/publication_datetime"
@@ -31,7 +30,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/date"
 				android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-				android:textSize="14sp"/>
+				android:textSize="14sp" />
 
 			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/publication_title"
@@ -40,7 +39,7 @@
 				android:layout_marginTop="4dp"
 				android:text="@string/title"
 				android:textAppearance="@style/TextAppearance.AppCompat.Title"
-				android:textSize="18sp"/>
+				android:textSize="18sp" />
 		</androidx.appcompat.widget.LinearLayoutCompat>
 
 		<View
@@ -48,7 +47,7 @@
 			android:layout_height="1dp"
 			android:layout_marginTop="8dp"
 			android:layout_marginBottom="8dp"
-			android:background="#EEE"/>
+			android:background="#EEE" />
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

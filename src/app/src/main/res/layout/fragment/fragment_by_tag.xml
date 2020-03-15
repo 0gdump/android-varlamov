@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.fragment.ByTagFragment">
+	xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+	android:layout_height="match_parent" tools:context=".ui.fragment.ByTagFragment">
 
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id="@+id/by_tag_swipe_to_refresh"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/by_tag_swipe_to_refresh"
+		android:layout_width="match_parent" android:layout_height="match_parent">
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/by_tag_recycler"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:scrollbars="vertical"/>
+		<androidx.recyclerview.widget.RecyclerView android:id="@+id/by_tag_recycler"
+			android:layout_width="match_parent" android:layout_height="match_parent"
+			android:scrollbars="vertical" />
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

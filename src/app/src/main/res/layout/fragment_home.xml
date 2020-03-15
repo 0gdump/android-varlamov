@@ -27,7 +27,7 @@
 				android:orientation="vertical"
 				android:padding="10dp">
 
-				<retulff.open.varlamov.ui.view.home.HomeFreshPublicationCardView
+				<open.v0gdump.varlamov.ui.view.home.HomeFreshPublicationCardView
 					android:id="@+id/fresh_publication_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
@@ -36,7 +36,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="8dp" />
 
-				<retulff.open.varlamov.ui.view.home.HomeNewsCardView
+				<open.v0gdump.varlamov.ui.view.home.HomeNewsCardView
 					android:id="@+id/news_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
@@ -127,8 +127,8 @@
 			android:id="@+id/toolbar_layout"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			app:contentScrim="#FFF"
 			android:background="@android:color/transparent"
+			app:contentScrim="#FFF"
 			app:expandedTitleGravity="bottom"
 			app:expandedTitleMarginBottom="18dp"
 			app:expandedTitleMarginStart="10dp"
