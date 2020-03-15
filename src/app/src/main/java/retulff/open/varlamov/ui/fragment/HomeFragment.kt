@@ -34,10 +34,28 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     private fun setupCards() {
-        layout.latest_publication.setup({
-            Log.d("varlamov", "Go to publication")
-            unimplemented()
-        })
+        layout.fresh_publication_card.setup(
+            contentClickListener = {
+                Log.d("varlamov", "Go to publication")
+                unimplemented()
+            },
+
+            retryClickListener = {
+                Log.d("varlamov", "Retry load fresh publication")
+                unimplemented()
+            }
+        )
+
+        layout.news_card.setup(
+            moreClickListener = {
+                Log.d("varlamov", "More news")
+                unimplemented()
+            },
+            retryClickListener = {
+                Log.d("varlamov", "Retry load news")
+                unimplemented()
+            }
+        )
     }
 
     private fun fetchData() {
@@ -47,11 +65,11 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     override fun showFreshPublication(publication: Publication) {
-        layout.latest_publication.showContent(publication)
+        layout.fresh_publication_card.showContent(publication)
     }
 
     override fun showErrorWhileLoadingFreshPublication() {
-        layout.latest_publication.showError()
+        layout.fresh_publication_card.showError()
     }
 
     override fun showLatestVideos(videos: List<Video>) {
@@ -65,12 +83,10 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     override fun showNews(news: List<Publication>) {
-        Log.d("varlamov", "UNIMPLEMENTED: showNews")
-        unimplemented()
+        layout.news_card.showContent(news)
     }
 
     override fun showErrorWhileLoadingNews() {
-        Log.d("varlamov", "UNIMPLEMENTED: showErrorWhileLoadingNews")
-        unimplemented()
+        layout.news_card.showError()
     }
 }

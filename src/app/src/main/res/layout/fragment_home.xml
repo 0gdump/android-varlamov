@@ -27,15 +27,27 @@
 				android:orientation="vertical"
 				android:padding="10dp">
 
-				<retulff.open.varlamov.ui.view.home.HomeLatestPublicationCardView
-					android:id="@+id/latest_publication"
+				<retulff.open.varlamov.ui.view.home.HomeFreshPublicationCardView
+					android:id="@+id/fresh_publication_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
+				<Space
+					android:layout_width="match_parent"
+					android:layout_height="8dp" />
+
+				<retulff.open.varlamov.ui.view.home.HomeNewsCardView
+					android:id="@+id/news_card"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+
+				<Space
+					android:layout_width="match_parent"
+					android:layout_height="8dp" />
 
 				<androidx.cardview.widget.CardView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="8dp"
 					android:orientation="vertical"
 					app:cardCornerRadius="2dp"
 					app:cardElevation="0dp">

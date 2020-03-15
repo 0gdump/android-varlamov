@@ -77,7 +77,7 @@ class HomePresenterImpl : HomePresenter() {
         val callback = object : Callback<ResponseBody> {
 
             override fun onFailure(call: Call<ResponseBody>, e: Throwable) =
-                viewState.showErrorWhileLoadingFreshPublication()
+                viewState.showErrorWhileLoadingNews()
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (!response.isSuccessful) {
