@@ -40,6 +40,7 @@ class HomePresenterImpl : HomePresenter() {
 
                 if (posts.isEmpty()) {
                     viewState.showErrorWhileLoadingFreshPublication()
+                    return
                 }
 
                 viewState.showFreshPublication(posts.first())
@@ -89,6 +90,7 @@ class HomePresenterImpl : HomePresenter() {
 
                 if (posts.isEmpty()) {
                     viewState.showErrorWhileLoadingNews()
+                    return
                 }
 
                 viewState.showNews(posts)
