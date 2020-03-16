@@ -3,6 +3,7 @@ package open.v0gdump.varlamov.ui.adapter.home
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import open.v0gdump.varlamov.ui.viewholder.home.YoutubeVideoViewHolder
+import open.v0gdump.varlamov.varlamov.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.varlamov.platform.youtube.model.Video
 
 class YoutubeVideosAdapter(private val items: List<Video>) :

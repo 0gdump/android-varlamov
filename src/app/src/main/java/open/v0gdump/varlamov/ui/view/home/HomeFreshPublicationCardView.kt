@@ -20,7 +20,7 @@ class HomeFreshPublicationCardView(
     fun setup(
         contentClickListener: (() -> Unit)? = null,
         retryClickListener: (() -> Unit)? = null,
-        setLoading: Boolean = true
+        setLoading: Boolean = false
     ) {
         super.setup(
             null,

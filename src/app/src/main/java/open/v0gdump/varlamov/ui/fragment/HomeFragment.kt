@@ -40,10 +40,15 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
                 unimplemented()
             },
 
-            retryClickListener = {
-                Log.d("varlamov", "Retry load fresh publication")
+            retryClickListener = { fetchFreshPublication() }
+        )
+
+        layout.videos_card.setup(
+            moreClickListener = {
+                Log.d("varlamov", "More videos")
                 unimplemented()
-            }
+            },
+            retryClickListener = { fetchLatestVideos() }
         )
 
         layout.news_card.setup(
@@ -51,16 +56,28 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
                 Log.d("varlamov", "More news")
                 unimplemented()
             },
-            retryClickListener = {
-                Log.d("varlamov", "Retry load news")
-                unimplemented()
-            }
+            retryClickListener = { fetchNews() }
         )
     }
 
     private fun fetchData() {
+        fetchFreshPublication()
+        fetchLatestVideos()
+        fetchNews()
+    }
+
+    private fun fetchFreshPublication() {
+        layout.fresh_publication_card.showLoading()
         presenter.loadFreshPublication()
+    }
+
+    private fun fetchLatestVideos() {
+        layout.videos_card.showLoading()
         presenter.loadLatestVideos()
+    }
+
+    private fun fetchNews() {
+        layout.news_card.showLoading()
         presenter.loadNews()
     }
 
@@ -73,13 +90,11 @@ class HomeFragment : MvpFragmentX(R.layout.fragment_home), HomeView {
     }
 
     override fun showLatestVideos(videos: List<Video>) {
-        Log.d("varlamov", "UNIMPLEMENTED: showLatestVideos")
-        unimplemented()
+        layout.videos_card.showContent(videos)
     }
 
     override fun showErrorWhileLoadingLatestVideos() {
-        Log.d("varlamov", "UNIMPLEMENTED: showErrorWhileLoadingLatestVideos")
-        unimplemented()
+        layout.videos_card.showError()
     }
 
     override fun showNews(news: List<Publication>) {

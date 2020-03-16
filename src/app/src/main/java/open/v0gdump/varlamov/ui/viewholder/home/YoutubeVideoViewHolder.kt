@@ -13,7 +13,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_youtube_video.view.*
 import open.v0gdump.varlamov.R
+import open.v0gdump.varlamov.util.extension.toString
 import open.v0gdump.varlamov.varlamov.platform.youtube.model.Video
+import org.joda.time.DateTime
+import java.util.*
 
 class YoutubeVideoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -36,6 +39,7 @@ class YoutubeVideoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         this.context = itemView.context
         this.video = video
 
+        bindDate()
         bindPreview()
         bindName()
         bindListener()
@@ -52,11 +56,17 @@ class YoutubeVideoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .with(context)
             .setDefaultRequestOptions(requestOptions)
             .load("https://img.youtube.com/vi/${video.id.videoId}/maxresdefault.jpg")
-            .into(itemView.video_preview)
+            .into(itemView.preview)
+    }
+
+    private fun bindDate() {
+        itemView.publish_date.text = DateTime
+            .parse(video.snippet.publishedAt)
+            .toString(TimeZone.getDefault())
     }
 
     private fun bindName() {
-        itemView.video_name.text = video.snippet.title
+        itemView.name.text = video.snippet.title
     }
 
     private fun bindListener() {

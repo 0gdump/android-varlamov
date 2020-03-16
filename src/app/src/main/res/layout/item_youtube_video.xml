@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="?selectableItemBackground"
-	android:clickable="true"
-	android:focusable="true"
 	android:foreground="?android:attr/selectableItemBackground"
-	app:cardElevation="0dp">
+	android:paddingTop="6dp"
+	android:paddingStart="12dp"
+	android:paddingEnd="12dp"
+	android:paddingBottom="12dp">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<ImageView
+		android:id="@+id/preview"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="0dp"
+		android:adjustViewBounds="true"
+		app:layout_constraintDimensionRatio="H,16:9"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 
-		<ImageView
-			android:id="@+id/video_preview"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:adjustViewBounds="true"
-			android:contentDescription="TODO"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/publish_date"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="6dp"
+		app:layout_constraintBottom_toTopOf="@+id/name"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/preview" />
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/video_name"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
-			android:layout_marginBottom="8dp"
-			android:textSize="16sp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/video_preview" />
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/name"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:lines="2"
+		android:maxLines="2"
+		android:paddingTop="2dp"
+		android:textColor="@color/black"
+		android:textSize="16sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/publish_date" />
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
