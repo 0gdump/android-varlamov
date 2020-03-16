@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.fragment_by_tag.view.*
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.ui.adapter.PublicationsAdapter
@@ -12,11 +11,6 @@ import open.v0gdump.varlamov.util.extension.orElse
 
 class NewsFragment : ByTagFragment() {
 
-    override fun onResume() {
-
-        super.onResume()
-        (activity as AppCompatActivity).supportActionBar!!.show()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
