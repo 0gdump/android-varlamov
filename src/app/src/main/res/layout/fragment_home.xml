@@ -26,17 +26,17 @@
 				android:orientation="vertical"
 				android:padding="8dp">
 
-				<open.v0gdump.varlamov.ui.view.home.HomeFreshPublicationCardView
+				<open.v0gdump.varlamov.ui.fragment.home.view.HomeFreshPublicationCardView
 					android:id="@+id/fresh_publication_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.view.home.HomeVideosCardView
+				<open.v0gdump.varlamov.ui.fragment.home.view.HomeVideosCardView
 					android:id="@+id/videos_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.view.home.HomeNewsCardView
+				<open.v0gdump.varlamov.ui.fragment.home.view.HomeNewsCardView
 					android:id="@+id/news_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />

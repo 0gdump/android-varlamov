@@ -13,16 +13,16 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-		<activity android:name="open.v0gdump.varlamov.ui.activity.MainActivity">
+		<activity android:name="open.v0gdump.varlamov.old.activity.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name="open.v0gdump.varlamov.ui.activity.ByDateActivity">
+		<activity android:name="open.v0gdump.varlamov.old.activity.ByDateActivity">
 		</activity>
-		<activity android:name="open.v0gdump.varlamov.ui.activity.ByTagActivity">
+		<activity android:name="open.v0gdump.varlamov.old.activity.ByTagActivity">
 		</activity>
 	</application>
 

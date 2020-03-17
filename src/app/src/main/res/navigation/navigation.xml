@@ -6,19 +6,19 @@
 
 	<fragment
 		android:id="@+id/nav_home"
-		android:name="open.v0gdump.varlamov.ui.fragment.HomeFragment"
+		android:name="open.v0gdump.varlamov.ui.fragment.home.HomeFragment"
 		android:label="fragment_home"
 		tools:layout="@layout/fragment_home" />
 
 	<fragment
 		android:id="@+id/nav_publications"
-		android:name="open.v0gdump.varlamov.ui.fragment.PublicationsFragment"
+		android:name="open.v0gdump.varlamov.old.fragment.PublicationsFragment"
 		android:label="fragment_publications"
 		tools:layout="@layout/fragment_publications" />
 
 	<fragment
 		android:id="@+id/nav_news"
-		android:name="open.v0gdump.varlamov.ui.fragment.NewsFragment"
+		android:name="open.v0gdump.varlamov.old.fragment.NewsFragment"
 		android:label="fragment_news"
 		tools:layout="@layout/fragment_by_tag" />
 
