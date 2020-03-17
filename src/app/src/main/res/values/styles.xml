@@ -1,5 +1,6 @@
 <resources>
 
+	<!-- Основные стили приложения -->
 	<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -7,25 +8,30 @@
 		<item name="chipIconTint">@color/colorPrimaryDark</item>
 	</style>
 
-	<style name="ToolbarTheme" parent="AppTheme">
-		<item name="android:textColorSecondary">#FFF</item>
-	</style>
-
-	<!-- Перегрузка стандартных стилей StatefulContainer -->
+	<!-- Перегрузка стилей StatefulContainer -->
 	<style name="stfContainer">
-
-		<!-- Стандартные стили -->
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">match_parent</item>
 		<item name="android:gravity">center</item>
 		<item name="android:orientation">vertical</item>
-
-		<!-- Дополнительные -->
 		<item name="android:padding">12dp</item>
 		<item name="android:tint">@color/colorAccent</item>
-
 	</style>
 
+	<style name="stfImage">
+		<item name="android:layout_width">@dimen/stfImageSize</item>
+		<item name="android:layout_height">@dimen/stfImageSize</item>
+		<item name="android:tint">@color/colorAccent</item>
+	</style>
+
+	<style name="stfButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginTop">10dp</item>
+		<item name="android:gravity">center</item>
+	</style>
+
+	<!-- Кастомные стили -->
 	<style name="CollapsingToolbarTextStyle" parent="TextAppearance.AppCompat.Title">
 		<item name="android:textSize">28sp</item>
 	</style>
