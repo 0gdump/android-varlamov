@@ -14,29 +14,27 @@
 		app:layout_scrollFlags="scroll|enterAlways">
 
 		<androidx.core.widget.NestedScrollView
-			android:id="@+id/cards_scroll_container"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
 			<LinearLayout
-				android:id="@+id/cards_container"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:clipToPadding="false"
 				android:orientation="vertical"
 				android:padding="8dp">
 
-				<open.v0gdump.varlamov.ui.fragment.home.view.HomeFreshPublicationCardView
+				<open.v0gdump.varlamov.ui.home.fresh.FreshPublicationHomeCardView
 					android:id="@+id/fresh_publication_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.fragment.home.view.HomeVideosCardView
+				<open.v0gdump.varlamov.ui.home.youtube.YoutubeHomeCardView
 					android:id="@+id/videos_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.fragment.home.view.HomeNewsCardView
+				<open.v0gdump.varlamov.ui.home.news.NewsHomeCardView
 					android:id="@+id/news_card"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
@@ -51,13 +49,11 @@
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 	<com.google.android.material.appbar.AppBarLayout
-		android:id="@+id/app_bar"
 		android:layout_width="match_parent"
 		android:layout_height="144dp"
 		android:background="@android:color/transparent">
 
 		<com.google.android.material.appbar.CollapsingToolbarLayout
-			android:id="@+id/toolbar_layout"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			app:expandedTitleGravity="bottom"

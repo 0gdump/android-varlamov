@@ -1,8 +1,8 @@
 package open.v0gdump.varlamov.model
 
 import okhttp3.ResponseBody
-import open.v0gdump.varlamov.extension.optimize
 import open.v0gdump.varlamov.model.platform.livejournal.service.LiveJournalService
+import open.v0gdump.varlamov.util.optimize
 import org.joda.time.DateTime
 import retrofit2.Callback
 

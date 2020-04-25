@@ -4,33 +4,16 @@
 	<string name="nav_home">Home</string>
 	<string name="nav_publications">Publications</string>
 	<string name="nav_news">News</string>
-	<string name="nav_collections">Collections</string>
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="nav_varlamov">Varlamov</string>
 	<string name="retry">Retry</string>
 	<string name="title">Title</string>
 	<string name="date">Date</string>
 	<string name="blank">Text</string>
-	<string name="varlamov_description">Blogger, journalist, entrepreneur, urbanist</string>
-	<string name="title_news">News</string>
-	<string name="title_posts">Publications</string>
 	<string name="time_today">Today</string>
 	<string name="time_yesterday">Yesterday</string>
-	<string name="subtitle_search_by_tag">Search by tag</string>
-	<string name="menu_posts_by_date">Publications of day</string>
-	<string name="menu_news_by_date">News of day</string>
 	<string name="state_loading">Loading...</string>
-	<string name="state_error">Can not load publications</string>
-	<string name="recent_publication">Recent publication</string>
 	<string name="more">MORE</string>
-	<string name="latest_news">Latest news</string>
-	<string name="current_videos">Actual video</string>
 	<string name="news_tag" translatable="false">p-news</string>
-	<string name="no_content">Oops! Nothing here</string>
-	<string name="home_recent_publication">Can\'t load recent publication</string>
-	<string name="home_latest_news">Can\'t load latest news</string>
-	<string name="home_current_videos">Can\'t load current videos</string>
-	<string name="show_all_tags">Show all tags</string>
 	<string name="cant_loading_data">Can\'t loading data</string>
+	<string name="home_title">Home</string>
 
 </resources>

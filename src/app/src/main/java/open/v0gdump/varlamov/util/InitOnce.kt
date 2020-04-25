@@ -3,6 +3,9 @@ package open.v0gdump.varlamov.util
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+inline fun <reified T> initOnce(): ReadWriteProperty<Any, T> =
+    InitOnceProperty()
+
 class InitOnceProperty<T> : ReadWriteProperty<Any, T> {
 
     private object EMPTY
@@ -24,5 +27,3 @@ class InitOnceProperty<T> : ReadWriteProperty<Any, T> {
         this.value = value
     }
 }
-
-inline fun <reified T> initOnce(): ReadWriteProperty<Any, T> = InitOnceProperty()

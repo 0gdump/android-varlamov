@@ -6,12 +6,10 @@
 	tools:context=".old.fragment.PublicationsFragment">
 
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id="@+id/publications_swipe_to_refresh"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
 		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/publications_recycler"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:scrollbars="vertical" />

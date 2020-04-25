@@ -2,24 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	app:startDestination="@+id/nav_home">
+	app:startDestination="@id/nav_home">
 
 	<fragment
 		android:id="@+id/nav_home"
-		android:name="open.v0gdump.varlamov.ui.fragment.home.HomeFragment"
-		android:label="fragment_home"
+		android:name="open.v0gdump.varlamov.ui.home.HomeScreen"
+		android:label="@string/nav_home"
 		tools:layout="@layout/fragment_home" />
-
 	<fragment
 		android:id="@+id/nav_publications"
-		android:name="open.v0gdump.varlamov.old.fragment.PublicationsFragment"
-		android:label="fragment_publications"
+		android:name="open.v0gdump.varlamov.ui.publications.PublicationsScreen"
+		android:label="@string/nav_publications"
 		tools:layout="@layout/fragment_publications" />
-
 	<fragment
 		android:id="@+id/nav_news"
-		android:name="open.v0gdump.varlamov.old.fragment.NewsFragment"
-		android:label="fragment_news"
+		android:name="open.v0gdump.varlamov.ui.news.NewsScreen"
+		android:label="@string/nav_news"
 		tools:layout="@layout/fragment_by_tag" />
 
 </navigation>
