@@ -26,7 +26,9 @@ class PublicationsScreenPresenter : MvpPresenterX<PublicationsScreenView>() {
         launch {
             paginator.sideEffects.consumeEach { effect ->
                 when (effect) {
-                    is Paginator.SideEffect.LoadPage -> loadNewPage(effect.currentPage)
+                    is Paginator.SideEffect.LoadPage -> {
+                        loadNewPage(effect.currentPage, effect.currentPageLastItem as Publication?)
+                    }
                     is Paginator.SideEffect.ErrorEvent -> {
                         viewState.showMessage(effect.error.message.orEmpty())
                     }
@@ -40,15 +42,14 @@ class PublicationsScreenPresenter : MvpPresenterX<PublicationsScreenView>() {
         refresh()
     }
 
-    private fun loadNewPage(page: Int) {
-        if (page != 1) {
-            paginator.proceed(Paginator.Action.NewPage(page, listOf<Publication>()))
-            return
-        }
+    private fun loadNewPage(page: Int, lastItem: Publication?) {
+
+        val beforeDate =
+            lastItem?.time?.withZone(DateTimeZone.UTC) ?: DateTime.now().withZone(DateTimeZone.UTC)
 
         Blog.getPublications(
-            10,
-            DateTime.now().withZone(DateTimeZone.UTC),
+            20,
+            beforeDate,
             object : retrofit2.Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     paginator.proceed(Paginator.Action.PageError(t))
@@ -66,7 +67,7 @@ class PublicationsScreenPresenter : MvpPresenterX<PublicationsScreenView>() {
                     val responseBody = response.body()!!.string()
                     val publications = PublicationsFactory.convert(responseBody)
 
-                    paginator.proceed(Paginator.Action.NewPage(0, publications))
+                    paginator.proceed(Paginator.Action.NewPage(page + 1, publications))
                 }
             }
         )
