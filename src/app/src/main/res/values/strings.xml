@@ -15,5 +15,11 @@
 	<string name="news_tag" translatable="false">p-news</string>
 	<string name="cant_loading_data">Can\'t loading data</string>
 	<string name="home_title">Home</string>
+	<string name="refresh">Refresh</string>
+	<string name="empty_error">Oops!</string>
+	<string name="empty_error_description">Something went wrong.\nPlease try again later.</string>
+	<string name="empty_data">Empty data</string>
+	<string name="empty_data_description">You have not data yet.\nPlease try again later.</string>
+
 
 </resources>

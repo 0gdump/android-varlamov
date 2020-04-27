@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".old.fragment.PublicationsFragment">
+	android:layout_height="match_parent">
 
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+	<open.v0gdump.varlamov.ui.global.view.PaginalRenderView
+		android:id="@+id/paginalRenderView"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-		<androidx.recyclerview.widget.RecyclerView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:scrollbars="vertical" />
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+		android:layout_height="match_parent" />
 </FrameLayout>

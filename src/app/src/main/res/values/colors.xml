@@ -3,6 +3,7 @@
 
 	<color name="colorPrimary">#3C4359</color>
 	<color name="colorPrimaryDark">#292E3D</color>
+	<color name="colorPrimaryLight">#F0EDF9</color>
 	<color name="colorAccent">#6200EE</color>
 
 	<color name="black">#000000</color>
@@ -10,5 +11,36 @@
 	<color name="colorNavigationInactive">#555</color>
 
 	<color name="colorFragmentBackground">#F2F2F2</color>
+
+
+	<color name="primary_text">#ff1f1f1f</color>
+	<color name="secondary_text">#aa1f1f1f</color>
+	<color name="secondary_light_text">#61000000</color>
+	<color name="subhead_text">#DE000000</color>
+	<color name="subtitle_text">#55000000</color>
+
+	<color name="black_20">#32000000</color>
+	<color name="white">#ffffff</color>
+	<color name="white_50">#80ffffff</color>
+	<color name="divider">#ffe0e6ea</color>
+
+	<color name="silver">#6A8398</color>
+	<color name="lightGrey">#f1f1f1</color>
+	<color name="grey">#757575</color>
+	<color name="grey_30">#4D757575</color>
+
+	<color name="green">#5AC54F</color>
+	<color name="lightGreen">#EEF9ED</color>
+	<color name="fruit_salad">#50A164</color>
+
+	<color name="red">#F23117</color>
+	<color name="lightRed">#FDEAE7</color>
+	<color name="brandy_punch">#D88138</color>
+
+	<color name="blue">#17d1f2</color>
+	<color name="lightBlue">#e7fafd</color>
+	<color name="mariner">#397BCE</color>
+
+	<color name="beige">#fff8e1</color>
 
 </resources>
