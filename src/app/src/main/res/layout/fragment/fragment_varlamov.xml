@@ -29,39 +29,39 @@
 
 		<androidx.appcompat.widget.LinearLayoutCompat android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:layout_marginTop="16dp"
-			android:gravity="center"
-			android:orientation="horizontal" app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/info_container">
+			android:gravity="center" android:orientation="horizontal"
+			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/info_container">
 
 			<androidx.appcompat.widget.AppCompatImageButton android:id="@+id/social_vk_button"
 				android:layout_width="42dp" android:layout_height="42dp" android:layout_margin="4dp"
-				android:adjustViewBounds="true" android:background="?android:selectableItemBackground"
-				android:scaleType="fitCenter"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground" android:scaleType="fitCenter"
 				android:src="@drawable/ic_vk" />
 
 			<androidx.appcompat.widget.AppCompatImageButton android:id="@+id/social_facebook_button"
 				android:layout_width="42dp" android:layout_height="42dp" android:layout_margin="4dp"
-				android:adjustViewBounds="true" android:background="?android:selectableItemBackground"
-				android:scaleType="fitCenter"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground" android:scaleType="fitCenter"
 				android:src="@drawable/ic_facebook" />
 
 			<androidx.appcompat.widget.AppCompatImageButton android:id="@+id/social_twitter_button"
 				android:layout_width="42dp" android:layout_height="42dp" android:layout_margin="4dp"
-				android:adjustViewBounds="true" android:background="?android:selectableItemBackground"
-				android:scaleType="fitCenter"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground" android:scaleType="fitCenter"
 				android:src="@drawable/ic_twitter" />
 
 			<androidx.appcompat.widget.AppCompatImageButton
 				android:id="@+id/social_instagram_button" android:layout_width="42dp"
 				android:layout_height="42dp" android:layout_margin="4dp"
-				android:adjustViewBounds="true" android:background="?android:selectableItemBackground"
-				android:scaleType="fitCenter"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground" android:scaleType="fitCenter"
 				android:src="@drawable/ic_instagram" />
 
 			<androidx.appcompat.widget.AppCompatImageButton android:id="@+id/social_youtube_button"
 				android:layout_width="42dp" android:layout_height="42dp" android:layout_margin="4dp"
-				android:adjustViewBounds="true" android:background="?android:selectableItemBackground"
-				android:scaleType="fitCenter"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground" android:scaleType="fitCenter"
 				android:src="@drawable/ic_youtube" />
 
 		</androidx.appcompat.widget.LinearLayoutCompat>

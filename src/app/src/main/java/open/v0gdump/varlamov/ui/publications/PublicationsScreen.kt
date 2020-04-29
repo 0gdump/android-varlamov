@@ -10,6 +10,7 @@ import open.v0gdump.varlamov.presentation.global.Paginator
 import open.v0gdump.varlamov.presentation.publications.PublicationsScreenPresenter
 import open.v0gdump.varlamov.presentation.publications.PublicationsScreenView
 import open.v0gdump.varlamov.ui.global.MvpFragmentX
+import open.v0gdump.varlamov.ui.global.PublicationsAdapterDelegate
 import open.v0gdump.varlamov.ui.global.view.PaginalAdapter
 
 class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), PublicationsScreenView {
@@ -28,7 +29,11 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
                 else
                     false
             },
-            PublicationsAdapterDelegate { presenter.onPublicationClicked(it) }
+            PublicationsAdapterDelegate {
+                presenter.onPublicationClicked(
+                    it
+                )
+            }
         )
     }
 

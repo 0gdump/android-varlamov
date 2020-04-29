@@ -5,8 +5,8 @@
 	android:layout_height="wrap_content"
 	android:background="?selectableItemBackground"
 	android:foreground="?android:attr/selectableItemBackground"
-	android:paddingTop="6dp"
 	android:paddingStart="12dp"
+	android:paddingTop="6dp"
 	android:paddingEnd="12dp"
 	android:paddingBottom="12dp">
 

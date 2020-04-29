@@ -1,4 +1,4 @@
-package open.v0gdump.varlamov.ui.publications
+package open.v0gdump.varlamov.ui.global
 
 import android.graphics.drawable.Drawable
 import android.view.View

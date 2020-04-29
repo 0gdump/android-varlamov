@@ -31,6 +31,7 @@ object Paginator {
     sealed class SideEffect {
         data class LoadPage(val currentPage: Int, val currentPageLastItem: Any? = null) :
             SideEffect()
+
         data class ErrorEvent(val error: Throwable) : SideEffect()
     }
 

@@ -16,9 +16,9 @@
 				android:layout_height="wrap_content" app:cardCornerRadius="4dp"
 				app:cardElevation="2dp">
 
-				<androidx.constraintlayout.widget.ConstraintLayout
-					style="@style/HomeCardContent" android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:orientation="vertical">
+				<androidx.constraintlayout.widget.ConstraintLayout style="@style/HomeCardContent"
+					android:layout_width="match_parent" android:layout_height="wrap_content"
+					android:orientation="vertical">
 
 					<TextView android:layout_width="0dp" android:layout_height="wrap_content"
 						android:text="@string/fresh_publication"
@@ -30,43 +30,40 @@
 						app:layout_constraintTop_toTopOf="@id/more_posts" />
 
 					<com.google.android.material.button.MaterialButton android:id="@+id/more_posts"
-						style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:minWidth="32dp"
-						android:text="@string/more"
-						android:textSize="12sp"
-						app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:minWidth="32dp" android:text="@string/more" android:textSize="12sp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
 
 					<androidx.constraintlayout.widget.ConstraintLayout
 						android:id="@+id/last_post_content" android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:background="?selectableItemBackground"
-						android:clickable="true" android:focusable="true"
-						android:foreground="?android:attr/selectableItemBackground" android:orientation="vertical"
-						android:paddingTop="4dp"
-						android:paddingBottom="4dp"
-						app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@id/more_posts">
+						android:background="?selectableItemBackground" android:clickable="true"
+						android:focusable="true"
+						android:foreground="?android:attr/selectableItemBackground"
+						android:orientation="vertical" android:paddingTop="4dp"
+						android:paddingBottom="4dp" app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/more_posts">
 
 						<TextView android:id="@+id/post_date" android:layout_width="match_parent"
 							android:layout_height="wrap_content" android:paddingBottom="8dp"
 							android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-							android:textSize="14sp"
-							app:layout_constraintEnd_toEndOf="parent"
+							android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toTopOf="parent" />
 
 						<com.makeramen.roundedimageview.RoundedImageView
 							android:id="@+id/post_preview" android:layout_width="72dp"
-							android:layout_height="72dp"
-							android:scaleType="fitCenter"
+							android:layout_height="72dp" android:scaleType="fitCenter"
 							app:layout_constraintStart_toStartOf="parent"
-							app:layout_constraintTop_toBottomOf="@id/post_date" app:riv_corner_radius="4dip" />
+							app:layout_constraintTop_toBottomOf="@id/post_date"
+							app:riv_corner_radius="4dip" />
 
 						<TextView android:id="@+id/post_title" android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_marginStart="8dp"
+							android:layout_height="wrap_content" android:layout_marginStart="8dp"
 							android:textAppearance="@style/TextAppearance.AppCompat.Title"
-							android:textSize="16sp"
-							app:layout_constraintEnd_toEndOf="parent"
+							android:textSize="16sp" app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintStart_toEndOf="@id/post_preview"
 							app:layout_constraintTop_toBottomOf="@id/post_date" />
 
@@ -80,9 +77,8 @@
 				android:layout_height="wrap_content" android:layout_marginTop="8dp"
 				app:cardCornerRadius="4dp" app:cardElevation="2dp">
 
-				<androidx.constraintlayout.widget.ConstraintLayout
-					style="@style/HomeCardContent" android:layout_width="match_parent"
-					android:layout_height="wrap_content">
+				<androidx.constraintlayout.widget.ConstraintLayout style="@style/HomeCardContent"
+					android:layout_width="match_parent" android:layout_height="wrap_content">
 
 					<TextView android:layout_width="0dp" android:layout_height="wrap_content"
 						android:text="@string/actual_videos"
@@ -94,11 +90,11 @@
 						app:layout_constraintTop_toTopOf="@id/more_videos" />
 
 					<com.google.android.material.button.MaterialButton android:id="@+id/more_videos"
-						style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:minWidth="32dp"
-						android:text="@string/more"
-						android:textSize="12sp"
-						app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:minWidth="32dp" android:text="@string/more" android:textSize="12sp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
 
 					<androidx.recyclerview.widget.RecyclerView
 						android:id="@+id/youtube_videos_recycler"
@@ -114,9 +110,9 @@
 				android:layout_height="wrap_content" android:layout_marginTop="8dp"
 				app:cardCornerRadius="4dp" app:cardElevation="2dp">
 
-				<androidx.constraintlayout.widget.ConstraintLayout
-					style="@style/HomeCardContent" android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:orientation="vertical">
+				<androidx.constraintlayout.widget.ConstraintLayout style="@style/HomeCardContent"
+					android:layout_width="match_parent" android:layout_height="wrap_content"
+					android:orientation="vertical">
 
 					<TextView android:layout_width="0dp" android:layout_height="wrap_content"
 						android:text="@string/latest_news"
@@ -128,11 +124,11 @@
 						app:layout_constraintTop_toTopOf="@id/more_news" />
 
 					<com.google.android.material.button.MaterialButton android:id="@+id/more_news"
-						style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:minWidth="32dp"
-						android:text="@string/more"
-						android:textSize="12sp"
-						app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:minWidth="32dp" android:text="@string/more" android:textSize="12sp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
 
 					<androidx.recyclerview.widget.RecyclerView android:id="@+id/fresh_news_recycler"
 						android:layout_width="match_parent" android:layout_height="wrap_content"

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-	android:layout_height="wrap_content" android:layout_marginTop="1dp" android:layout_marginEnd="1dp"
-	android:background="?selectableItemBackground" android:clickable="true"
-	android:elevation="0dp"
-	android:focusable="true" android:foreground="?android:attr/selectableItemBackground"
-	android:orientation="vertical">
+	android:layout_height="wrap_content" android:layout_marginTop="1dp"
+	android:layout_marginEnd="1dp" android:background="?selectableItemBackground"
+	android:clickable="true" android:elevation="0dp" android:focusable="true"
+	android:foreground="?android:attr/selectableItemBackground" android:orientation="vertical">
 
 	<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:orientation="vertical"
@@ -14,11 +13,10 @@
 
 		<androidx.appcompat.widget.AppCompatTextView android:id="@+id/publication_datetime"
 			android:layout_width="0dp" android:layout_height="wrap_content"
-			android:layout_margin="4dp"
-			android:text="@string/date"
-			android:textAppearance="@style/TextAppearance.AppCompat.Caption" app:layout_constraintBottom_toBottomOf="@id/publication_preview"
-			app:layout_constraintLeft_toLeftOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			android:layout_margin="4dp" android:text="@string/date"
+			android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+			app:layout_constraintBottom_toBottomOf="@id/publication_preview"
+			app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent" />
 
 		<androidx.appcompat.widget.AppCompatImageView android:id="@+id/publication_preview"
 			android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -31,8 +29,7 @@
 
 		<androidx.appcompat.widget.AppCompatTextView android:id="@+id/publication_title"
 			android:layout_width="0dp" android:layout_height="wrap_content"
-			android:layout_margin="4dp"
-			android:text="@string/title"
+			android:layout_margin="4dp" android:text="@string/title"
 			android:textAppearance="@style/TextAppearance.AppCompat.Title"
 			app:layout_constraintBottom_toBottomOf="@id/publication_preview"
 			app:layout_constraintLeft_toLeftOf="@id/publication_preview" />
