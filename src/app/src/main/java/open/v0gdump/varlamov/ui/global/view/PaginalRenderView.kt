@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.view_paginal_render.view.*
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.presentation.global.Paginator
+import open.v0gdump.varlamov.ui.global.DividerItemDecorator
 import open.v0gdump.varlamov.util.inflate
 import open.v0gdump.varlamov.util.visible
 
@@ -32,11 +33,9 @@ class PaginalRenderView : FrameLayout {
         swipeToRefresh.setOnRefreshListener { refreshCallback?.invoke() }
         emptyView.setRefreshListener { refreshCallback?.invoke() }
 
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            //addSystemBottomPadding()
-        }
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.addItemDecoration(DividerItemDecorator(context))
     }
 
     fun init(
