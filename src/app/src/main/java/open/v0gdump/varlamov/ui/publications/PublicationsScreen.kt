@@ -16,16 +16,15 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
 
     private val presenter by moxyPresenter { PublicationsScreenPresenter() }
 
-    override fun setupLayout() {
-
-    }
+    override fun setupLayout() {}
 
     private val adapter by lazy {
         PaginalAdapter(
             { presenter.loadMore() },
             { o, n ->
                 if (o is Publication && n is Publication)
-                    o.url != n.url
+                // TODO Требуется быстро сравнивать 2 публикации, иначе возникают странные дергания
+                    false
                 else
                     false
             },

@@ -1,14 +1,16 @@
 package open.v0gdump.varlamov.ui.publications
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_text_and_image_post.view.*
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
@@ -36,9 +38,7 @@ class PublicationsAdapterDelegate(
         payloads: MutableList<Any>
     ) = (viewHolder as ViewHolder).bind(items[position] as Publication)
 
-    private inner class ViewHolder(
-        override val containerView: View
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    private inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private lateinit var publication: Publication
 
@@ -58,27 +58,54 @@ class PublicationsAdapterDelegate(
             val itemParsedContent = Jsoup.parse(publication.content)
             val text = "${itemParsedContent.text().getWords(20)}..."
 
-            itemView.publication_datetime.text = time
-            itemView.publication_title.text = title
-            itemView.publication_text.text = text
+            itemView.date.text = time
+            itemView.title.text = title
+            //itemView.publication_text.text = text
         }
 
         private fun loadPreview() {
 
-            val regex = Regex("src=\"([^\"]+)\"")
-            val matchResult = regex.find(publication.content) ?: return
+            val imgSourceRegex = Regex("src=\"([^\"]+)\"")
+            val imgSourceMatch = imgSourceRegex.find(publication.content)
 
-            itemView.publication_preview.visible(true)
+            if (imgSourceMatch == null || imgSourceMatch.groupValues.size < 2) {
+                itemView.preview.visible(false)
+                return
+            } else {
+                itemView.preview.visible(true)
+            }
 
+            val imgSource = imgSourceMatch.groupValues[1]
             val glideOptions = RequestOptions()
                 .centerCrop()
-                .placeholder(ColorDrawable(Color.LTGRAY))
+                .placeholder(R.drawable.ic_preview_wait)
+                .error(R.drawable.ic_preview_error)
 
             Glide
-                .with(itemView.context)
-                .load(matchResult.groupValues[1])
+                .with(itemView)
+                .load(imgSource)
                 .apply(glideOptions)
-                .into(itemView.publication_preview)
+                .listener(object : RequestListener<Drawable> {
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        itemView.preview.visible(false)
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ) = false
+                })
+                .into(itemView.preview)
         }
     }
 }
