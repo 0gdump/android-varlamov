@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Dev/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_image_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Dev/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_hourglass_empty_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_undraw_aircraft_fbvl" />
-                            <entry key="sourceFile" value="D:\Загрузки\undraw_aircraft_fbvl.svg" />
+                            <entry key="outputName" value="ic_preview_error" />
+                            <entry key="sourceFile" value="C:\Users\v0gdump\Downloads\error_outline-24px.svg" />
                           </map>
                         </option>
                       </PersistentState>

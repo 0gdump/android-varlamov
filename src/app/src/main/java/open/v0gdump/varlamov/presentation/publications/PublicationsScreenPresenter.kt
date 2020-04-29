@@ -1,6 +1,5 @@
 package open.v0gdump.varlamov.presentation.publications
 
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import moxy.InjectViewState
@@ -19,7 +18,6 @@ import retrofit2.Response
 class PublicationsScreenPresenter : MvpPresenterX<PublicationsScreenView>() {
 
     private val paginator = Paginator.Store<Publication>()
-    private var pageJob: Job? = null
 
     init {
         paginator.render = { viewState.renderPaginatorState(it) }
