@@ -44,3 +44,6 @@ fun DateTime.isTomorrow(): Boolean =
 
 fun DateTime.isCurrentYear(): Boolean =
     year == LocalDate.now().year
+
+fun DateTime.isSameDay(dateTime: DateTime): Boolean =
+    dayOfMonth() == dateTime.dayOfMonth() && monthOfYear() == dateTime.monthOfYear() && year() == dateTime.year()
