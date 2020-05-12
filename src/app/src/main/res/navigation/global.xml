@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	app:startDestination="@id/container_main">
+
+	<fragment
+		android:id="@+id/container_main"
+		android:name="open.v0gdump.varlamov.ui.main.MainFragment"
+		android:label="MainFragment"
+		tools:layout="@layout/fragment_main" />
+
+	<fragment
+		android:id="@+id/by_date_fragment"
+		android:name="open.v0gdump.varlamov.ui.date.ByDateScreen"
+		android:label="ByDateScreen"
+		tools:layout="@layout/fragment_by_date">
+		<argument
+			android:name="dateTimestamp"
+			android:defaultValue="0L"
+			app:argType="long" />
+	</fragment>
+
+</navigation>

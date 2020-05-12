@@ -5,6 +5,7 @@ import android.content.res.Resources
 import open.v0gdump.varlamov.util.InitOnceProperty
 
 class App : Application() {
+
     companion object {
 
         var instance: App by InitOnceProperty()
