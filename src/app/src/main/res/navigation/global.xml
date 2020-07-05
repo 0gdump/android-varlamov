@@ -21,4 +21,15 @@
 			app:argType="long" />
 	</fragment>
 
+	<fragment
+		android:id="@+id/by_tag_fragment"
+		android:name="open.v0gdump.varlamov.ui.tag.ByTagScreen"
+		android:label="ByTagScreen"
+		tools:layout="@layout/fragment_by_tag">
+		<argument
+			android:name="tag"
+			android:defaultValue="p-news"
+			app:argType="string" />
+	</fragment>
+
 </navigation>
