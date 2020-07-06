@@ -1,7 +1,7 @@
 TODO.plan
 Updated: 20200705
 
-UI:
+UI/UX:
 	[SCREEN] Fix toolbar UX bugs
 	[SCREEN] Create button for showing posts by date
 	[SCREEN] Unify fragment's toolbar
@@ -18,6 +18,8 @@ UI:
 	[SCREEN\COMMENTS] Implement. API or parsing???
 	[SCREEN\COMMENTS] Write comment (after auth)
 	[SCREEN] Implement some stub's for no data
+	[COMMON] Implement notifications
+	[SCREEN\COLLECTIONS] Implement post's offline collections
 
 BACKEND:
 	[PRESENTATION] Auth to LJ
@@ -26,3 +28,4 @@ BACKEND:
 IN FAR FUTURE:
 	Migrate Retrofit2 to Ktor
 	Migrate kotlin/jvm to kotlin/multiplatform
+	Implement post's search (No API)
