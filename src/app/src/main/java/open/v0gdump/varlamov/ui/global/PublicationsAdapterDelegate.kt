@@ -48,6 +48,8 @@ class PublicationsAdapterDelegate(
 
             bindContent()
             loadPreview()
+
+            itemView.setOnClickListener { clickListener.invoke(publication) }
         }
 
         private fun bindContent() {

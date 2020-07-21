@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
-import moxy.MvpAppCompatActivity
 import moxy.MvpAppCompatFragment
 import open.v0gdump.varlamov.App
+import open.v0gdump.varlamov.ui.MainActivity
 
 abstract class MvpFragmentX(
     private val layoutRes: Int
@@ -16,8 +16,8 @@ abstract class MvpFragmentX(
 
     protected lateinit var layout: View
 
-    protected val activity: MvpAppCompatActivity
-        get() = super.getActivity() as MvpAppCompatActivity
+    protected val activity: MainActivity
+        get() = super.getActivity() as MainActivity
 
     protected val app: App
         get() = activity.application as App

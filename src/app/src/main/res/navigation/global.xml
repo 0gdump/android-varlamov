@@ -2,34 +2,42 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	app:startDestination="@id/container_main">
+	app:startDestination="@id/main_screen">
 
 	<fragment
-		android:id="@+id/container_main"
-		android:name="open.v0gdump.varlamov.ui.main.MainFragment"
-		android:label="MainFragment"
+		android:id="@+id/main_screen"
+		android:name="open.v0gdump.varlamov.ui.main.MainScreen"
+		android:label="MainScreen"
 		tools:layout="@layout/fragment_main" />
 
 	<fragment
-		android:id="@+id/by_date_fragment"
+		android:id="@+id/by_date_screen"
 		android:name="open.v0gdump.varlamov.ui.date.ByDateScreen"
 		android:label="ByDateScreen"
 		tools:layout="@layout/fragment_by_date">
 		<argument
 			android:name="dateTimestamp"
-			android:defaultValue="0L"
 			app:argType="long" />
 	</fragment>
 
 	<fragment
-		android:id="@+id/by_tag_fragment"
+		android:id="@+id/by_tag_screen"
 		android:name="open.v0gdump.varlamov.ui.tag.ByTagScreen"
 		android:label="ByTagScreen"
 		tools:layout="@layout/fragment_by_tag">
 		<argument
 			android:name="tag"
-			android:defaultValue="p-news"
 			app:argType="string" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/reader_screen"
+		android:name="open.v0gdump.varlamov.ui.reader.ReaderScreen"
+		android:label="ReaderScreen"
+		tools:layout="@layout/fragment_reader">
+		<argument
+			android:name="publication"
+			app:argType="open.v0gdump.varlamov.model.platform.livejournal.model.Publication" />
 	</fragment>
 
 </navigation>

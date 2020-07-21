@@ -1,6 +1,7 @@
 package open.v0gdump.varlamov.model.platform.livejournal.model
 
 import org.joda.time.DateTime
+import java.io.Serializable
 
 data class Publication(
     val title: String,
@@ -8,4 +9,4 @@ data class Publication(
     val tags: List<String>,
     val time: DateTime,
     val url: String
-)
+) : Serializable
