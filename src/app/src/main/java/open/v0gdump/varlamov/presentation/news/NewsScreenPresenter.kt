@@ -21,15 +21,17 @@ class NewsScreenPresenter : MvpPresenterX<NewsScreenView>() {
 
     init {
         paginator.render = { viewState.renderPaginatorState(it) }
-        launch {
-            paginator.sideEffects.consumeEach { effect ->
-                when (effect) {
-                    is Paginator.SideEffect.LoadPage -> {
-                        loadNewPage(effect.currentPage, effect.currentPageLastItem as Publication?)
-                    }
-                    is Paginator.SideEffect.ErrorEvent -> {
-                        viewState.showMessage(effect.error.message.orEmpty())
-                    }
+        launch { sideEffectsConsumer() }
+    }
+
+    private suspend fun sideEffectsConsumer() {
+        paginator.sideEffects.consumeEach { effect ->
+            when (effect) {
+                is Paginator.SideEffect.LoadPage -> {
+                    loadNewPage(effect.currentPage, effect.currentPageLastItem as Publication?)
+                }
+                is Paginator.SideEffect.ErrorEvent -> {
+                    viewState.showMessage(effect.error.message.orEmpty())
                 }
             }
         }

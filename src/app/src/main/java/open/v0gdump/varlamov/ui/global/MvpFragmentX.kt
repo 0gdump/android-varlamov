@@ -29,11 +29,11 @@ abstract class MvpFragmentX(
     ): View? {
 
         layout = inflater.inflate(layoutRes, container, false)
-        setupLayout()
+        setupLayoutOnCreate()
         return layout
     }
 
-    protected abstract fun setupLayout()
+    protected open fun setupLayoutOnCreate() {}
 
     protected fun unimplemented() {
         Toast.makeText(context, "\uD83D\uDE48 Unimplemented", Toast.LENGTH_LONG).show()

@@ -14,7 +14,7 @@ class MainScreen : MvpFragmentX(R.layout.fragment_main) {
         )
     }
 
-    override fun setupLayout() {
+    override fun setupLayoutOnCreate() {
         layout.bottom_navigation.setupWithNavController(navController)
     }
 }

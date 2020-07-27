@@ -11,7 +11,7 @@ import open.v0gdump.varlamov.presentation.date.ByDateScreenView
 import open.v0gdump.varlamov.presentation.global.Paginator
 import open.v0gdump.varlamov.ui.global.MvpFragmentX
 import open.v0gdump.varlamov.ui.global.PublicationsAdapterDelegate
-import open.v0gdump.varlamov.ui.global.view.PaginalAdapter
+import open.v0gdump.varlamov.ui.global.adapter.paginal.PaginalAdapter
 
 class ByDateScreen : MvpFragmentX(R.layout.fragment_by_date), ByDateScreenView {
 
@@ -33,7 +33,7 @@ class ByDateScreen : MvpFragmentX(R.layout.fragment_by_date), ByDateScreenView {
         )
     }
 
-    override fun setupLayout() {}
+    override fun setupLayoutOnCreate() {}
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

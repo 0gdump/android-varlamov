@@ -14,7 +14,7 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
     private val presenter by moxyPresenter { HomeScreenPresenter() }
 
-    override fun setupLayout() {
+    override fun setupLayoutOnCreate() {
         setupToolbar()
         setupSwipeRefresh()
         setupCards()
