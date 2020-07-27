@@ -37,7 +37,12 @@ class ReaderScreenPresenter(
             selector = "div#entrytext.j-e-text",
             childRules = emptyList(),
             specificNodesHandler = SpecificNodesHandler(
-                textNodeHandler = { node -> publicationParts.add(TextPublicationElement(node.text())) }
+                textNodeHandler = { node ->
+                    val text = node.text()
+                    if (text.isNotBlank()) {
+                        publicationParts.add(TextPublicationElement(text))
+                    }
+                }
             )
         )
     )
