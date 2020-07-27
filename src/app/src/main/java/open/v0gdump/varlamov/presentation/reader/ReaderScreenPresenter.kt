@@ -10,6 +10,7 @@ import open.v0gdump.recontent.model.SectionRule
 import open.v0gdump.recontent.model.SpecificNodesHandler
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.model.reader.PublicationElement
+import open.v0gdump.varlamov.model.reader.TextPublicationElement
 import open.v0gdump.varlamov.presentation.global.Contentator
 import open.v0gdump.varlamov.presentation.global.MvpPresenterX
 
@@ -35,7 +36,9 @@ class ReaderScreenPresenter(
         SectionRule(
             selector = "div#entrytext.j-e-text",
             childRules = emptyList(),
-            specificNodesHandler = SpecificNodesHandler()
+            specificNodesHandler = SpecificNodesHandler(
+                textNodeHandler = { node -> publicationParts.add(TextPublicationElement(node.text())) }
+            )
         )
     )
 

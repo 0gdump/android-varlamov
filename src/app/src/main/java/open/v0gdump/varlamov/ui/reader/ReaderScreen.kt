@@ -20,8 +20,8 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
 
     private val adapter by lazy {
         ContentAdapter(
-            { _, _ -> false }
-            /* TODO(CODE) Publication parts delegates */
+            { _, _ -> false },
+            TextPEAdapterDelegate()
         )
     }
 
