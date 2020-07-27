@@ -6,56 +6,60 @@
 	android:layout_height="match_parent"
 	tools:parentTag="android.widget.FrameLayout">
 
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id="@+id/swipeToRefresh"
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_behavior="@string/appbar_scrolling_view_behavior"
-		app:layout_scrollFlags="scroll|enterAlways">
+		android:layout_height="match_parent">
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/recyclerView"
+		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+			android:id="@+id/swipeToRefresh"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:clipToPadding="false" />
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+			app:layout_behavior="@string/appbar_scrolling_view_behavior"
+			app:layout_scrollFlags="scroll|enterAlways">
 
-	<ProgressBar
-		android:id="@+id/fullscreenProgressView"
-		android:layout_width="60dp"
-		android:layout_height="60dp"
-		android:layout_gravity="center"
-		android:visibility="gone" />
-
-	<open.v0gdump.varlamov.ui.global.view.EmptyView
-		android:id="@+id/emptyView"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
-
-	<com.google.android.material.appbar.AppBarLayout
-		android:id="@+id/appBar"
-		android:layout_width="match_parent"
-		android:layout_height="144dp"
-		android:background="@android:color/transparent">
-
-		<com.google.android.material.appbar.CollapsingToolbarLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			app:expandedTitleGravity="bottom"
-			app:expandedTitleMarginBottom="18dp"
-			app:expandedTitleMarginStart="10dp"
-			app:expandedTitleTextAppearance="@style/CollapsingToolbarTextStyle"
-			app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-			<androidx.appcompat.widget.Toolbar
-				android:id="@+id/toolbar"
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerView"
 				android:layout_width="match_parent"
-				android:layout_height="?attr/actionBarSize"
-				app:layout_collapseMode="pin"
-				app:title="Content" />
+				android:layout_height="match_parent"
+				android:clipToPadding="false" />
+		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-		</com.google.android.material.appbar.CollapsingToolbarLayout>
-	</com.google.android.material.appbar.AppBarLayout>
+		<ProgressBar
+			android:id="@+id/fullscreenProgressView"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_gravity="center"
+			android:visibility="gone" />
 
+		<open.v0gdump.varlamov.ui.global.view.EmptyView
+			android:id="@+id/emptyView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:visibility="gone" />
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appBar"
+			android:layout_width="match_parent"
+			android:layout_height="144dp"
+			android:background="@android:color/transparent">
+
+			<com.google.android.material.appbar.CollapsingToolbarLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:expandedTitleGravity="bottom"
+				app:expandedTitleMarginBottom="18dp"
+				app:expandedTitleMarginStart="10dp"
+				app:expandedTitleTextAppearance="@style/CollapsingToolbarTextStyle"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+				<androidx.appcompat.widget.Toolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					app:layout_collapseMode="pin"
+					app:title="Content" />
+
+			</com.google.android.material.appbar.CollapsingToolbarLayout>
+		</com.google.android.material.appbar.AppBarLayout>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
 </merge>
