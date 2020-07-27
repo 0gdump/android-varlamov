@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.view_paginal_render.view.*
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.presentation.global.Paginator
 import open.v0gdump.varlamov.ui.global.DividerItemDecorator
+import open.v0gdump.varlamov.ui.global.adapter.paginal.PaginalAdapter
 import open.v0gdump.varlamov.util.inflate
 import open.v0gdump.varlamov.util.visible
 

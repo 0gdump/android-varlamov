@@ -1,4 +1,4 @@
-package open.v0gdump.varlamov.ui.global.view
+package open.v0gdump.varlamov.ui.global.adapter.paginal
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.util.inflate
-import ru.terrakok.gitlabclient.ui.global.list.ProgressItem
 
 /**
  * @author Konstantin Tskhovrebov (aka terrakok) on 18.06.17.

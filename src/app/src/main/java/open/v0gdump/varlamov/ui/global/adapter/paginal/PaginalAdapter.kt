@@ -1,39 +1,29 @@
-package open.v0gdump.varlamov.ui.global.view
+package open.v0gdump.varlamov.ui.global.adapter.paginal
 
-import android.annotation.SuppressLint
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import ru.terrakok.gitlabclient.ui.global.list.ProgressItem
+import open.v0gdump.varlamov.ui.global.adapter.DummyDiffItemCallback
 
 /**
  * Created by petrova_alena on 2019-12-05.
  */
-
 class PaginalAdapter(
     private val nextPageCallback: () -> Unit,
     private val itemDiff: (old: Any, new: Any) -> Boolean,
     vararg delegate: AdapterDelegate<MutableList<Any>>
 ) : AsyncListDifferDelegationAdapter<Any>(
-    object : DiffUtil.ItemCallback<Any>() {
-        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-            if (oldItem === newItem) return true
-            return itemDiff.invoke(oldItem, newItem)
-        }
-
-        override fun getChangePayload(oldItem: Any, newItem: Any) = Any()
-
-        @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
-    }
+    DummyDiffItemCallback(
+        itemDiff
+    )
 ) {
+
     var fullData = false
 
     init {
         items = mutableListOf()
-        delegatesManager
-            .addDelegate(ProgressAdapterDelegate())
+
+        delegatesManager.addDelegate(ProgressAdapterDelegate())
         delegate.forEach { delegatesManager.addDelegate(it) }
     }
 

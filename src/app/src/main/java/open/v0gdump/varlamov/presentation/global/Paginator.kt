@@ -29,8 +29,10 @@ object Paginator {
     }
 
     sealed class SideEffect {
-        data class LoadPage(val currentPage: Int, val currentPageLastItem: Any? = null) :
-            SideEffect()
+        data class LoadPage(
+            val currentPage: Int,
+            val currentPageLastItem: Any? = null
+        ) : SideEffect()
 
         data class ErrorEvent(val error: Throwable) : SideEffect()
     }
@@ -125,7 +127,7 @@ object Paginator {
         }
 
     class Store<T> : CoroutineScope by CoroutineScope(Dispatchers.Default) {
-        private var state: State = Paginator.State.Empty
+        private var state: State = State.Empty
         var render: (State) -> Unit = {}
             set(value) {
                 field = value

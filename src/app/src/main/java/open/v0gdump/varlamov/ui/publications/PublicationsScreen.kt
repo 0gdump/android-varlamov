@@ -11,13 +11,11 @@ import open.v0gdump.varlamov.presentation.publications.PublicationsScreenPresent
 import open.v0gdump.varlamov.presentation.publications.PublicationsScreenView
 import open.v0gdump.varlamov.ui.global.MvpFragmentX
 import open.v0gdump.varlamov.ui.global.PublicationsAdapterDelegate
-import open.v0gdump.varlamov.ui.global.view.PaginalAdapter
+import open.v0gdump.varlamov.ui.global.adapter.paginal.PaginalAdapter
 
 class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), PublicationsScreenView {
 
     private val presenter by moxyPresenter { PublicationsScreenPresenter() }
-
-    override fun setupLayout() {}
 
     private val adapter by lazy {
         PaginalAdapter(

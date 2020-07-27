@@ -12,13 +12,11 @@ import open.v0gdump.varlamov.presentation.news.NewsScreenPresenter
 import open.v0gdump.varlamov.presentation.news.NewsScreenView
 import open.v0gdump.varlamov.ui.global.MvpFragmentX
 import open.v0gdump.varlamov.ui.global.PublicationsAdapterDelegate
-import open.v0gdump.varlamov.ui.global.view.PaginalAdapter
+import open.v0gdump.varlamov.ui.global.adapter.paginal.PaginalAdapter
 
 class NewsScreen : MvpFragmentX(R.layout.fragment_by_tag), NewsScreenView {
 
     private val presenter by moxyPresenter { NewsScreenPresenter() }
-
-    override fun setupLayout() {}
 
     private val adapter by lazy {
         PaginalAdapter(
