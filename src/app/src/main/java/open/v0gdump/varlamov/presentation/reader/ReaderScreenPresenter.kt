@@ -6,22 +6,40 @@ import kotlinx.coroutines.launch
 import moxy.InjectViewState
 import open.v0gdump.recontent.ReContent
 import open.v0gdump.recontent.ReContentEvents
-import open.v0gdump.recontent.model.NodeRule
 import open.v0gdump.recontent.model.SectionRule
 import open.v0gdump.recontent.model.SpecificNodesHandler
+import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
+import open.v0gdump.varlamov.model.reader.PublicationElement
 import open.v0gdump.varlamov.presentation.global.Contentator
 import open.v0gdump.varlamov.presentation.global.MvpPresenterX
-import org.jsoup.nodes.Element
-import org.jsoup.nodes.TextNode
 
 @InjectViewState
 class ReaderScreenPresenter(
     private val application: Application
 ) : MvpPresenterX<ReaderScreenView>() {
 
-    private val contentator = Contentator.Store<PublicationElement>()
+    var publication: Publication? = null
 
-    var url: String? = null
+    private val contentator = Contentator.Store<PublicationElement>()
+    private val eventsHandler = ReContentEvents(
+        onError = { throwable ->
+            contentator.proceed(Contentator.Action.Error(throwable))
+        },
+        afterParse = {
+            contentator.proceed(Contentator.Action.Data(publicationParts))
+        }
+    )
+
+    // TODO
+    private val recontentRules = listOf(
+        SectionRule(
+            selector = "div#entrytext.j-e-text",
+            childRules = emptyList(),
+            specificNodesHandler = SpecificNodesHandler()
+        )
+    )
+
+    private val publicationParts = mutableListOf<PublicationElement>()
 
     init {
         contentator.render = { viewState.renderState(it) }
@@ -32,7 +50,7 @@ class ReaderScreenPresenter(
         contentator.sideEffects.consumeEach { effect ->
             when (effect) {
                 is Contentator.SideEffect.LoadData -> {
-                    loadData()
+                    runReContent()
                 }
                 is Contentator.SideEffect.ErrorEvent -> {
                     viewState.showMessage(effect.error.message.orEmpty())
@@ -41,56 +59,16 @@ class ReaderScreenPresenter(
         }
     }
 
-    private fun loadData() {
+    fun onActivityCreated() = load()
 
-        if (url == null) return
-
-        val eventsHandler = ReContentEvents(
-            //onError = {
-            // TODO(CODE) Show error
-            //},
-            afterParse = {
-                // TODO(CODE) Show content
-            }
-        )
-
+    private fun runReContent() {
+        check(publication != null) { "No publication in presenter" }
         ReContent(application, eventsHandler).apply {
-            sectionsRules = createRules()
-            load(url!!)
+            sectionsRules = recontentRules
+            load(publication!!.url)
         }
     }
 
-    // TODO(CODE) Check rules, create new!
-    private fun createRules(): List<SectionRule> = listOf(
-        SectionRule(
-            selector = "div#entrytext.j-e-text",
-            childRules = listOf(
-                NodeRule(
-                    selector = "span.j-imagewrapper",
-                    callback = { e, t -> buildImage(e, t) }
-                )
-            ),
-            specificNodesHandler = SpecificNodesHandler(
-                textNodeHandler = { node -> buildText(node) }
-            )
-        )
-    )
-
-    //region ReContent Callbacks
-
-    // TODO(CODE) Append to intermediate list
-
-    private fun buildImage(element: Element, tag: String?) {
-        val source = element.select("img").attr("src")
-
-        //data.add(ItemImage(source = source))
-    }
-
-    private fun buildText(node: TextNode) {
-        //data.add(ItemText(content = node.text()))
-    }
-
-    //endregion
-
     fun refresh() = contentator.proceed(Contentator.Action.Refresh)
+    fun load() = contentator.proceed(Contentator.Action.LoadData)
 }
