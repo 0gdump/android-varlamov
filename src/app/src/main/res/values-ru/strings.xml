@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Varlamov</string>
+	<string name="nav_home">Главная</string>
+	<string name="nav_publications">Публикации</string>
+	<string name="nav_news">Новости</string>
+	<string name="retry">Повторить</string>
+	<string name="title">Заголовок</string>
+	<string name="date">Дата</string>
+	<string name="blank">Текст</string>
+	<string name="time_today">Сегодня</string>
+	<string name="time_yesterday">Вчера</string>
+	<string name="state_loading">Загрузка...</string>
+	<string name="more">БОЛЬШЕ</string>
+	<string name="cant_loading_data">Не удалось загрузить</string>
+	<string name="home_title">Главная</string>
+	<string name="refresh">Обновить</string>
+	<string name="empty_error">Ничего нет!</string>
+	<string name="empty_error_description">Что-то пошло не так.\nПопробуйте позже ещё раз.</string>
+	<string name="empty_data">Нет данных</string>
+	<string name="empty_data_description">Тут ничего нет. \nПопробуйте позже.</string>
+</resources>
