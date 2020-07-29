@@ -1,0 +1,32 @@
+TODO.plan
+Updated: 2020/07/30
+
+> Ui
+  - Fix toolbar visual bugs
+  - Posts by date
+    - Button on toolbar
+    - Timezone selector
+  - Show tags on publication card
+  - About screen
+  - Auth
+  - Comments screen
+    - Write comment
+	- Read comment
+  - Reader screen
+    - Images
+    - Customize
+  - Offline collection
+  
+> Ux
+  - Unify fragment's toolbar
+  - Notifications
+
+> Code improvements
+  - Combine presenters and views
+	- Combine news and by tag screens (How moxy stores presenters?)
+  - Rewrite home card with contentator without dependencies
+  - Migrate to new LJ JSON API
+  - Migrate to Kotlin/Native, KTor
+
+> In far future
+  - Publications search
