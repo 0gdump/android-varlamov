@@ -22,8 +22,7 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
             { presenter.loadMore() },
             { o, n ->
                 if (o is Publication && n is Publication)
-                // TODO Требуется быстро сравнивать 2 публикации, иначе возникают странные дергания
-                    false
+                    o.id == n.id
                 else
                     false
             },
