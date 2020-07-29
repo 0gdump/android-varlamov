@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
+// TODO(CODE) Use new json api
 interface LiveJournalService {
 
     @Headers("Content-Type: text/xml")

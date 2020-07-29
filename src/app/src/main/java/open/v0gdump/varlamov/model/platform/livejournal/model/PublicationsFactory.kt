@@ -4,8 +4,8 @@ import android.util.Base64
 import open.v0gdump.varlamov.util.DateTimeUtils
 import org.joda.time.DateTimeZone
 
-// TODO: Доработать с использованием корутин
-class PublicationsFactory {
+// TODO(CODE) Use new json api
+object PublicationsFactory {
 
     private data class ParsedKey(
         val value: String,
@@ -17,52 +17,47 @@ class PublicationsFactory {
         val offsetToEndOfLastKey: Int
     )
 
-    companion object {
+    private const val XML_RPC_HEADER =
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?><methodResponse><params><param><value><struct>"
+    private const val XML_RPC_HEADER_LEN = XML_RPC_HEADER.length
 
-        // Начало XML RPC ответа
-        private const val XML_RPC_START_LEN =
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?><methodResponse><params><param><value><struct>"
-                .length
+    fun convert(xml: String): List<Publication> {
 
-        fun convert(xml: String): List<Publication> {
+        /*
+         * Для поиска ключей и значений используется линейный поиск по строке.
+         * Строгая привязка к структуре ответа делает алгоритм ненадёжным.
+         * Эта реализация оставлена в угоду производительности.
+         * Так же её можно распараллелить
+         *
+         * Сравнение алгоритмов, конкретные значения времени получены на SDM660:
+         * Current | x, ~300 мс
+         * XPP     | 2x ~700 мс
+         * Soup    | 5x, ~1400 мс
+         *
+         */
 
-            /*
-             *   Для производительности используется последовательный поиск по строке
-             * необходимых ключей и вычленение значений.
-             * Этот алгоритм очень строго завязан на структуре ответа от сервера
-             * и очень ненадёжен. Но за то даёт огромный прирост в скорости.
-             *
-             * Скорость парсинга ответа на 20 публикаций:
-             * JSoup  - 1400 мс
-             * XPP    - 700 мс
-             * Search - 300 мс
-             *
-             * Так же, данный метод очень легко распараллеливается.
-             */
+        val publications = mutableListOf<Publication>()
 
-            val publications = mutableListOf<Publication>()
-
-            var offset = XML_RPC_START_LEN
-            while (true) {
-
-                offset = xml.indexOf("<struct", offset)
-                if (offset == -1) {
-                    break
-                }
-
-                val parsedPublication = parsePublication(xml, offset)
-
-                publications += parsedPublication.publication
-                offset = parsedPublication.offsetToEndOfLastKey
+        var offset = XML_RPC_HEADER_LEN
+        while (true) {
+            offset = xml.indexOf("<struct", offset)
+            if (offset == -1) {
+                break
             }
 
-            return publications
+            parsePublication(xml, offset).let {
+                publications += it.publication
+                offset = it.offsetToEndOfLastKey
+            }
         }
 
-        private fun parsePublication(
-            xml: String,
-            initialOffset: Int
-        ): ParsedPublication {
+        return publications
+    }
+
+    private fun parsePublication(
+        xml: String,
+        initialOffset: Int
+    ): ParsedPublication {
 
         // Порядок ключей критичен!
         val idKey = parseKey(xml, "itemid", "int", initialOffset)
@@ -96,43 +91,47 @@ class PublicationsFactory {
         )
     }
 
-        private fun parseKey(
-            xml: String,
-            key: String,
-            type: String,
-            offset: Int
-        ): ParsedKey {
+    private fun parseKey(
+        xml: String,
+        key: String,
+        type: String,
+        offset: Int
+    ): ParsedKey {
 
-            /*
-             * XML представление значения
-             *
-             * <member>
-             *   <name> NAME </name
-             *   <value>
-             *     <TYPE> VALUE </TYPE>
-             *   </value>
-             * </member>
-             */
+        /*
+         * Алгоритм разбора:
+         *  - Ищём ключ в xml
+         *  - Рассчитываем отступ до значения
+         *  - Ищём конец данных
+         *  - Возвращаем строку между скобками > <
+         *
+         * Значение в XML RPC представляется так:
+         *
+         * <member>
+         *   <name>NAME</name>
+         *   <value>
+         *     <TYPE>VALUE</TYPE>
+         *   </value>
+         * </member>
+         */
 
+        val indexOfKey = xml.indexOf(key, offset)
+        val keyTail = "$key</name><value><$type>"
 
-            val indexOfKey = xml.indexOf(key, offset)
+        val indexOfBody = indexOfKey + keyTail.length
+        val indexOfEnd = xml.indexOf('<', indexOfBody)
 
-            val tail = "$key</name><value><$type>"
-            val indexOfBody = indexOfKey + tail.length
+        return ParsedKey(
+            xml.substring(indexOfBody until indexOfEnd),
+            indexOfEnd
+        )
+    }
 
-            val indexOfEnd = xml.indexOf('<', indexOfBody)
-
-            return ParsedKey(
-                xml.substring(indexOfBody until indexOfEnd),
-                indexOfEnd
-            )
+    private fun decodeBase64(str: String): String {
+        return try {
+            String(Base64.decode(str, Base64.NO_WRAP))
+        } catch (ex: Exception) {
+            str
         }
-
-        private fun decodeBase64(str: String): String =
-            try {
-                String(Base64.decode(str, Base64.NO_WRAP))
-            } catch (ex: Exception) {
-                str
-            }
     }
 }
