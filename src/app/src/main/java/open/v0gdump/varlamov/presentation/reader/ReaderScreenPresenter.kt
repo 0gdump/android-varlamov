@@ -6,13 +6,18 @@ import kotlinx.coroutines.launch
 import moxy.InjectViewState
 import open.v0gdump.recontent.ReContent
 import open.v0gdump.recontent.ReContentEvents
+import open.v0gdump.recontent.model.NodeRule
 import open.v0gdump.recontent.model.SectionRule
 import open.v0gdump.recontent.model.SpecificNodesHandler
+import open.v0gdump.varlamov.BuildConfig
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.model.reader.PublicationElement
 import open.v0gdump.varlamov.model.reader.TextPublicationElement
+import open.v0gdump.varlamov.model.reader.UnimplementedPublicationElement
 import open.v0gdump.varlamov.presentation.global.Contentator
 import open.v0gdump.varlamov.presentation.global.MvpPresenterX
+import org.jsoup.nodes.Element
+import org.jsoup.nodes.TextNode
 
 @InjectViewState
 class ReaderScreenPresenter(
@@ -20,6 +25,30 @@ class ReaderScreenPresenter(
 ) : MvpPresenterX<ReaderScreenView>() {
 
     var publication: Publication? = null
+
+    //region ReContent
+
+    private val recontentRules = listOf(
+        SectionRule(
+            selector = "div#entrytext.j-e-text",
+            childRules = listOf(
+                NodeRule(selector = "i", callback = ::appendToTextBuffer),
+                NodeRule(selector = "a", callback = ::appendToTextBuffer),
+                NodeRule(selector = "br", callback = ::addTextPart)
+            ),
+            specificNodesHandler = SpecificNodesHandler(
+                textNodeHandler = ::appendToTextBuffer,
+                unmatchedElementHandler = ::addUnimplementedPart
+            )
+        )
+    )
+
+    private var paragraphBuffer = ""
+    private val publicationParts = mutableListOf<PublicationElement>()
+
+    //endregion
+
+    //region Content state machine
 
     private val contentator = Contentator.Store<PublicationElement>()
     private val eventsHandler = ReContentEvents(
@@ -31,23 +60,7 @@ class ReaderScreenPresenter(
         }
     )
 
-    // TODO
-    private val recontentRules = listOf(
-        SectionRule(
-            selector = "div#entrytext.j-e-text",
-            childRules = emptyList(),
-            specificNodesHandler = SpecificNodesHandler(
-                textNodeHandler = { node ->
-                    val text = node.text()
-                    if (text.isNotBlank()) {
-                        publicationParts.add(TextPublicationElement(text))
-                    }
-                }
-            )
-        )
-    )
-
-    private val publicationParts = mutableListOf<PublicationElement>()
+    //endregion
 
     init {
         contentator.render = { viewState.renderState(it) }
@@ -69,14 +82,41 @@ class ReaderScreenPresenter(
 
     fun onActivityCreated() = load()
 
+    fun refresh() = contentator.proceed(Contentator.Action.Refresh)
+    fun load() = contentator.proceed(Contentator.Action.LoadData)
+
     private fun runReContent() {
         check(publication != null) { "No publication in presenter" }
+
+        paragraphBuffer = ""
+        publicationParts.clear()
+
         ReContent(application, eventsHandler).apply {
             sectionsRules = recontentRules
             load(publication!!.url)
         }
     }
 
-    fun refresh() = contentator.proceed(Contentator.Action.Refresh)
-    fun load() = contentator.proceed(Contentator.Action.LoadData)
+    private fun appendToTextBuffer(element: Element, tag: String?) {
+        if (element.html().isNotBlank()) {
+            paragraphBuffer += element.outerHtml()
+        }
+    }
+
+    private fun appendToTextBuffer(node: TextNode) {
+        paragraphBuffer += node.text()
+    }
+
+    private fun addTextPart(element: Element, tag: String?) {
+        if (paragraphBuffer.isNotBlank()) {
+            publicationParts.add(TextPublicationElement(paragraphBuffer))
+            paragraphBuffer = ""
+        }
+    }
+
+    private fun addUnimplementedPart(element: Element) {
+        if (BuildConfig.DEBUG) {
+            publicationParts.add(UnimplementedPublicationElement(element.cssSelector()))
+        }
+    }
 }
