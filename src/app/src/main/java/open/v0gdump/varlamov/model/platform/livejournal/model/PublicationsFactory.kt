@@ -64,34 +64,37 @@ class PublicationsFactory {
             initialOffset: Int
         ): ParsedPublication {
 
-            // Важно соблюдать последовательность поиска ключей!
-            val titleKey = parseKey(xml, "subject", "base64", initialOffset)
-            val contentKey = parseKey(xml, "event", "base64", titleKey.offsetToEnd)
-            val tagsKey = parseKey(xml, "taglist", "base64", contentKey.offsetToEnd)
-            val timeKey = parseKey(xml, "logtime", "string", tagsKey.offsetToEnd)
-            val urlKey = parseKey(xml, "url", "string", timeKey.offsetToEnd)
+        // Порядок ключей критичен!
+        val idKey = parseKey(xml, "itemid", "int", initialOffset)
+        val titleKey = parseKey(xml, "subject", "base64", idKey.offsetToEnd)
+        val contentKey = parseKey(xml, "event", "base64", titleKey.offsetToEnd)
+        val tagsKey = parseKey(xml, "taglist", "base64", contentKey.offsetToEnd)
+        val timeKey = parseKey(xml, "logtime", "string", tagsKey.offsetToEnd)
+        val urlKey = parseKey(xml, "url", "string", timeKey.offsetToEnd)
 
-            val title = decodeBase64(titleKey.value)
-            val content = decodeBase64(contentKey.value)
-            val tags = decodeBase64(tagsKey.value).split(", ")
-            val time = DateTimeUtils.parseString(
-                timeKey.value,
-                "yyyy-MM-dd HH:mm:ss",
-                DateTimeZone.UTC
-            )
-            val url = urlKey.value
+        val id = idKey.value.toInt()
+        val title = decodeBase64(titleKey.value)
+        val content = decodeBase64(contentKey.value)
+        val tags = decodeBase64(tagsKey.value).split(", ")
+        val time = DateTimeUtils.parseString(
+            timeKey.value,
+            "yyyy-MM-dd HH:mm:ss",
+            DateTimeZone.UTC
+        )
+        val url = urlKey.value
 
-            return ParsedPublication(
-                Publication(
-                    title,
-                    content,
-                    tags,
-                    time,
-                    url
-                ),
-                urlKey.offsetToEnd
-            )
-        }
+        return ParsedPublication(
+            Publication(
+                id,
+                title,
+                content,
+                tags,
+                time,
+                url
+            ),
+            urlKey.offsetToEnd
+        )
+    }
 
         private fun parseKey(
             xml: String,
