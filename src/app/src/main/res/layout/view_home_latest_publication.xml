@@ -21,7 +21,7 @@
 	<androidx.appcompat.widget.AppCompatImageView
 		android:layout_width="0dp"
 		android:layout_height="0dp"
-		android:background="@drawable/gradient_bg"
+		android:background="@drawable/background_gradient"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintDimensionRatio="H,16:9"
 		app:layout_constraintEnd_toEndOf="parent"

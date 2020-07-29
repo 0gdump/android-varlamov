@@ -21,7 +21,8 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
     private val adapter by lazy {
         ContentAdapter(
             { _, _ -> false },
-            TextPEAdapterDelegate()
+            TextElementDelegate(),
+            UnimplementedElementDelegate()
         )
     }
 
@@ -30,7 +31,6 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
 
         presenter.publication = arguments?.get("publication") as Publication
 
-        // FIXME(CHECK) Is this works???
         contentRenderView.toolbar.setNavigationIcon(R.drawable.ic_back)
         contentRenderView.toolbar.title = presenter.publication?.title.orElse { "Публикация" }
 
@@ -47,6 +47,8 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
     }
 
     override fun showMessage(message: String) {
-        Toasty.info(activity, message).show()
+        if (message.isNotBlank()) {
+            Toasty.normal(activity, message).show()
+        }
     }
 }

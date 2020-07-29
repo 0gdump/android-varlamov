@@ -1,5 +1,7 @@
 package open.v0gdump.varlamov.ui.reader
 
+import android.os.Build
+import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +11,7 @@ import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.model.reader.TextPublicationElement
 import open.v0gdump.varlamov.util.inflate
 
-class TextPEAdapterDelegate : AdapterDelegate<MutableList<Any>>() {
+class TextElementDelegate : AdapterDelegate<MutableList<Any>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup) =
         ViewHolder(parent.inflate(R.layout.item_publication_text))
@@ -23,7 +25,14 @@ class TextPEAdapterDelegate : AdapterDelegate<MutableList<Any>>() {
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>
     ) {
-        holder.itemView.textView.text = (items[position] as TextPublicationElement).text
+        val text = (items[position] as TextPublicationElement).text
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.itemView.textView.text =
+                Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            holder.itemView.textView.text = Html.fromHtml(text)
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
