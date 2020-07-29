@@ -22,8 +22,7 @@ class ByDateScreen : MvpFragmentX(R.layout.fragment_by_date), ByDateScreenView {
             { /* Do nothing */ },
             { o, n ->
                 if (o is Publication && n is Publication)
-                // TODO Требуется быстро сравнивать 2 публикации, иначе возникают странные дергания
-                    false
+                    o.id == n.id
                 else
                     false
             },
