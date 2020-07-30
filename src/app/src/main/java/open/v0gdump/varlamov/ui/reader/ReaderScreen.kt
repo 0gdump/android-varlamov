@@ -21,6 +21,7 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
     private val adapter by lazy {
         ContentAdapter(
             { _, _ -> false },
+            ImageElementDelegate(),
             TextElementDelegate(),
             UnimplementedElementDelegate()
         )

@@ -1,6 +1,5 @@
 package open.v0gdump.varlamov.presentation.reader
 
-import android.app.Application
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import moxy.InjectViewState
@@ -9,8 +8,10 @@ import open.v0gdump.recontent.ReContentEvents
 import open.v0gdump.recontent.model.NodeRule
 import open.v0gdump.recontent.model.SectionRule
 import open.v0gdump.recontent.model.SpecificNodesHandler
+import open.v0gdump.varlamov.App
 import open.v0gdump.varlamov.BuildConfig
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
+import open.v0gdump.varlamov.model.reader.ImagePublicationElement
 import open.v0gdump.varlamov.model.reader.PublicationElement
 import open.v0gdump.varlamov.model.reader.TextPublicationElement
 import open.v0gdump.varlamov.model.reader.UnimplementedPublicationElement
@@ -34,7 +35,9 @@ class ReaderScreenPresenter(
             childRules = listOf(
                 NodeRule(selector = "i", callback = ::appendToTextBuffer),
                 NodeRule(selector = "a", callback = ::appendToTextBuffer),
-                NodeRule(selector = "br", callback = ::addTextPart)
+                NodeRule(selector = "br", callback = ::addTextPart),
+                NodeRule(selector = ".j-imagewrapper", callback = ::addFeedbackImagePart),
+                NodeRule(selector = "img", callback = ::addImagePart)
             ),
             specificNodesHandler = SpecificNodesHandler(
                 textNodeHandler = ::appendToTextBuffer,
@@ -118,5 +121,19 @@ class ReaderScreenPresenter(
         if (BuildConfig.DEBUG) {
             publicationParts.add(UnimplementedPublicationElement(element.cssSelector()))
         }
+    }
+
+    private fun addFeedbackImagePart(element: Element, tag: String?) {
+        val imgs = element.getElementsByTag("img")
+        if (imgs.size == 0) {
+            return
+        }
+
+        // FIXME(CODE) Create feedback (!!!) image part
+        addImagePart(imgs.first(), tag)
+    }
+
+    private fun addImagePart(element: Element, tag: String?) {
+        publicationParts.add(ImagePublicationElement(element.attr("src")))
     }
 }
