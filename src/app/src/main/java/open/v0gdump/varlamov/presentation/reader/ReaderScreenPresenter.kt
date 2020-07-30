@@ -21,9 +21,7 @@ import org.jsoup.nodes.Element
 import org.jsoup.nodes.TextNode
 
 @InjectViewState
-class ReaderScreenPresenter(
-    private val application: Application
-) : MvpPresenterX<ReaderScreenView>() {
+class ReaderScreenPresenter : MvpPresenterX<ReaderScreenView>() {
 
     var publication: Publication? = null
 
@@ -94,7 +92,7 @@ class ReaderScreenPresenter(
         paragraphBuffer = ""
         publicationParts.clear()
 
-        ReContent(application, eventsHandler).apply {
+        ReContent(App.instance, eventsHandler).apply {
             sectionsRules = recontentRules
             load(publication!!.url)
         }

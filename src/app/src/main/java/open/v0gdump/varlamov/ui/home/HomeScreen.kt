@@ -1,6 +1,7 @@
 package open.v0gdump.varlamov.ui.home
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import moxy.ktx.moxyPresenter
 import open.v0gdump.varlamov.R
@@ -36,7 +37,6 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
             contentClickListener = {
                 unimplemented()
             },
-
             retryClickListener = { fetchFreshPublication() }
         )
 
@@ -103,5 +103,12 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
     override fun showErrorWhileLoadingNews() {
         layout.news_card.showError()
+    }
+
+    override fun navigateToPublicationScreen(publication: Publication) {
+        activity.navigateTo(
+            R.id.reader_screen,
+            bundleOf("publication" to publication)
+        )
     }
 }

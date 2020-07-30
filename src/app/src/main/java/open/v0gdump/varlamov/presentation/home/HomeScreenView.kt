@@ -2,6 +2,7 @@ package open.v0gdump.varlamov.presentation.home
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.model.platform.youtube.model.Video
@@ -17,4 +18,7 @@ interface HomeScreenView : MvpView {
 
     fun showNews(news: List<Publication>)
     fun showErrorWhileLoadingNews()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun navigateToPublicationScreen(publication: Publication)
 }

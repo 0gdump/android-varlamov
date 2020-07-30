@@ -16,7 +16,7 @@ import open.v0gdump.varlamov.util.orElse
 
 class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
 
-    private val presenter by moxyPresenter { ReaderScreenPresenter(app) }
+    private val presenter by moxyPresenter { ReaderScreenPresenter() }
 
     private val adapter by lazy {
         ContentAdapter(
