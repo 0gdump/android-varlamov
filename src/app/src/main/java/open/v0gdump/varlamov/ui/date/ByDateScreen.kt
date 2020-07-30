@@ -1,6 +1,7 @@
 package open.v0gdump.varlamov.ui.date
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_by_date.*
 import moxy.ktx.moxyPresenter
@@ -51,5 +52,12 @@ class ByDateScreen : MvpFragmentX(R.layout.fragment_by_date), ByDateScreenView {
 
     override fun showMessage(message: String) {
         Toasty.info(activity, message).show()
+    }
+
+    override fun navigateToPublicationScreen(publication: Publication) {
+        activity.navigateTo(
+            R.id.reader_screen,
+            bundleOf("publication" to publication)
+        )
     }
 }

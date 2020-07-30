@@ -100,5 +100,7 @@ class ByDateScreenPresenter : MvpPresenterX<ByDateScreenView>() {
         paginator.proceed(Paginator.Action.Refresh)
     }
 
-    fun onPublicationClicked(publication: Publication) {}
+    fun onPublicationClicked(publication: Publication) {
+        viewState.navigateToPublicationScreen(publication)
+    }
 }

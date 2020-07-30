@@ -74,5 +74,7 @@ class PublicationsScreenPresenter : MvpPresenterX<PublicationsScreenView>() {
     fun refresh() = paginator.proceed(Paginator.Action.Refresh)
     fun loadMore() = paginator.proceed(Paginator.Action.LoadMore)
 
-    fun onPublicationClicked(publication: Publication) {}
+    fun onPublicationClicked(publication: Publication) {
+        viewState.navigateToPublicationScreen(publication)
+    }
 }

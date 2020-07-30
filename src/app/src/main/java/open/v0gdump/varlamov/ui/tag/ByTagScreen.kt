@@ -1,6 +1,7 @@
 package open.v0gdump.varlamov.ui.tag
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_by_date.*
 import moxy.ktx.moxyPresenter
@@ -49,5 +50,12 @@ class ByTagScreen : MvpFragmentX(R.layout.fragment_by_tag), ByTagScreenView {
 
     override fun showMessage(message: String) {
         Toasty.info(activity, message).show()
+    }
+
+    override fun navigateToPublicationScreen(publication: Publication) {
+        activity.navigateTo(
+            R.id.reader_screen,
+            bundleOf("publication" to publication)
+        )
     }
 }
