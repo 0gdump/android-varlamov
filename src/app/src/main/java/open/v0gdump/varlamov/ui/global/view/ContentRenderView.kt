@@ -86,7 +86,8 @@ class ContentRenderView : FrameLayout {
                 swipeToRefresh.visible(true)
                 swipeToRefresh.isRefreshing = true
                 fullscreenProgressView.visible(false)
-                adapter?.update(state.data as List<Any>)
+                // FIXME(HACK) Disable update bc data is loss in post block
+                //adapter?.update(state.data as List<Any>)
                 emptyView.hide()
             }
         }
