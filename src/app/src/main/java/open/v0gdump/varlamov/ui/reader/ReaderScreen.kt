@@ -23,6 +23,7 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
             { _, _ -> false },
             ImageElementDelegate(),
             TextElementDelegate(),
+            QuoteElementDelegate(),
             UnimplementedElementDelegate()
         )
     }
