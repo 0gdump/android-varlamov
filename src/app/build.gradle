@@ -77,7 +77,7 @@ dependencies {
 
     // Parsers
     implementation "org.jsoup:jsoup:1.12.1"
-    implementation "com.github.0gdump:android-recontent:f116c43634"
+    implementation "com.github.0gdump:android-recontent:2ac1a0450f"
 
     // Utils
     implementation "joda-time:joda-time:2.10.1"
