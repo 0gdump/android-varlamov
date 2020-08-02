@@ -197,7 +197,8 @@ class ReaderScreenPresenter : MvpPresenterX<ReaderScreenView>() {
         if (quoteParagraphBuffer.isNotEmpty()) addQuotePart()
         if (quoteParts.isEmpty()) return
 
-        publicationParts.add(QuotePublicationElement(quoteParts))
+        // .toList() копирует список. Без .toList() класс сохранит ссылку на quoteParts
+        publicationParts.add(QuotePublicationElement(quoteParts.toList()))
     }
 
     //endregion

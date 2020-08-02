@@ -5,13 +5,9 @@ import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import open.v0gdump.varlamov.ui.global.adapter.DummyDiffItemCallback
 
 class ContentAdapter(
-    private val itemDiff: (old: Any, new: Any) -> Boolean,
+    itemDiff: (old: Any, new: Any) -> Boolean,
     vararg delegate: AdapterDelegate<MutableList<Any>>
-) : AsyncListDifferDelegationAdapter<Any>(
-    DummyDiffItemCallback(
-        itemDiff
-    )
-) {
+) : AsyncListDifferDelegationAdapter<Any>(DummyDiffItemCallback(itemDiff)) {
 
     init {
         items = mutableListOf()
