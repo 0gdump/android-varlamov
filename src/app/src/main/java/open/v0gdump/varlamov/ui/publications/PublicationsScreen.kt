@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_publications.*
+import kotlinx.android.synthetic.main.view_content_render.view.*
 import moxy.ktx.moxyPresenter
+import open.v0gdump.varlamov.App
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.presentation.global.Paginator
@@ -35,6 +37,9 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        paginalRenderView.toolbar.title = App.res.getString(R.string.nav_publications)
+
         paginalRenderView.init(
             { presenter.refresh() },
             adapter

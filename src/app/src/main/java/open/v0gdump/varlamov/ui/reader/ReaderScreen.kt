@@ -1,10 +1,12 @@
 package open.v0gdump.varlamov.ui.reader
 
 import android.os.Bundle
+import androidx.navigation.fragment.findNavController
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_reader.*
 import kotlinx.android.synthetic.main.view_content_render.view.*
 import moxy.ktx.moxyPresenter
+import open.v0gdump.varlamov.App
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
 import open.v0gdump.varlamov.presentation.global.Contentator
@@ -34,7 +36,9 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
         presenter.publication = arguments?.get("publication") as Publication
 
         contentRenderView.toolbar.setNavigationIcon(R.drawable.ic_back)
-        contentRenderView.toolbar.title = presenter.publication?.title.orElse { "Публикация" }
+        contentRenderView.toolbar.title = presenter.publication?.title
+            .orElse { App.res.getString(R.string.publication) }
+        contentRenderView.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         contentRenderView.init(
             { presenter.refresh() },

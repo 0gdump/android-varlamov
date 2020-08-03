@@ -52,6 +52,7 @@ class PaginalRenderView : FrameLayout {
         post {
             when (state) {
                 is Paginator.State.Empty -> {
+                    appBar.visible(false)
                     swipeToRefresh.isRefreshing = false
                     fullscreenProgressView.visible(false)
                     adapter?.fullData = true
@@ -60,6 +61,7 @@ class PaginalRenderView : FrameLayout {
                     swipeToRefresh.visible(true)
                 }
                 is Paginator.State.EmptyProgress -> {
+                    appBar.visible(false)
                     swipeToRefresh.isRefreshing = false
                     fullscreenProgressView.visible(true)
                     adapter?.fullData = false
@@ -68,6 +70,7 @@ class PaginalRenderView : FrameLayout {
                     swipeToRefresh.visible(false)
                 }
                 is Paginator.State.EmptyError -> {
+                    appBar.visible(false)
                     swipeToRefresh.isRefreshing = false
                     fullscreenProgressView.visible(false)
                     adapter?.fullData = false
@@ -76,6 +79,7 @@ class PaginalRenderView : FrameLayout {
                     swipeToRefresh.visible(true)
                 }
                 is Paginator.State.Data<*> -> {
+                    appBar.visible(true)
                     swipeToRefresh.isRefreshing = false
                     fullscreenProgressView.visible(false)
                     adapter?.fullData = false
@@ -84,6 +88,7 @@ class PaginalRenderView : FrameLayout {
                     swipeToRefresh.visible(true)
                 }
                 is Paginator.State.Refresh<*> -> {
+                    appBar.visible(true)
                     swipeToRefresh.isRefreshing = true
                     fullscreenProgressView.visible(false)
                     adapter?.fullData = false
@@ -100,6 +105,7 @@ class PaginalRenderView : FrameLayout {
                     swipeToRefresh.visible(true)
                 }
                 is Paginator.State.FullData<*> -> {
+                    appBar.visible(true)
                     swipeToRefresh.isRefreshing = false
                     fullscreenProgressView.visible(false)
                     adapter?.fullData = true

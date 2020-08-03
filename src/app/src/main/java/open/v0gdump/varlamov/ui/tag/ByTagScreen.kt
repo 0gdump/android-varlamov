@@ -3,7 +3,8 @@ package open.v0gdump.varlamov.ui.tag
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_by_date.*
+import kotlinx.android.synthetic.main.fragment_by_tag.*
+import kotlinx.android.synthetic.main.view_paginal_render.view.*
 import moxy.ktx.moxyPresenter
 import open.v0gdump.varlamov.R
 import open.v0gdump.varlamov.model.platform.livejournal.model.Publication
@@ -37,6 +38,8 @@ class ByTagScreen : MvpFragmentX(R.layout.fragment_by_tag), ByTagScreenView {
         super.onActivityCreated(savedInstanceState)
 
         presenter.tag = arguments?.getString("tag")!!
+
+        paginalRenderView.toolbar.title = presenter.tag
 
         paginalRenderView.init(
             { presenter.refresh() },
