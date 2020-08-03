@@ -2,6 +2,7 @@ package open.v0gdump.varlamov.ui.home
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import moxy.ktx.moxyPresenter
 import open.v0gdump.varlamov.R
@@ -23,6 +24,16 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
     private fun setupToolbar() {
         layout.toolbar.title = getString(R.string.home_title)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity.setSupportActionBar(toolbar)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity.setSupportActionBar(null)
     }
 
     private fun setupSwipeRefresh() {

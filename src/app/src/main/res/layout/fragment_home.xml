@@ -15,7 +15,8 @@
 
 		<androidx.core.widget.NestedScrollView
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+			android:layout_height="match_parent"
+			android:overScrollMode="never">
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -51,7 +52,7 @@
 	<com.google.android.material.appbar.AppBarLayout
 		android:layout_width="match_parent"
 		android:layout_height="144dp"
-		android:background="@android:color/transparent">
+		android:background="@color/colorFragmentBackground">
 
 		<com.google.android.material.appbar.CollapsingToolbarLayout
 			android:layout_width="match_parent"
