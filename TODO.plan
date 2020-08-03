@@ -1,31 +1,67 @@
 TODO.plan
-Updated: 2020/07/30
+Updated: 2020/08/03
+
+MVP plans:
+
+> All
+	- Toolbar
+		- Show publications by date
+		? Show settings
+	- Keep alive fragments
+
+> Home
+	- Rewrite home cards
+		- Logic
+			- Separate HomeScreenPresenter into multiple presenters
+			- Rewrite using state machines and mvp
+		- Ui
+			- Refresh button
+			- More button
+			- Remove helper's library for states ui
+	- Show video in same card
+		- Save youtube key in private file
+	- Open reader by click
+
+> Publications
+	- Collapsing toolbar
+	- Show tags
+	- Label on news posts
+
+> News
+	- Collapsing toolbar
+
+> About
+	- Implement
+	- Create links
+
+> Reader
+	- More publications
+	- Twitter
+	- Instagram
+	- Static recontent
+	
+Other improvements:
 
 > Ui
-  - Fix toolbar visual bugs
-  - Posts by date
-    - Button on toolbar
-    - Timezone selector
-  - Show tags on publication card
-  - About screen
-  - Auth
-  - Comments screen
-    - Write comment
-	- Read comment
-  - Reader screen
-    - Customize
-  - Offline collection
-  
+	- By date screen
+		- Timezone selector
+	- Auth screen
+	- Comments screen
+		- Write comment
+		- Read comment
+	- Reader screen
+		- Customize
+	- Offline collection
+	
 > Ux
-  - Unify fragment's toolbar
-  - Notifications
+	- Notifications
 
 > Code improvements
-  - Combine presenters and views
+	- Combine presenters and views
 	- Combine news and by tag screens (How moxy stores presenters?)
-  - Rewrite home card with contentator without dependencies
-  - Migrate to new LJ JSON API
-  - Migrate to Kotlin/Native, KTor
+	- Rewrite home card with contentator without dependencies
+	- Migrate to new LJ JSON API
+	- Migrate to Kotlin/Native, KTor
 
 > In far future
-  - Publications search
+	- Publications search
