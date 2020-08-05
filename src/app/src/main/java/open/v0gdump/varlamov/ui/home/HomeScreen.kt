@@ -45,8 +45,11 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
     private fun setupCards() {
         layout.fresh_publication_card.setup(
-            contentClickListener = {
-                unimplemented()
+            contentClickListener = { publication ->
+                activity.navigateTo(
+                    R.id.reader_screen,
+                    bundleOf("publication" to publication)
+                )
             },
             retryClickListener = { fetchFreshPublication() }
         )
@@ -59,6 +62,12 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
         )
 
         layout.news_card.setup(
+            onClickListener = { publication ->
+                activity.navigateTo(
+                    R.id.reader_screen,
+                    bundleOf("publication" to publication)
+                )
+            },
             moreClickListener = {
                 unimplemented()
             },

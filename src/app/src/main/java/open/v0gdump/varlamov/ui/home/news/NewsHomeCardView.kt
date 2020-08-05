@@ -14,16 +14,19 @@ class NewsHomeCardView(
     attrs: AttributeSet
 ) : HomeCardView(context, attrs) {
 
+    private lateinit var onClickListener: (Publication) -> Unit
+
     fun setup(
+        onClickListener: (Publication) -> Unit,
         moreClickListener: (() -> Unit)? = null,
         retryClickListener: (() -> Unit)? = null,
         setLoading: Boolean = false
     ) {
+        this.onClickListener = onClickListener
         super.setup(
             "Последние новости",
             R.layout.view_home_latest_news,
             moreClickListener,
-            null,
             retryClickListener,
             setLoading
         )
@@ -44,9 +47,7 @@ class NewsHomeCardView(
         }
         else -> {
             contentLayout.news_recycler.adapter =
-                NewsAdapter(
-                    content as List<Publication>
-                )
+                NewsAdapter(content as List<Publication>, onClickListener)
             hideOverlay()
         }
     }

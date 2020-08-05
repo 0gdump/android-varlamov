@@ -23,7 +23,6 @@ class YoutubeHomeCardView(
             "Новые видео",
             R.layout.view_home_current_videos,
             moreClickListener,
-            null,
             retryClickListener,
             setLoading
         )

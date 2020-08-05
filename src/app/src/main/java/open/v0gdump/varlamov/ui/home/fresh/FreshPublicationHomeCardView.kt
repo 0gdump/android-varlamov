@@ -18,16 +18,19 @@ class FreshPublicationHomeCardView(
     attrs: AttributeSet
 ) : HomeCardView(context, attrs) {
 
+    private lateinit var publication: Publication
+    private var contentClickListener: ((Any?) -> Unit)? = null
+
     fun setup(
-        contentClickListener: (() -> Unit)? = null,
+        contentClickListener: ((Any?) -> Unit)? = null,
         retryClickListener: (() -> Unit)? = null,
         setLoading: Boolean = false
     ) {
+        this.contentClickListener = contentClickListener
         super.setup(
             null,
             R.layout.view_home_latest_publication,
             null,
-            contentClickListener,
             retryClickListener,
             setLoading
         )
@@ -39,10 +42,16 @@ class FreshPublicationHomeCardView(
             throw RuntimeException("Method showContent requires Publication, given ${content.javaClass}")
         }
 
+        publication = content
+
         tryToLoadPreview(content.content)
 
         contentLayout.date.text = content.time.toString(TimeZone.getDefault())
         contentLayout.title.text = content.title
+
+        contentLayout.freshPublicationContainer.setOnClickListener {
+            contentClickListener?.invoke(content)
+        }
 
         hideOverlay()
     }

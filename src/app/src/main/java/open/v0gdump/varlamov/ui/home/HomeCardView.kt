@@ -24,15 +24,13 @@ abstract class HomeCardView(
 
     protected var contentRes: Int by initOnce()
 
-    private var moreClickListener: (() -> Unit)? = null
-    private var contentClickListener: (() -> Unit)? = null
-    private var retryClickListener: (() -> Unit)? = null
+    protected var moreClickListener: (() -> Unit)? = null
+    protected var retryClickListener: (() -> Unit)? = null
 
     protected fun setup(
         title: String?,
         contentRes: Int,
         moreClickListener: (() -> Unit)? = null,
-        contentClickListener: (() -> Unit)? = null,
         retryClickListener: (() -> Unit)? = null,
         setLoading: Boolean = true
     ) {
@@ -41,7 +39,6 @@ abstract class HomeCardView(
 
         this.moreClickListener = moreClickListener
         this.retryClickListener = retryClickListener
-        this.contentClickListener = contentClickListener
 
         inflateLayouts()
         setupCardLayout()
@@ -80,10 +77,6 @@ abstract class HomeCardView(
 
         cardLayout.more.setOnClickListener {
             this.moreClickListener?.invoke()
-        }
-
-        contentLayout.setOnClickListener {
-            this.contentClickListener?.invoke()
         }
     }
 
