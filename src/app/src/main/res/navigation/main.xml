@@ -4,19 +4,19 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	app:startDestination="@id/nav_home">
 
-	<fragment
+	<keep_state_fragment
 		android:id="@+id/nav_home"
 		android:name="open.v0gdump.varlamov.ui.home.HomeScreen"
 		android:label="@string/nav_home"
 		tools:layout="@layout/fragment_home" />
 
-	<fragment
+	<keep_state_fragment
 		android:id="@+id/nav_publications"
 		android:name="open.v0gdump.varlamov.ui.publications.PublicationsScreen"
 		android:label="@string/nav_publications"
 		tools:layout="@layout/fragment_publications" />
 
-	<fragment
+	<keep_state_fragment
 		android:id="@+id/nav_news"
 		android:name="open.v0gdump.varlamov.ui.news.NewsScreen"
 		android:label="@string/nav_news"
