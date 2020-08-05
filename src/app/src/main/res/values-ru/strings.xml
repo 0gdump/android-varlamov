@@ -20,4 +20,5 @@
 	<string name="empty_data">Нет данных</string>
 	<string name="empty_data_description">Тут ничего нет. \nПопробуйте позже.</string>
 	<string name="publication">Публикация</string>
+	<string name="menu_publications_by_date">Публикации за дату</string>
 </resources>

@@ -21,6 +21,7 @@
 	<string name="empty_data">Empty data</string>
 	<string name="empty_data_description">You have not data yet.\nPlease try again later.</string>
 	<string name="publication">Publication</string>
+	<string name="menu_publications_by_date">Publications by date</string>
 
 
 </resources>
