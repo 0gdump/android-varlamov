@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_publications.*
-import kotlinx.android.synthetic.main.view_content_render.view.*
+import kotlinx.android.synthetic.main.view_paginal_render.view.*
 import moxy.ktx.moxyPresenter
 import open.v0gdump.varlamov.App
 import open.v0gdump.varlamov.R
@@ -15,6 +15,7 @@ import open.v0gdump.varlamov.presentation.publications.PublicationsScreenView
 import open.v0gdump.varlamov.ui.global.MvpFragmentX
 import open.v0gdump.varlamov.ui.global.PublicationsAdapterDelegate
 import open.v0gdump.varlamov.ui.global.adapter.paginal.PaginalAdapter
+
 
 class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), PublicationsScreenView {
 
@@ -39,6 +40,8 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
         super.onActivityCreated(savedInstanceState)
 
         paginalRenderView.toolbar.title = App.res.getString(R.string.nav_publications)
+        paginalRenderView.toolbar.inflateMenu(R.menu.toolbar)
+        paginalRenderView.toolbar.setOnMenuItemClickListener { activity.onMenuItemSelected(it) }
 
         paginalRenderView.init(
             { presenter.refresh() },

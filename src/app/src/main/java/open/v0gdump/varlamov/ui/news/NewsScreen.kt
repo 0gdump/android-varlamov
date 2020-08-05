@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_by_tag.*
-import kotlinx.android.synthetic.main.view_content_render.view.*
+import kotlinx.android.synthetic.main.view_paginal_render.view.*
 import moxy.ktx.moxyPresenter
 import open.v0gdump.varlamov.App
 import open.v0gdump.varlamov.R
@@ -39,6 +39,8 @@ class NewsScreen : MvpFragmentX(R.layout.fragment_by_tag), NewsScreenView {
         super.onActivityCreated(savedInstanceState)
 
         paginalRenderView.toolbar.title = App.res.getString(R.string.nav_news)
+        paginalRenderView.toolbar.inflateMenu(R.menu.toolbar)
+        paginalRenderView.toolbar.setOnMenuItemClickListener { activity.onMenuItemSelected(it) }
 
         paginalRenderView.init(
             { presenter.refresh() },
