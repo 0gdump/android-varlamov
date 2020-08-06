@@ -1,11 +1,14 @@
 package open.v0gdump.varlamov.ui
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import moxy.MvpAppCompatActivity
 import open.v0gdump.varlamov.R
+import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 
 class MainActivity : MvpAppCompatActivity() {
@@ -22,13 +25,24 @@ class MainActivity : MvpAppCompatActivity() {
     }
 
     fun onMenuItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_publications_by_date -> {
-                Toast.makeText(this, "\uD83D\uDE48 Unimplemented", Toast.LENGTH_LONG).show()
-            }
-        }
+        val localDate = LocalDate()
+        
+        DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener { _, y, m, d -> showByDateScreen(y, m, d) },
+            localDate.year, localDate.monthOfYear, localDate.dayOfMonth
+        ).show()
 
         return true
+    }
+
+    private fun showByDateScreen(year: Int, month: Int, day: Int) {
+        val timestamp = DateTime(year, month, day, 0, 0).millis
+
+        navigateTo(
+            R.id.by_date_screen,
+            bundleOf("dateTimestamp" to timestamp)
+        )
     }
 
     fun navigateTo(destination: Int, bundle: Bundle) {
