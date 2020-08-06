@@ -6,13 +6,13 @@
 
 	<fragment
 		android:id="@+id/main_screen"
-		android:name="open.v0gdump.varlamov.ui.main.MainScreen"
+		android:name="com.varlamov.android.ui.main.MainScreen"
 		android:label="MainScreen"
 		tools:layout="@layout/fragment_main" />
 
 	<fragment
 		android:id="@+id/by_date_screen"
-		android:name="open.v0gdump.varlamov.ui.date.ByDateScreen"
+		android:name="com.varlamov.android.ui.date.ByDateScreen"
 		android:label="ByDateScreen"
 		tools:layout="@layout/fragment_by_date">
 		<argument
@@ -22,7 +22,7 @@
 
 	<fragment
 		android:id="@+id/by_tag_screen"
-		android:name="open.v0gdump.varlamov.ui.tag.ByTagScreen"
+		android:name="com.varlamov.android.ui.tag.ByTagScreen"
 		android:label="ByTagScreen"
 		tools:layout="@layout/fragment_by_tag">
 		<argument
@@ -32,12 +32,12 @@
 
 	<fragment
 		android:id="@+id/reader_screen"
-		android:name="open.v0gdump.varlamov.ui.reader.ReaderScreen"
+		android:name="com.varlamov.android.ui.reader.ReaderScreen"
 		android:label="ReaderScreen"
 		tools:layout="@layout/fragment_reader">
 		<argument
 			android:name="publication"
-			app:argType="open.v0gdump.varlamov.model.platform.livejournal.model.Publication" />
+			app:argType="com.varlamov.android.model.platform.livejournal.model.Publication" />
 	</fragment>
 
 </navigation>

@@ -6,4 +6,4 @@
 	android:layout_margin="8dp"
 	android:background="@drawable/background_rounded"
 	android:nestedScrollingEnabled="false"
-	android:padding="4dp" />
+	android:padding="@dimen/publication_item_padding" />

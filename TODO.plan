@@ -4,35 +4,15 @@ Updated: 2020/08/03
 MVP plans:
 
 > All
-	- Toolbar
-		- Show publications by date
-		? Show settings
-	- Keep alive fragments
+	- Fix back button
 
 > Home
-	- Rewrite home cards
-		- Logic
-			- Separate HomeScreenPresenter into multiple presenters
-			- Rewrite using state machines and mvp
-		- Ui
-			- Refresh button
-			- More button
-			- Remove helper's library for states ui
 	- Show video in same card
 		- Save youtube key in private file
-	- Open reader by click
 
 > Publications
-	- Collapsing toolbar
 	- Show tags
 	- Label on news posts
-
-> News
-	- Collapsing toolbar
-
-> About
-	- Implement
-	- Create links
 
 > Reader
 	- More publications
@@ -43,6 +23,17 @@ MVP plans:
 Other improvements:
 
 > Ui
+	- About
+		- Implement
+		- Create links
+	- Home
+		- Logic
+			- Separate HomeScreenPresenter into multiple presenters
+			- Rewrite using state machines and mvp
+		- Ui
+			- Refresh button
+			- More button
+			- Remove helper's library for states ui
 	- By date screen
 		- Timezone selector
 	- Auth screen

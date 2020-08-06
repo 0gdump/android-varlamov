@@ -6,19 +6,19 @@
 
 	<keep_state_fragment
 		android:id="@+id/nav_home"
-		android:name="open.v0gdump.varlamov.ui.home.HomeScreen"
+		android:name="com.varlamov.android.ui.home.HomeScreen"
 		android:label="@string/nav_home"
 		tools:layout="@layout/fragment_home" />
 
 	<keep_state_fragment
 		android:id="@+id/nav_publications"
-		android:name="open.v0gdump.varlamov.ui.publications.PublicationsScreen"
+		android:name="com.varlamov.android.ui.publications.PublicationsScreen"
 		android:label="@string/nav_publications"
 		tools:layout="@layout/fragment_publications" />
 
 	<keep_state_fragment
 		android:id="@+id/nav_news"
-		android:name="open.v0gdump.varlamov.ui.news.NewsScreen"
+		android:name="com.varlamov.android.ui.news.NewsScreen"
 		android:label="@string/nav_news"
 		tools:layout="@layout/fragment_by_tag" />
 

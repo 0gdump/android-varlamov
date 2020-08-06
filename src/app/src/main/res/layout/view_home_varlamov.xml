@@ -15,7 +15,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
-		android:text="Варламов"
+		android:text="@string/varlamov"
 		android:textColor="@color/black"
 		android:textSize="24sp"
 		android:textStyle="bold" />

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.varlamov.android.ui.global.view.PaginalRenderView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/paginalRenderView"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-
-	<open.v0gdump.varlamov.ui.global.view.PaginalRenderView
-		android:id="@+id/paginalRenderView"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
-</FrameLayout>
+	android:layout_height="match_parent"
+	android:background="@color/colorFragmentBackground" />

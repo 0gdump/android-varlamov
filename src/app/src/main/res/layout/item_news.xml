@@ -9,7 +9,7 @@
 	android:padding="12dp">
 
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/publication_datetime"
+		android:id="@+id/date"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="@string/date"
@@ -17,11 +17,12 @@
 		android:textSize="14sp" />
 
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/publication_title"
+		android:id="@+id/title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="4dp"
 		android:text="@string/title"
 		android:textAppearance="@style/TextAppearance.AppCompat.Title"
 		android:textSize="18sp" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

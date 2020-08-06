@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/homeScreenContainer"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/homeScreenContainer"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@color/colorFragmentBackground">
 
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id="@+id/home_refresh"
+		android:id="@+id/swipeRefresh"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@color/colorFragmentBackground"
@@ -27,18 +27,18 @@
 				android:orientation="vertical"
 				android:padding="8dp">
 
-				<open.v0gdump.varlamov.ui.home.fresh.FreshPublicationHomeCardView
-					android:id="@+id/fresh_publication_card"
+				<com.varlamov.android.ui.home.fresh.FreshPublicationHomeCardView
+					android:id="@+id/freshPublicationCard"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.home.youtube.YoutubeHomeCardView
-					android:id="@+id/videos_card"
+				<com.varlamov.android.ui.home.youtube.YoutubeHomeCardView
+					android:id="@+id/videosCard"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
-				<open.v0gdump.varlamov.ui.home.news.NewsHomeCardView
-					android:id="@+id/news_card"
+				<com.varlamov.android.ui.home.news.NewsHomeCardView
+					android:id="@+id/newsCard"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
 
@@ -63,7 +63,7 @@
 			app:expandedTitleMarginBottom="18dp"
 			app:expandedTitleMarginStart="10dp"
 			app:expandedTitleTextAppearance="@style/CollapsingToolbarTextStyle"
-			app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+			app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
 			<androidx.appcompat.widget.Toolbar
 				android:id="@+id/toolbar"

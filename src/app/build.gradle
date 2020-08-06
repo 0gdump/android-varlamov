@@ -8,7 +8,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId "retulff.open.varlamov"
+        applicationId "com.varlamov.android"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

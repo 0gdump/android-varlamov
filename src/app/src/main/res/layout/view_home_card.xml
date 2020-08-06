@@ -10,7 +10,7 @@
 	app:cardUseCompatPadding="true">
 
 	<com.gturedi.views.StatefulLayout
-		android:id="@+id/stateful_container"
+		android:id="@+id/statefulContainer"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
@@ -19,7 +19,7 @@
 			android:layout_height="match_parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
-				android:id="@+id/header_container"
+				android:id="@+id/headerContainer"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -34,13 +34,13 @@
 					android:text="@string/blank"
 					android:textAppearance="@style/TextAppearance.AppCompat.Title"
 					android:textSize="16sp"
-					app:layout_constraintBottom_toBottomOf="@id/more"
-					app:layout_constraintEnd_toStartOf="@id/more"
+					app:layout_constraintBottom_toBottomOf="@id/moreButton"
+					app:layout_constraintEnd_toStartOf="@id/moreButton"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="@id/more" />
+					app:layout_constraintTop_toTopOf="@id/moreButton" />
 
 				<com.google.android.material.button.MaterialButton
-					android:id="@+id/more"
+					android:id="@+id/moreButton"
 					style="@style/Widget.MaterialComponents.Button.TextButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
 			<!-- layout_constraintHeight_default is deprecated -->
 			<!-- но без этого height становится 0dp -->
 			<FrameLayout
-				android:id="@+id/container"
+				android:id="@+id/contentContainer"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				app:layout_constrainedHeight="true"
@@ -63,7 +63,7 @@
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintHeight_default="wrap"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/header_container" />
+				app:layout_constraintTop_toBottomOf="@id/headerContainer" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</com.gturedi.views.StatefulLayout>
