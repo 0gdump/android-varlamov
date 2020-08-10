@@ -4,25 +4,33 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
+import com.varlamov.android.App
 import com.varlamov.android.R
+import com.varlamov.android.Screens
 import moxy.MvpAppCompatActivity
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import java.util.*
-
 
 class MainActivity : MvpAppCompatActivity() {
 
-    private val navController by lazy {
-        Navigation.findNavController(
-            findViewById(R.id.navigationContainer)
-        )
-    }
+    private val navigator = SupportAppNavigator(this, R.id.navigationContainer)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        App.router.newRootScreen(Screens.MainFlow)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        App.navigationHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        App.navigationHolder.removeNavigator()
     }
 
     fun onMenuItemSelected(item: MenuItem): Boolean {
@@ -49,6 +57,6 @@ class MainActivity : MvpAppCompatActivity() {
     }
 
     fun navigateTo(destination: Int, bundle: Bundle) {
-        navController.navigate(destination, bundle)
+        //navController.navigate(destination, bundle)
     }
 }
