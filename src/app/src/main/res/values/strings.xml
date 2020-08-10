@@ -25,5 +25,6 @@
 	<string name="varlamov">Varlamov</string>
 	<string name="home_latest_news">Latest news</string>
 	<string name="home_youtube_videos">New videos</string>
+	<string name="label_news">News</string>
 
 </resources>

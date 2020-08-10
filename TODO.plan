@@ -4,20 +4,14 @@ Updated: 2020/08/03
 MVP plans:
 
 > All
-	- Fix back button
-
-> Home
-	- Show video in same card
-		- Save youtube key in private file
-
-> Publications
-	- Show tags
-	- Label on news posts
+	- Rewrite navigation
 
 > Reader
 	- More publications
+	- Comments button
 	- Twitter
 	- Instagram
+	^ Telegram links
 	- Static recontent
 	
 Other improvements:
@@ -46,6 +40,10 @@ Other improvements:
 	
 > Ux
 	- Notifications
+
+> ReContent
+	- Load only until post not loaded
+		- Is this part need to be written in Rust?
 
 > Code improvements
 	- Combine presenters and views

@@ -15,6 +15,7 @@
 		android:layout_height="wrap_content"
 		android:paddingTop="2dp"
 		android:paddingBottom="2dp"
+		android:text="Date"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +26,7 @@
 		android:layout_height="wrap_content"
 		android:paddingTop="2dp"
 		android:paddingBottom="2dp"
+		android:text="Title"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/date" />
 
@@ -35,10 +37,46 @@
 		android:paddingTop="2dp"
 		android:paddingBottom="2dp"
 		android:visibility="gone"
-		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintDimensionRatio="H,16:9"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/title" />
+
+	<co.lujun.androidtagview.TagContainerLayout
+		android:id="@+id/tagsContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp"
+		android:visibility="gone"
+		app:container_background_color="@android:color/transparent"
+		app:container_border_color="@android:color/transparent"
+		app:container_border_width="0dp"
+		app:container_enable_drag="false"
+		app:horizontal_interval="4dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/preview"
+		app:tag_background_color="#FFFFFF"
+		app:tag_border_color="#B1BCBE"
+		app:tag_border_width="0.5dp"
+		app:tag_clickable="true"
+		app:tag_max_length="99"
+		app:tag_theme="none"
+		app:vertical_interval="4dp" />
+
+	<TextView
+		android:id="@+id/newsLabel"
+		style="@style/LabelNews"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp"
+		android:background="@drawable/background_news_label"
+		android:padding="8dp"
+		android:text="@string/label_news"
+		android:textColor="@color/white"
+		android:textSize="14sp"
+		android:visibility="gone"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/preview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
