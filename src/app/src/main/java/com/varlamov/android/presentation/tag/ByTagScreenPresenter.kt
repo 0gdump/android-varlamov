@@ -1,5 +1,8 @@
 package com.varlamov.android.presentation.tag
 
+import android.util.Log
+import com.varlamov.android.App
+import com.varlamov.android.Screens
 import com.varlamov.android.model.Blog
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.platform.livejournal.model.PublicationsFactory
@@ -15,14 +18,16 @@ import retrofit2.Call
 import retrofit2.Response
 
 @InjectViewState
-class ByTagScreenPresenter : MvpPresenterX<ByTagScreenView>() {
-
-    var tag: String = "p-news"
+class ByTagScreenPresenter(
+    private val publicationsTag: String
+) : MvpPresenterX<ByTagScreenView>() {
 
     private val paginator = Paginator.Store<Publication>()
 
     init {
-        paginator.render = { viewState.renderPaginatorState(it) }
+        paginator.render = {
+            viewState.renderPaginatorState(it)
+        }
         launch {
             paginator.sideEffects.consumeEach { effect ->
                 when (effect) {
@@ -44,11 +49,13 @@ class ByTagScreenPresenter : MvpPresenterX<ByTagScreenView>() {
 
     private fun loadNewPage(page: Int, lastItem: Publication?) {
 
+        Log.d("varlamov", "BOOOL")
+
         val beforeDate =
             lastItem?.time?.withZone(DateTimeZone.UTC) ?: DateTime.now().withZone(DateTimeZone.UTC)
 
         Blog.getPublicationsByTag(
-            tag,
+            publicationsTag,
             20,
             beforeDate,
             object : retrofit2.Callback<ResponseBody> {
@@ -78,6 +85,6 @@ class ByTagScreenPresenter : MvpPresenterX<ByTagScreenView>() {
     fun loadMore() = paginator.proceed(Paginator.Action.LoadMore)
 
     fun onPublicationClicked(publication: Publication) {
-        viewState.navigateToPublicationScreen(publication)
+        App.router.navigateTo(Screens.ReaderScreen(publication))
     }
 }

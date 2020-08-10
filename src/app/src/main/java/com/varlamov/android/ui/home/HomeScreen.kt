@@ -2,7 +2,9 @@ package com.varlamov.android.ui.home
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import com.varlamov.android.App
 import com.varlamov.android.R
+import com.varlamov.android.Screens
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.platform.youtube.model.Video
 import com.varlamov.android.presentation.home.HomeScreenPresenter
@@ -38,10 +40,7 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
     private fun setupCards() {
         layout.freshPublicationCard.setup(
             contentClickListener = { publication ->
-                activity.navigateTo(
-                    R.id.reader_screen,
-                    bundleOf("publication" to publication)
-                )
+                App.router.navigateTo(Screens.ReaderScreen(publication as Publication))
             },
             retryClickListener = { fetchFreshPublication() }
         )
@@ -55,10 +54,7 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
         layout.newsCard.setup(
             onClickListener = { publication ->
-                activity.navigateTo(
-                    R.id.reader_screen,
-                    bundleOf("publication" to publication)
-                )
+                App.router.navigateTo(Screens.ReaderScreen(publication))
             },
             moreClickListener = {
                 unimplemented()

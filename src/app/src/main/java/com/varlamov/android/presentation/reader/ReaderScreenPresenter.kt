@@ -19,9 +19,9 @@ import org.jsoup.nodes.Element
 import org.jsoup.nodes.TextNode
 
 @InjectViewState
-class ReaderScreenPresenter : MvpPresenterX<ReaderScreenView>() {
-
-    var publication: Publication? = null
+class ReaderScreenPresenter(
+    val publication: Publication
+) : MvpPresenterX<ReaderScreenView>() {
 
     //region ReContent rules
 
@@ -113,14 +113,12 @@ class ReaderScreenPresenter : MvpPresenterX<ReaderScreenView>() {
     fun load() = contentator.proceed(Contentator.Action.LoadData)
 
     private fun runReContent() {
-        check(publication != null) { "No publication in presenter" }
-
         paragraphBuffer = ""
         publicationParts.clear()
 
         ReContent(App.instance, eventsHandler).apply {
             sectionsRules = recontentRules
-            load(publication!!.url)
+            load(publication.url)
         }
     }
 

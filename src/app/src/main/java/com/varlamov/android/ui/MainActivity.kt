@@ -3,7 +3,6 @@ package com.varlamov.android.ui
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.core.os.bundleOf
 import com.varlamov.android.App
 import com.varlamov.android.R
 import com.varlamov.android.Screens
@@ -20,7 +19,7 @@ class MainActivity : MvpAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        App.router.newRootScreen(Screens.MainFlow)
+        App.router.navigateTo(Screens.MainFlow)
     }
 
     override fun onResume() {
@@ -31,6 +30,10 @@ class MainActivity : MvpAppCompatActivity() {
     override fun onPause() {
         super.onPause()
         App.navigationHolder.removeNavigator()
+    }
+
+    override fun onBackPressed() {
+        App.router.exit()
     }
 
     fun onMenuItemSelected(item: MenuItem): Boolean {
@@ -49,11 +52,7 @@ class MainActivity : MvpAppCompatActivity() {
 
     private fun showByDateScreen(year: Int, month: Int, day: Int) {
         val timestamp = DateTime(year, month, day, 0, 0).millis
-
-        navigateTo(
-            R.id.by_date_screen,
-            bundleOf("dateTimestamp" to timestamp)
-        )
+        App.router.navigateTo(Screens.ByDateScreen(timestamp))
     }
 
     fun navigateTo(destination: Int, bundle: Bundle) {

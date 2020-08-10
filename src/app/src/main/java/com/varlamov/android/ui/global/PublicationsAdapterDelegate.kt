@@ -1,17 +1,10 @@
 package com.varlamov.android.ui.global
 
-import android.R.attr
-import android.content.Context
-import android.content.res.ColorStateList
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.chip.Chip
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.varlamov.android.App
 import com.varlamov.android.R
@@ -82,6 +75,7 @@ class PublicationsAdapterDelegate(
             itemView.newsLabel.visible(false)
 
             itemView.tagsContainer.tags = publication.tags
+            itemView.tagsContainer.setOnTagClickListener(TagViewClickListener)
         }
 
         private fun loadPreview() {

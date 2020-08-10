@@ -1,5 +1,7 @@
 package com.varlamov.android.presentation.news
 
+import com.varlamov.android.App
+import com.varlamov.android.Screens
 import com.varlamov.android.model.Blog
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.platform.livejournal.model.PublicationsFactory
@@ -78,6 +80,6 @@ class NewsScreenPresenter : MvpPresenterX<NewsScreenView>() {
     fun loadMore() = paginator.proceed(Paginator.Action.LoadMore)
 
     fun onPublicationClicked(publication: Publication) {
-        viewState.navigateToPublicationScreen(publication)
+        App.router.navigateTo(Screens.ReaderScreen(publication))
     }
 }

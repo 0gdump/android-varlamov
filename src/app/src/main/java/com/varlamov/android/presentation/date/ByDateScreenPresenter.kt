@@ -1,5 +1,7 @@
 package com.varlamov.android.presentation.date
 
+import com.varlamov.android.App
+import com.varlamov.android.Screens
 import com.varlamov.android.model.Blog
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.platform.livejournal.model.PublicationsFactory
@@ -17,9 +19,9 @@ import retrofit2.Response
 import java.util.*
 
 @InjectViewState
-class ByDateScreenPresenter : MvpPresenterX<ByDateScreenView>() {
+class ByDateScreenPresenter(dateTimestamp: Long) : MvpPresenterX<ByDateScreenView>() {
 
-    lateinit var day: DateTime
+    var day = DateTime(dateTimestamp, DateTimeZone.UTC)
 
     private val paginator = Paginator.Store<Publication>()
 
@@ -42,10 +44,6 @@ class ByDateScreenPresenter : MvpPresenterX<ByDateScreenView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         refresh()
-    }
-
-    fun setTimestamp(timestamp: Long) {
-        day = DateTime(timestamp, DateTimeZone.UTC)
     }
 
     private fun loadData() {
@@ -102,6 +100,6 @@ class ByDateScreenPresenter : MvpPresenterX<ByDateScreenView>() {
     }
 
     fun onPublicationClicked(publication: Publication) {
-        viewState.navigateToPublicationScreen(publication)
+        App.router.navigateTo(Screens.ReaderScreen(publication))
     }
 }
