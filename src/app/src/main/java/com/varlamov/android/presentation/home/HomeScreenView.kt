@@ -4,7 +4,6 @@ import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.platform.youtube.model.Video
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
-import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndSingleStrategy::class)
@@ -18,7 +17,4 @@ interface HomeScreenView : MvpView {
 
     fun showNews(news: List<Publication>)
     fun showErrorWhileLoadingNews()
-
-    @StateStrategyType(OneExecutionStateStrategy::class)
-    fun navigateToPublicationScreen(publication: Publication)
 }

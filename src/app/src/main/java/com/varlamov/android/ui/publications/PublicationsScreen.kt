@@ -1,7 +1,6 @@
 package com.varlamov.android.ui.publications
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import com.varlamov.android.App
 import com.varlamov.android.R
 import com.varlamov.android.model.platform.livejournal.model.Publication
@@ -55,12 +54,5 @@ class PublicationsScreen : MvpFragmentX(R.layout.fragment_publications), Publica
 
     override fun showMessage(message: String) {
         Toasty.info(activity, message).show()
-    }
-
-    override fun navigateToPublicationScreen(publication: Publication) {
-        activity.navigateTo(
-            R.id.reader_screen,
-            bundleOf("publication" to publication)
-        )
     }
 }

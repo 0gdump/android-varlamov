@@ -1,7 +1,6 @@
 package com.varlamov.android.ui.home
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import com.varlamov.android.App
 import com.varlamov.android.R
 import com.varlamov.android.Screens
@@ -111,12 +110,5 @@ class HomeScreen : MvpFragmentX(R.layout.fragment_home), HomeScreenView {
 
     override fun showErrorWhileLoadingNews() {
         layout.newsCard.showError()
-    }
-
-    override fun navigateToPublicationScreen(publication: Publication) {
-        activity.navigateTo(
-            R.id.reader_screen,
-            bundleOf("publication" to publication)
-        )
     }
 }
