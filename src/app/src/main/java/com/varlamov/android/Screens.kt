@@ -11,6 +11,18 @@ object Screens {
         override fun getFragment() = MainScreen()
     }
 
+    object HomeScreen : SupportAppScreen() {
+        override fun getFragment() = com.varlamov.android.ui.home.HomeScreen()
+    }
+
+    object PublicationsScreen : SupportAppScreen() {
+        override fun getFragment() = com.varlamov.android.ui.publications.PublicationsScreen()
+    }
+
+    object NewsScreen : SupportAppScreen() {
+        override fun getFragment() = com.varlamov.android.ui.news.NewsScreen()
+    }
+
     data class ByDateScreen(
         val dateTimestamp: Long
     ) : SupportAppScreen() {
