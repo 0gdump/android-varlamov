@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.varlamov.android.R
-import com.varlamov.android.model.reader.quote.QuoteElement
+import com.varlamov.android.model.reader.QuoteElement
 import com.varlamov.android.util.android.inflate
 import kotlinx.android.synthetic.main.item_publication_quote_part.view.*
 

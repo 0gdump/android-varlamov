@@ -1,10 +1,11 @@
 package com.varlamov.android.presentation.reader
 
+import android.util.Log
 import com.varlamov.android.App
 import com.varlamov.android.BuildConfig
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.reader.*
-import com.varlamov.android.model.reader.quote.QuoteElement
+import com.varlamov.android.model.reader.QuoteElement
 import com.varlamov.android.presentation.global.Contentator
 import com.varlamov.android.presentation.global.MvpPresenterX
 import kotlinx.coroutines.channels.consumeEach
@@ -27,7 +28,7 @@ class ReaderScreenPresenter(
     //region ReContent rules
 
     private val recontentQuoteRule = NodeRule(
-        selector = "blockquote",
+        selector = "blockquote:not([class])",
         matchCallback = ::prepareQuoteBuffers,
         treeParsedCallback = ::addQuote,
         sectionRule = SectionRule(
@@ -55,7 +56,11 @@ class ReaderScreenPresenter(
                 NodeRule(selector = "u", matchCallback = ::appendToTextBuffer),
                 NodeRule(selector = "br", matchCallback = ::addTextPart),
 
-                recontentQuoteRule
+                NodeRule(selector = "div.twitter-tweet", matchCallback = ::appendTwitter),
+
+                // Ignore broken blockquotes
+                recontentQuoteRule,
+                NodeRule(selector = "blockquote", matchCallback = { _, _ -> })
             ),
             specificNodesHandler = SpecificNodesHandler(
                 textNodeHandler = ::appendToTextBuffer,
@@ -166,6 +171,20 @@ class ReaderScreenPresenter(
 
     //endregion
 
+    //region Social's
+
+    // https://stackoverflow.com/questions/27836043/get-tweet-url-having-only-tweet-id/27843083
+    private fun appendTwitter(element: Element, tag: String?) {
+        val tweetId = element.select("iframe").attr("data-tweet-id")
+        val tweetUrl = "https://twitter.com/crunch/status/$tweetId"
+
+        if (tweetUrl.isNotEmpty()) {
+            publicationParts += TwitterPublicationElement(tweetUrl)
+        }
+    }
+
+    //endregion
+
     //region Quote content
 
     private fun prepareQuoteBuffers(element: Element, tag: String?) {
@@ -187,7 +206,11 @@ class ReaderScreenPresenter(
 
     private fun addQuotePart() {
         if (quoteParagraphBuffer.isNotEmpty()) {
-            quoteParts.add(QuoteElement(quoteParagraphBuffer))
+            quoteParts.add(
+                QuoteElement(
+                    quoteParagraphBuffer
+                )
+            )
             quoteParagraphBuffer = ""
         }
     }
