@@ -18,6 +18,7 @@ import open.v0gdump.recontent.model.SpecificNodesHandler
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.TextNode
 
+
 @InjectViewState
 class ReaderScreenPresenter(
     val publication: Publication

@@ -26,5 +26,7 @@
 	<string name="home_latest_news">Latest news</string>
 	<string name="home_youtube_videos">New videos</string>
 	<string name="label_news">News</string>
+	<string name="menu_share">Share</string>
+	<string name="share_url">Share publication</string>
 
 </resources>

@@ -25,4 +25,6 @@
 	<string name="home_latest_news">Последние новости</string>
 	<string name="home_youtube_videos">Новые видео</string>
 	<string name="label_news">Новость</string>
+	<string name="menu_share">Поделиться</string>
+	<string name="share_url">Поделиться публикацией</string>
 </resources>
