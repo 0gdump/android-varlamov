@@ -44,27 +44,28 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        contentRenderView.toolbar.setNavigationIcon(R.drawable.ic_back)
-        contentRenderView.toolbar.title = presenter.publication.title
-        contentRenderView.toolbar.inflateMenu(R.menu.reader)
-        contentRenderView.toolbar.setNavigationOnClickListener { App.router.exit() }
-        contentRenderView.toolbar.setOnMenuItemClickListener {
-            ShareCompat.IntentBuilder.from(activity)
-                .setType("text/plain")
-                .setChooserTitle(App.res.getString(R.string.share_url))
-                .setText(presenter.publication.url)
-                .startChooser()
-
-            true
-        }
-
-        contentRenderView.init(
-            { presenter.refresh() },
-            adapter
-        )
-
+        setupToolbar()
+        contentRenderView.init({ presenter.refresh() }, adapter)
         presenter.onActivityCreated()
+    }
+
+    private fun setupToolbar() = contentRenderView.toolbar.apply {
+        title = presenter.publication.title
+
+        setNavigationIcon(R.drawable.ic_back)
+        setNavigationOnClickListener { App.router.exit() }
+
+        contentRenderView.toolbar.inflateMenu(R.menu.reader)
+        setOnMenuItemClickListener { shareUrl(); true }
+    }
+
+    // TODO(CODE) Move inside presenter
+    private fun shareUrl() {
+        ShareCompat.IntentBuilder.from(activity)
+            .setType("text/plain")
+            .setChooserTitle(App.res.getString(R.string.share_url))
+            .setText(presenter.publication.url)
+            .startChooser()
     }
 
     override fun renderState(state: Contentator.State) {
