@@ -3,12 +3,9 @@ TODO.plan
 MVP plans:
 
 > Reader
-	- Instagram
 	^ Telegram links
 	- Separator
 	- Online video
-	- More publications
-	- Comments button
 	
 Other improvements:
 
@@ -32,6 +29,8 @@ Other improvements:
 		- Read comment
 	- Reader screen
 		- Customize
+		- More publications
+		- Comments button
 	- Offline collection
 	
 > Ux

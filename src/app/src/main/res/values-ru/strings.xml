@@ -27,4 +27,6 @@
 	<string name="label_news">Новость</string>
 	<string name="menu_share">Поделиться</string>
 	<string name="share_url">Поделиться публикацией</string>
+	<string name="open_tweet">Открыть твит</string>
+	<string name="open_instagram">Открыть пост в Instagram</string>
 </resources>

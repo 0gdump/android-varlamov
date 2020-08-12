@@ -39,6 +39,7 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
             TextElementDelegate(),
             QuoteElementDelegate(),
             TwitterElementDelegate(),
+            InstagramElementDelegate(),
             UnimplementedElementDelegate()
         )
     }

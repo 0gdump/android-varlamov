@@ -1,11 +1,9 @@
 package com.varlamov.android.presentation.reader
 
-import android.util.Log
 import com.varlamov.android.App
 import com.varlamov.android.BuildConfig
 import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.reader.*
-import com.varlamov.android.model.reader.QuoteElement
 import com.varlamov.android.presentation.global.Contentator
 import com.varlamov.android.presentation.global.MvpPresenterX
 import kotlinx.coroutines.channels.consumeEach
@@ -57,9 +55,11 @@ class ReaderScreenPresenter(
                 NodeRule(selector = "br", matchCallback = ::addTextPart),
 
                 NodeRule(selector = "div.twitter-tweet", matchCallback = ::appendTwitter),
+                NodeRule(selector = "iframe.instagram-media", matchCallback = ::appendInstagram),
+
+                recontentQuoteRule,
 
                 // Ignore broken blockquotes
-                recontentQuoteRule,
                 NodeRule(selector = "blockquote", matchCallback = { _, _ -> })
             ),
             specificNodesHandler = SpecificNodesHandler(
@@ -173,6 +173,7 @@ class ReaderScreenPresenter(
 
     //region Social's
 
+    // TODO(CODE) Show iframe instead of url link
     // https://stackoverflow.com/questions/27836043/get-tweet-url-having-only-tweet-id/27843083
     private fun appendTwitter(element: Element, tag: String?) {
         val tweetId = element.select("iframe").attr("data-tweet-id")
@@ -181,6 +182,17 @@ class ReaderScreenPresenter(
         if (tweetUrl.isNotEmpty()) {
             publicationParts += TwitterPublicationElement(tweetUrl)
         }
+    }
+
+    // TODO(CODE) Show iframe instead of url link
+    private fun appendInstagram(element: Element, tag: String?) {
+        val embedPostUrl = element.attr("src")
+        val regex = Regex("(https:\\/\\/www\\.instagram\\.com\\/p\\/.*)(\\/embed)")
+        val urlMatch = regex.find(embedPostUrl) ?: return
+
+        if (urlMatch.groups.size != 3) return
+
+        publicationParts += InstagramPublicationElement(urlMatch.groupValues[1])
     }
 
     //endregion
