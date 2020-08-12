@@ -30,5 +30,6 @@
 	<string name="share_url">Share publication</string>
 	<string name="open_tweet">Open tweet</string>
 	<string name="open_instagram">Open instagram</string>
+	<string name="open_telegram">Open telegram</string>
 
 </resources>

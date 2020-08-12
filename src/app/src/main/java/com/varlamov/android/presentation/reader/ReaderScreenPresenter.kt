@@ -6,6 +6,7 @@ import com.varlamov.android.model.platform.livejournal.model.Publication
 import com.varlamov.android.model.reader.*
 import com.varlamov.android.presentation.global.Contentator
 import com.varlamov.android.presentation.global.MvpPresenterX
+import com.varlamov.android.util.kotlin.orElse
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import moxy.InjectViewState
@@ -56,6 +57,7 @@ class ReaderScreenPresenter(
 
                 NodeRule(selector = "div.twitter-tweet", matchCallback = ::appendTwitter),
                 NodeRule(selector = "iframe.instagram-media", matchCallback = ::appendInstagram),
+                NodeRule(selector = "tg", matchCallback = ::appendTelegram),
 
                 recontentQuoteRule,
 
@@ -186,13 +188,40 @@ class ReaderScreenPresenter(
 
     // TODO(CODE) Show iframe instead of url link
     private fun appendInstagram(element: Element, tag: String?) {
-        val embedPostUrl = element.attr("src")
+        val embedUrl = element.attr("src")
         val regex = Regex("(https:\\/\\/www\\.instagram\\.com\\/p\\/.*)(\\/embed)")
-        val urlMatch = regex.find(embedPostUrl) ?: return
+        val urlMatch = regex.find(embedUrl) ?: return
 
         if (urlMatch.groups.size != 3) return
 
         publicationParts += InstagramPublicationElement(urlMatch.groupValues[1])
+    }
+
+    // TODO(CODE) Show iframe instead of url link
+    private fun appendTelegram(element: Element, tag: String?) {
+        element.selectFirst("iframe")?.let {
+            appendInitializedTelegram(it)
+        }.orElse {
+            element.selectFirst("a")?.let {
+                appendUninitializedTelegram(it)
+            }
+        }
+    }
+
+    private fun appendInitializedTelegram(iframe: Element) {
+        val embedUrl = iframe.attr("src")
+        val regex = Regex("(https:\\/\\/t\\.me\\/.*\\/\\d*)(\\?embed=1)")
+        val urlMatch = regex.find(embedUrl) ?: return
+
+        if (urlMatch.groups.size != 3) return
+
+        publicationParts += TelegramPublicationElement(urlMatch.groupValues[1])
+    }
+
+    private fun appendUninitializedTelegram(a: Element) {
+        val url = a.attr("href")
+        if (url.isBlank()) return
+        publicationParts += TelegramPublicationElement(url)
     }
 
     //endregion

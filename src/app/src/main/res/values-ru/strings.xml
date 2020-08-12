@@ -29,4 +29,5 @@
 	<string name="share_url">Поделиться публикацией</string>
 	<string name="open_tweet">Открыть твит</string>
 	<string name="open_instagram">Открыть пост в Instagram</string>
+	<string name="open_telegram">Открыть пост в Telegram</string>
 </resources>

@@ -3,7 +3,6 @@ TODO.plan
 MVP plans:
 
 > Reader
-	^ Telegram links
 	- Separator
 	- Online video
 	
