@@ -28,7 +28,7 @@ class NewsScreen : MvpFragmentX(R.layout.fragment_by_tag), NewsScreenView {
                 else
                     false
             },
-            PublicationsAdapterDelegate {
+            PublicationsAdapterDelegate(false) {
                 presenter.onPublicationClicked(it)
             }
         )

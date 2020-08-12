@@ -17,6 +17,7 @@ import java.util.*
 
 
 class PublicationsAdapterDelegate(
+    private val showTagsAndLabels: Boolean = true,
     private val clickListener: (Publication) -> Unit
 ) : AdapterDelegate<MutableList<Any>>() {
 
@@ -57,6 +58,8 @@ class PublicationsAdapterDelegate(
         private fun bindContent() {
             itemView.date.text = publication.time.toString(TimeZone.getDefault())
             itemView.title.text = publication.title
+
+            if (!showTagsAndLabels) return
 
             if (publication.tags.contains(App.res.getString(R.string.news_tag))) {
                 showNewsChip()
