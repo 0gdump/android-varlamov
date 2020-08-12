@@ -10,6 +10,7 @@ import com.varlamov.android.presentation.reader.ReaderScreenPresenter
 import com.varlamov.android.presentation.reader.ReaderScreenView
 import com.varlamov.android.ui.global.MvpFragmentX
 import com.varlamov.android.ui.global.adapter.content.ContentAdapter
+import com.varlamov.android.ui.reader.delegate.*
 import com.varlamov.android.util.kotlin.argument
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_reader.*

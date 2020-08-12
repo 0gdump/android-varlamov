@@ -1,4 +1,4 @@
-package com.varlamov.android.ui.reader
+package com.varlamov.android.ui.reader.delegate
 
 import android.os.Build
 import android.text.Html

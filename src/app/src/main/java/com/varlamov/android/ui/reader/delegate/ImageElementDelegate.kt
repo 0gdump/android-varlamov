@@ -1,4 +1,4 @@
-package com.varlamov.android.ui.reader
+package com.varlamov.android.ui.reader.delegate
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

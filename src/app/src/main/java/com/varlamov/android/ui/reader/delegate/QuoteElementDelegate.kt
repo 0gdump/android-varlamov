@@ -1,4 +1,4 @@
-package com.varlamov.android.ui.reader
+package com.varlamov.android.ui.reader.delegate
 
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +28,8 @@ class QuoteElementDelegate : AdapterDelegate<MutableList<Any>>() {
 
         holder.itemView.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = QuoteAdapter(paragraphs)
+            adapter =
+                QuoteAdapter(paragraphs)
         }
     }
 
