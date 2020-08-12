@@ -33,8 +33,8 @@ class MainScreen : MvpFragmentX(R.layout.fragment_main), MainScreenView {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> presenter.onTabSelected(0)
-                R.id.nav_news -> presenter.onTabSelected(1)
-                R.id.nav_publications -> presenter.onTabSelected(2)
+                R.id.nav_publications -> presenter.onTabSelected(1)
+                R.id.nav_news -> presenter.onTabSelected(2)
                 else -> presenter.onTabSelected(Int.MAX_VALUE)
             }
 
