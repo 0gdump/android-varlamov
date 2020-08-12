@@ -53,6 +53,7 @@ class ReaderScreen : MvpFragmentX(R.layout.fragment_reader), ReaderScreenView {
 
     private fun setupToolbar() = contentRenderView.toolbar.apply {
         title = presenter.publication.title
+        //subtitle = presenter.publication.time.toString(TimeZone.getDefault())
 
         setNavigationIcon(R.drawable.ic_back)
         setNavigationOnClickListener { App.router.exit() }
