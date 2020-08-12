@@ -1,10 +1,4 @@
 TODO.plan
-
-MVP plans:
-
-> Reader
-	- Separator
-	- Online video
 	
 Other improvements:
 
@@ -30,6 +24,11 @@ Other improvements:
 		- Customize
 		- More publications
 		- Comments button
+		- Support...
+			- Youtube
+			- Table
+			- Hr
+			- Dynamic pages
 	- Offline collection
 	
 > Ux
